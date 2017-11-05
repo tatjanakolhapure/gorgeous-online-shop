@@ -1,0 +1,101 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gorgeous</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="{% static "css/custom.css" %}" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Montserrat:400,500,600" rel="stylesheet">
+    <script src="https://use.fontawesome.com/9dd4c10b88.js"></script>
+</head>
+<body>
+    <header id="main-header" class="clearfix container-fluid">
+        <img class="logo logo--main" src="{% static "images/logo.svg" %}" alt="logo">
+        <nav id="navigation" class="navbar navbar-light bg-faded">
+            <div id="main-menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown--account">
+                        <a class="nav-link dropdown-toggle" href="#" id="shop-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account<i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="shop-menu">
+                            <a class="dropdown-item" href="#">My details</a>
+                            <a class="dropdown-item" href="#">My orders</a>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown dropdown--shop">
+                        <a class="nav-link dropdown-toggle" href="#" id="shop-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Shop<i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="shop-menu">
+                            <a class="dropdown-item" href="#">Dresses</a>
+                            <a class="dropdown-item" href="#">Tops</a>
+                            <a class="dropdown-item" href="#">Coats</a>
+                            <a class="dropdown-item" href="#">Trousers</a>
+                            <a class="dropdown-item" href="#">Shoes</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="main-menu-icons">
+                <div class="icon-container icon-container--account">
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="account-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user" aria-hidden="true"></i><span class="icon-name--hide">Account</span><i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="account-menu">
+                            <a class="dropdown-item" href="#">My details</a>
+                            <a class="dropdown-item" href="#">My orders</a>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="icon-container icon-container--bag">
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                    <p class="icon-name"><span class="icon-name--hide">Bag</span> (0)</p>
+                </a>
+            </div>
+        </nav>
+    </header>
+    <header id="mobile-header" class="container-fluid">
+        <button class="btn-hamburger"><i class="fa fa-bars" aria-hidden="true"></i></button>
+        <img class="logo logo--mobile" src="{% static "images/logo.svg" %}" alt="logo">
+        <a href="#" class="icon-container icon-container--bag">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <p class="icon-name"><span class="icon-name__bag-items">(0)</span></p>
+        </a>
+    </header>
+    <main id="main-content">
+        <div id="after-header"></div>
+        <div id="promotion">
+            <p><u>FREE shipping</u> on orders over £75</p>
+        </div>
+    </main>
+    {% block content %}
+    {% endblock %}
+</body>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+<script src="{% static "js/custom.js" %}"></script>
+</html>
