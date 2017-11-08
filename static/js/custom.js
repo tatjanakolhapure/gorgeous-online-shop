@@ -21,6 +21,9 @@
 				    fn.slideOutMenu();
 				    fn.changeLogoSize();
 				    fn.scroll();
+				    fn.homeBanner();
+                    // change html for home banner arrows, remove "previous" and "next"
+				    jQuery(".slick-arrow").text("");
                 });
 
 				jQuery(window).on("resize", function() {
@@ -147,6 +150,26 @@
                 } else {
                     jQuery(".logo--main").removeClass("logo--main-small");
                 }
+            },
+
+            homeBanner: function() {
+			    var homeBanner = jQuery("#home-banner");
+			    homeBanner.on('breakpoint', function(event, slick, currentSlide, nextSlide){
+			        jQuery(".slick-arrow").text("");
+			    });
+                homeBanner.slick({
+                    autoplay: true,
+                    speed: 800,
+                    responsive: [
+                    {
+                      breakpoint: 480,
+                      settings: {
+                        centerMode: true,
+                        variableWidth: true,
+                        arrows: false
+                      }
+                    }]
+                });
             }
 		};
 
