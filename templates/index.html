@@ -1,3 +1,24 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% block content %}
+        <div id="home-banner">
+            <div class="slider-item slider-item--one">
+                <img src="{% static "images/home-banner-1.jpg"%}" alt="First slide">
+                <div class="slider-caption">
+                    <h3 class="slider-caption--heading">Dress Like a Queen</h3>
+                    <p class="slider-caption--tagline">Create your gorgeous look!</p>
+                    <button class="button">Start shopping</button>
+                </div>
+            </div>
+            <div class="slider-item slider-item--two">
+                <img src="{% static "images/home-banner-2.jpg"%}" alt="Second slide">
+                <div class="slider-caption">
+                    <h3 class="slider-caption--heading">Fresh New Styles</h3>
+                    <p class="slider-caption--tagline">New arrivals every week</p>
+                    <button class="button">Start shopping</button>
+                </div>
+            </div>
+        </div>
+
+
 {% endblock %}
