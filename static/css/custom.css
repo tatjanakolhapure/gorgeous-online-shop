@@ -462,7 +462,7 @@ body {
     position: absolute;
     padding-top: 20px;
     padding-bottom: 10%;
-    color: #fff;
+    color: white;
     text-transform: uppercase;
     width: 100%;
     height: 100%;
@@ -474,13 +474,15 @@ body {
     left: 0;
 }
 
-.slider-caption--heading {
+.slider-caption--heading,
+.parallax-heading {
     font-family: 'Raleway', sans-serif;
     font-weight: 600;
     font-size: 1.643rem;
 }
 
-.slider-caption--tagline {
+.slider-caption--tagline,
+.parallax-tagline {
     font-size: 1.071rem;
     margin-bottom: 20px;
 }
@@ -537,11 +539,13 @@ body {
         font-size: 1.6rem;
     }
 
-    .slider-caption--heading {
+    .slider-caption--heading,
+    .parallax-heading {
         font-size: 2.133rem;
     }
 
-    .slider-caption--tagline {
+    .slider-caption--tagline,
+    .parallax-tagline {
         font-size: 1.533rem;
     }
 
@@ -579,7 +583,7 @@ body {
     }
 }
 
-/* Homepage content */
+/* Homepage collections */
 
 #collections {
     margin: 0 auto 30px;
@@ -672,4 +676,83 @@ body {
     .collection-img-container {
         margin-bottom: 15px;
     }
+}
+
+/* Homepage parallax */
+
+#home-parallax {
+    width: 100%;
+    height: 300px;
+}
+
+.parallax-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+.parallax-content {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: 0;
+    top: 73%;
+    transform: translateY(-50%);
+    color: white;
+    text-transform: uppercase;
+    left: -20%;
+}
+
+.parallax-img {
+    width: 100vmax;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 35%;
+    transform: translate(-50%,0);
+    pointer-events: none;
+}
+
+#main-content {
+    height: 3000px;
+}
+
+
+@media screen and (min-width: 576px) {
+    #home-parallax {
+        height: 300px;
+    }
+
+    .parallax-img {
+        left: 50%;
+    }
+
+    .parallax-content {
+        left: -5%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #home-parallax {
+        height: 350px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #home-parallax {
+        height: 400px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    #home-parallax {
+        height: 500px;
+    }
+
+    .parallax-content {
+        left: unset;
+    }
+
 }
