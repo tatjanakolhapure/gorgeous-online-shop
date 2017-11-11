@@ -25,6 +25,7 @@
                     // change html for home banner arrows, remove "previous" and "next"
 				    jQuery(".slick-arrow").text("");
 				    fn.parallaxImg();
+				    fn.homePopular();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -186,7 +187,6 @@
                 var winBottom = winY + winH;
                 //If block is shown on screen
                 if (winBottom > imgY && winY < imgY + parentH) {
-                    console.log("yes");
                     // Number of pixels shown after block appear
                     var imgBottom = ((winBottom - imgY) * speed);
                     // Max number of pixels until block disappear
@@ -198,8 +198,41 @@
                     top: imgPercent + '%',
                     transform: 'translate(-50%, -' + imgPercent + '%)'
                 });
-			}
+			},
 			// End of code by Renan Breno
+
+            homePopular: function() {
+			    var homePopular = jQuery("#home-popular");
+                homePopular.slick({
+                    autoplay: true,
+                    arrows: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    responsive: [
+                    {
+                      breakpoint: 1020,
+                      settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                      }
+                    },
+                    {
+                      breakpoint: 768,
+                      settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                      }
+                    },
+                    {
+                      breakpoint: 425,
+                      settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                    }
+                    ]
+                });
+            }
 		};
 
 		fn.init();
