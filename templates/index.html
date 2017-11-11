@@ -5,16 +5,16 @@
             <div class="slider-item slider-item--one">
                 <img src="{% static "images/home-banner-1.jpg"%}" alt="First slide">
                 <div class="slider-caption">
-                    <h3 class="slider-caption--heading">Dress Like a Queen</h3>
-                    <p class="slider-caption--tagline">Create your gorgeous look!</p>
+                    <h3 class="slider-caption__heading">Dress Like a Queen</h3>
+                    <p class="slider-caption__tagline">Create your gorgeous look!</p>
                     <button class="button">Start shopping</button>
                 </div>
             </div>
             <div class="slider-item slider-item--two">
                 <img src="{% static "images/home-banner-2.jpg"%}" alt="Second slide">
                 <div class="slider-caption">
-                    <h3 class="slider-caption--heading">Fresh New Styles</h3>
-                    <p class="slider-caption--tagline">New arrivals every week</p>
+                    <h3 class="slider-caption__heading">Fresh New Styles</h3>
+                    <p class="slider-caption__tagline">New arrivals every week</p>
                     <button class="button">Start shopping</button>
                 </div>
             </div>
@@ -22,29 +22,29 @@
         <div id="home-content" class="container-fluid">
             <div class="row">
                 <div id="collections" class="col">
-                    <h1 class="collections-heading heading">Explore our collections</h1>
+                    <h1 class="heading">Explore our collections</h1>
                     <div class="collection">
-                        <div class="collection-img-container">
-                            <img class="collection-img" src="{% static "images/dress-01-1.jpg"%}" alt="">
+                        <div class="collection__img-container img-container">
+                            <img class="img-container__img" src="{% static "images/dress-01-1.jpg"%}" alt="">
                         </div>
-                        <h2 class="collection-heading">It’s time for a new dress</h2>
-                        <p class="collection-description">Refresh your look with our exclusive dresses.</p>
+                        <h2 class="collection__heading">It’s time for a new dress</h2>
+                        <p class="collection__description">Refresh your look with our exclusive dresses.</p>
                         <button class="button">Shop dresses</button>
                     </div>
                     <div class="collection">
-                        <div class="collection-img-container">
-                            <img class="collection-img" src="{% static "images/coat-01-1.jpg"%}" alt="">
+                        <div class="collection__img-container img-container">
+                            <img class="img-container__img" src="{% static "images/coat-01-1.jpg"%}" alt="">
                         </div>
-                        <h2 class="collection-heading">Get warm for winter!</h2>
-                        <p class="collection-description">Check out our new collection of coats & jackets for this winter.</p>
+                        <h2 class="collection__heading">Get warm for winter!</h2>
+                        <p class="collection__description">Check out our new collection of coats & jackets for this winter.</p>
                         <button class="button">Shop coats</button>
                     </div>
                     <div class="collection">
-                        <div class="collection-img-container">
-                            <img class="collection-img collection-img-shoes" src="{% static "images/shoes-01-1.jpg"%}" alt="">
+                        <div class="collection__img-container img-container">
+                            <img class="collection__img-shoes img-container__img" src="{% static "images/shoes-01-1.jpg"%}" alt="">
                         </div>
-                        <h2 class="collection-heading">Shoes for any occasion</h2>
-                        <p class="collection-description">Complete your look with shoes for any occasion.</p>
+                        <h2 class="collection__heading">Shoes for any occasion</h2>
+                        <p class="collection__description">Complete your look with shoes for any occasion.</p>
                         <button class="button">Shop shoes</button>
                     </div>
                 </div>
@@ -58,6 +58,60 @@
                             <p class="parallax-tagline">You deserve it</p>
                             <button class="button">Shop now</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h2 class="heading">Popular this week</h2>
+                <div id="home-popular" class="col-sm-10">
+                    <div class="slider-item slider-item--one">
+                        <a class="slider-item__container">
+                            <img class="slider-item__img" src="{% static "images/dress-02-1.jpg"%}" alt="">
+                            <p class="product-name">Flounce Marled Bodycon Dress</p>
+                            <p class="product-price">£35</p>
+                        </a>
+                    </div>
+                    <div class="slider-item slider-item--two">
+                          <a class="slider-item__container">
+                              <img class="slider-item__img" src="{% static "images/top-01-1.jpg"%}" alt="">
+                              <p class="product-name">Tiered Ruffle-Sleeve Top</p>
+                              <p class="product-price">£17</p>
+                        </a>
+                    </div>
+                    <div class="slider-item slider-item--three">
+                        <a class="slider-item__container">
+                            <img class="slider-item__img" src="{% static "images/shoes-02-1.jpg"%}" alt="">
+                            <p class="product-name">Faux Suede Embroidered Boots</p>
+                            <p class="product-price">£29</p>
+                        </a>
+                    </div>
+                    <div class="slider-item slider-item--four">
+                        <a class="slider-item__container">
+                            <img class="slider-item__img" src="{% static "images/top-02-1.jpg"%}" alt="">
+                            <p class="product-name">Tiered Flounce-Sleeve Mesh Top</p>
+                            <p class="product-price">£15</p>
+                        </a>
+                    </div>
+                    <div class="slider-item slider-item--five">
+                        <a class="slider-item__container">
+                            <img class="slider-item__img" src="{% static "images/top-03-1.jpg"%}" alt="">
+                            <p class="product-name">Semi-Sheer Floral Print Top</p>
+                            <p class="product-price">£10</p>
+                        </a>
+                    </div>
+                    <div class="slider-item slider-item--six">
+                        <a class="slider-item__container">
+                            <img class="slider-item__img" src="{% static "images/dress-03-1.jpg"%}" alt="">
+                            <p class="product-name">Velvet Off-The-Shoulder Dress</p>
+                            <p class="product-price">£44</p>
+                        </a>
+                    </div>
+                    <div class="slider-item slider-item--seven">
+                        <a class="slider-item__container">
+                            <img class="slider-item__img" src="{% static "images/top-04-1.jpg"%}" alt="">
+                            <p class="product-name">Plunging Self-Tie Crop Top</p>
+                            <p class="product-price">£22</p>
+                        </a>
                     </div>
                 </div>
             </div>
