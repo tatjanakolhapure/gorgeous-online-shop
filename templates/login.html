@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form role="form" method="post" action="{% url 'login' %}">
+        <legend>Create a new account</legend>
+        {% csrf_token %}
+        {{ form_register }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" name="register" value="Register">Create account</button>
+        </div>
+    </form>
+    <form role="form" method="post" action="{% url 'login' %}">
+        <legend>Login</legend>
+        {% csrf_token %}
+        {{ form_login }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" name="login" value="Login">Login</button>
+        </div>
+    </form>
+{% endblock %}
