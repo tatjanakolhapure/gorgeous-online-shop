@@ -140,6 +140,10 @@ p {
     margin-top: 155px;
 }
 
+.move-down-account-logged-out {
+    margin-top: 55px;
+}
+
 .icon-name,
 .icon-container {
     display: inline-block;
