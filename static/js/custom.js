@@ -98,10 +98,18 @@
                     "click": function() {
                         jQuery(this).parent().attr('closable', true);
                         if (jQuery(window).width() < 769 ) {
-                            if (global.dropdownAccount.next().hasClass("move-down-account")) {
-                                global.dropdownAccount.next().removeClass("move-down-account");
+                            if (jQuery('.login-mobile').length > 0) {
+                                if (global.dropdownAccount.next().hasClass("move-down-account-logged-out")) {
+                                    global.dropdownAccount.next().removeClass("move-down-account-logged-out");
+                                } else {
+                                    global.dropdownAccount.next().addClass("move-down-account-logged-out");
+                                }
                             } else {
-                                global.dropdownAccount.next().addClass("move-down-account");
+                                if (global.dropdownAccount.next().hasClass("move-down-account")) {
+                                    global.dropdownAccount.next().removeClass("move-down-account");
+                                } else {
+                                    global.dropdownAccount.next().addClass("move-down-account");
+                                }
                             }
                         }
                     }
@@ -176,28 +184,31 @@
             },
             // code by Renan Breno https://codepen.io/RenanB/pen/GZeBNg
             parallaxImg: function() {
-			    var img = $('.parallax-img');
-			    var imgParent = img.parent();
-			    var speed = img.data('speed');
-			    var imgY = imgParent.offset().top;
-			    var winY = jQuery(window).scrollTop();
-			    var winH = jQuery(window).height();
-			    var parentH = imgParent.innerHeight();
-			    // The next pixel to show on screen
-                var winBottom = winY + winH;
-                //If block is shown on screen
-                if (winBottom > imgY && winY < imgY + parentH) {
-                    // Number of pixels shown after block appear
-                    var imgBottom = ((winBottom - imgY) * speed);
-                    // Max number of pixels until block disappear
-                    var imgTop = winH + parentH;
-                    // Porcentage between start showing until disappearing
-                    var imgPercent = ((imgBottom / imgTop) * 100) + (50 - (speed * 50));
+			    var img = jQuery('.parallax-img');
+			    // check if element is in DOM
+			    if (img.length > 1) {
+                    var imgParent = img.parent();
+                    var speed = img.data('speed');
+                    var imgY = imgParent.offset().top;
+                    var winY = jQuery(window).scrollTop();
+                    var winH = jQuery(window).height();
+                    var parentH = imgParent.innerHeight();
+                    // The next pixel to show on screen
+                    var winBottom = winY + winH;
+                    //If block is shown on screen
+                    if (winBottom > imgY && winY < imgY + parentH) {
+                        // Number of pixels shown after block appear
+                        var imgBottom = ((winBottom - imgY) * speed);
+                        // Max number of pixels until block disappear
+                        var imgTop = winH + parentH;
+                        // Porcentage between start showing until disappearing
+                        var imgPercent = ((imgBottom / imgTop) * 100) + (50 - (speed * 50));
+                    }
+                    img.css({
+                        top: imgPercent + '%',
+                        transform: 'translate(-50%, -' + imgPercent + '%)'
+                    });
                 }
-                img.css({
-                    top: imgPercent + '%',
-                    transform: 'translate(-50%, -' + imgPercent + '%)'
-                });
 			},
 			// End of code by Renan Breno
 
