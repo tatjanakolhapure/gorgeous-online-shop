@@ -4,7 +4,7 @@
 
 ;(function(jQuery){
 	"use strict";
-	function gorgeous()
+	function Gorgeous()
 	{
 		var global = {
 		    dropdownShop: jQuery(".dropdown--shop"),
@@ -13,6 +13,37 @@
 
 	    var fn = {
 			init: function() {
+
+                function getCookie(name) {
+                    var cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        var cookies = document.cookie.split(';');
+                        for (var i = 0; i < cookies.length; i++) {
+                            var cookie = jQuery.trim(cookies[i]);
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }
+                var csrftoken = getCookie('csrftoken');
+
+                function csrfSafeMethod(method) {
+                    // these HTTP methods do not require CSRF protection
+                    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                }
+                // pass csrftoken in header for each ajax call
+                jQuery.ajaxSetup({
+                    beforeSend: function(xhr, settings) {
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        }
+                    }
+                });
+
 				jQuery(document).ready(function() {
 				    // show navigation when document is ready to avoid blinking
 				    jQuery("#navigation").show();
@@ -26,6 +57,9 @@
 				    jQuery(".slick-arrow").text("");
 				    fn.parallaxImg();
 				    fn.homePopular();
+				    fn.submitRegisterForm();
+				    fn.submitLoginForm();
+				    fn.loginRegisterTabs();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -186,7 +220,7 @@
             parallaxImg: function() {
 			    var img = jQuery('.parallax-img');
 			    // check if element is in DOM
-			    if (img.length > 1) {
+			    if (img.length > 0) {
                     var imgParent = img.parent();
                     var speed = img.data('speed');
                     var imgY = imgParent.offset().top;
@@ -243,11 +277,82 @@
                     }
                     ]
                 });
+            },
+
+            submitRegisterForm: function() {
+                var register_frm = jQuery('#register').find('form'),
+                    reg_submit_btn = register_frm.find('button');
+
+                register_frm.on("submit", function () {
+                    var formData = jQuery(this).serializeArray();
+                    formData.push({ name: reg_submit_btn.attr('name'), value: reg_submit_btn.attr('value') });
+                    jQuery.ajax({
+                        type: register_frm.attr('method'),
+                        url: register_frm.attr('action'),
+                        data: formData,
+                        dataType: 'json',
+                        success: function(data) {
+                            window.location.href = '/account/details/';
+                        },
+                        error: function(data, error, status) {
+                            console.log(data);
+                            console.log(error);
+                            console.log(status);
+                            jQuery("#register-errors").text(data.responseJSON.message).show();
+                        }
+                    });
+                    return false;
+                });
+            },
+
+            submitLoginForm: function() {
+                var login_frm = jQuery('#login').find('form'),
+                    login_submit_btn = login_frm.find('button');
+
+                login_frm.on("submit", function () {
+                    var formData = jQuery(this).serializeArray();
+                    formData.push({ name: login_submit_btn.attr('name'), value: login_submit_btn.attr('value') });
+                    jQuery.ajax({
+                        type: login_frm.attr('method'),
+                        url: login_frm.attr('action'),
+                        data: formData,
+                        dataType: 'json',
+                        success: function(data) {
+                            console.log(data);
+                            window.location.href = '/account/details/';
+                        },
+                        error: function(data, error, status) {
+                            console.log(data);
+                            console.log(error);
+                            console.log(status);
+                            jQuery("#login-errors").text(data.responseJSON.message).show();
+                        }
+                    });
+                    return false;
+                });
+            },
+
+            loginRegisterTabs: function() {
+			    var formsContainer = jQuery('#forms-container');
+			    formsContainer.find('.nav-tabs a').click(function(e) {
+			        e.preventDefault();
+			        jQuery(this).tab('show');
+                });
+
+                // store the currently selected tab in the hash value
+                jQuery("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
+                    var id = jQuery(e.target).attr("href").substr(1);
+                    window.location.hash = id;
+                    jQuery(document).scrollTop(0);
+                });
+                // on load of the page: switch to the currently selected tab
+                var hash = window.location.hash;
+                formsContainer.find('.nav-tabs').find('a[href="' + hash + '"]').tab('show');
             }
 		};
 
 		fn.init();
 	}
 
-	new gorgeous();
+	new Gorgeous();
 })(jQuery);
