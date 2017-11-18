@@ -1,6 +1,71 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Success!</h2>
-    <p>You are logged in as {{ user.email }} </p>
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col">
+                <h1 class="heading heading--top">My details</h1>
+            </div>
+        </div>
+        <div class="row">
+           <div id="account-content" class="col-sm-12 col-lg-10 col-xl-8">
+               <div class="row">
+                   <div id="account-nav" class="col-sm-12 col-md-2">
+                       <div class="account-nav-item account-nav-item--underline">
+                           <a href="{% url 'account' %}">My details</a>
+                       </div>
+                       <div class="account-nav-item">
+                           <a href="{% url 'account' %}">My orders</a>
+                       </div>
+                   </div>
+                   <div id="account-details" class="col-sm-12 col-md-5">
+                       <h2 class="account-heading">Personal details</h2>
+                       <div class="section-container">
+                           <div class="sub-section-container">
+                               <div class="sub-section">
+                                   <p class="sub-section__heading">Name</p>
+                                   <p>{{ user.first_name }} {{ user.last_name }}</p>
+                               </div>
+                               <div class="sub-section">
+                                   <p class="sub-section__heading">Email</p>
+                                   <p>{{ user.email }}</p>
+                               </div>
+                               <a href="{% url 'edit_details' user.id %}" class="button">Update details</a>
+                           </div>
+                           <div class="sub-section-container">
+                                <div class="sub-section sub-section-password">
+                                   <p class="sub-section__heading">Password</p>
+                                   <p>***********</p>
+                                </div>
+                               <a href="{% url 'password_change' %}" class="button">Update password</a>
+                           </div>
+                       </div>
+                   </div>
+                   {% if address %}
+                       <div id="account-address" class="col-sm-12 col-md-5">
+                           <h2 class="account-heading">Delivery address</h2>
+                           <div class="section-container">
+                               <div class="sub-section">
+                                   <p class="sub-section__heading">House number/name</p>
+                                   <p>{{ address.house_number_name }}</p>
+                               </div>
+                               <div class="sub-section">
+                                   <p class="sub-section__heading">Street</p>
+                                   <p>{{ address.street }}</p>
+                               </div>
+                               <div class="sub-section">
+                                   <p class="sub-section__heading">Town</p>
+                                   <p>{{ address.town }}</p>
+                               </div>
+                               <div class="sub-section">
+                                   <p class="sub-section__heading">Postcode</p>
+                                   <p>{{ address.postcode }}</p>
+                               </div>
+                               <a href="{% url 'edit_address' user.id %}" class="button">Update address</a>
+                           </div>
+                       </div>
+                   {% endif %}
+               </div>
+            </div>
+        </div>
 {% endblock %}

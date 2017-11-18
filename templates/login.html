@@ -1,20 +1,46 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form role="form" method="post" action="{% url 'login' %}">
-        <legend>Create a new account</legend>
-        {% csrf_token %}
-        {{ form_register }}
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary" name="register" value="Register">Create account</button>
+    <div id="login-register-forms" class="container-fluid">
+        <div class="row heading-container">
+           <div class="col">
+                <h1 class="heading heading--top">Login / Register</h1>
+                <p>Login or register to create an account</p>
+            </div>
         </div>
-    </form>
-    <form role="form" method="post" action="{% url 'login' %}">
-        <legend>Login</legend>
-        {% csrf_token %}
-        {{ form_login }}
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary" name="login" value="Login">Login</button>
+        <div id="forms-container" class="row">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#register">Register</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="login">
+                    <div id="login-errors"></div>
+                    <form role="form" method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        {{ form_login }}
+                        <div class="form-group">
+                            <button type="submit" class="button" name="login" value="Login">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div role="tabpanel" class="tab-pane fade in" id="register">
+                    <div id="register-errors"></div>
+                    <form role="form" method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        {{ form_register }}
+                        {{ form_address }}
+                        <div class="form-group">
+                            <button type="submit" class="button" name="register" value="Register">Create account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
+
 {% endblock %}

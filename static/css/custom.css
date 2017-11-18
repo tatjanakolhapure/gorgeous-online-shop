@@ -12,6 +12,18 @@ p {
     margin: 0;
 }
 
+a {
+    color: black;
+}
+
+a:hover,
+a:focus,
+a:visited,
+a:active {
+    color: rgba(0,0,0,.7);
+    text-decoration: none;
+}
+
 .button {
     font-family: 'Karla', sans-serif;
     font-size: 1.071rem;
@@ -100,12 +112,12 @@ p {
     padding: 14px 15px;
 }
 
-.nav-item,
+#main-menu .nav-item,
 .dropdown-item {
     border-bottom: solid 1px rgba(0,0,0,0.2);
 }
 
-.nav-link:active,
+#main-menu .nav-link:active,
 .dropdown-item:active {
     background: #C08329;
     color: white!important;
@@ -158,11 +170,6 @@ p {
 .fa.fa-bars,
 .fa.fa-shopping-bag {
     font-size: 2rem;
-}
-
-.icon-container--bag,
-#account-menu {
-    color: black;
 }
 
 .icon-container--bag:hover,
@@ -226,7 +233,7 @@ p {
         padding: 0 13px;
     }
 
-    .nav-item {
+    #main-menu .nav-item {
         border-bottom: none;
     }
 
@@ -795,7 +802,6 @@ body {
 #home-popular .slider-item__container {
     padding: 0 5px;
     display: block;
-    color: black;
 }
 
 #home-popular .slider-item__container:hover,
@@ -899,7 +905,6 @@ body {
 
 .footer-links__sections a {
     display: block;
-    color: black;
 }
 
 .footer-links__sections a:hover,
@@ -966,3 +971,227 @@ body {
         margin-top: 0;
     }
 }
+
+/* Login Register page */
+
+.heading--top {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#login-register-forms .heading--top {
+    margin-bottom: 6px;
+}
+
+#login-register-forms .heading-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#forms-container,
+#forms-container .nav-tabs {
+    width: 295px;
+    margin: 0 auto;
+}
+
+#forms-container .nav-tabs {
+    margin-bottom: 12px;
+}
+
+#forms-container .nav-tabs .nav-link {
+    height: 54px;
+    text-align: center;
+    padding: 15px;
+    font-weight: 700;
+}
+
+#forms-container .nav-tabs .nav-item {
+    width: 50%;
+}
+
+#forms-container input {
+    width: 100%;
+    height: 37px;
+    margin-bottom: 8px;
+    border: solid rgba(0,0,0,0.2) 1px;
+    padding: 0 8px;
+}
+
+#forms-container input:last-of-type {
+    margin-bottom: 20px;
+}
+
+#forms-container .form-group {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.errorlist {
+    padding: 0;
+    margin-bottom: .5rem;
+}
+
+.errorlist li {
+    list-style: none;
+    font-weight: 700;
+    color: red;
+}
+
+@media screen and (min-width: 768px) {
+    .heading--top {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    #login-register-forms .heading--top {
+        margin-bottom: 12px;
+    }
+
+    #login-register-forms .heading-container {
+        margin-bottom: 25px;
+    }
+
+    #forms-container,
+    #forms-container .nav-tabs {
+        width: 370px;
+    }
+
+    #forms-container .nav-tabs {
+        margin-bottom: 20px;
+    }
+
+    #forms-container input {
+        margin-bottom: 12px;
+        padding: 0 12px;
+    }
+
+    #forms-container input:last-of-type {
+        margin-bottom: 30px;
+    }
+
+    #forms-container .form-group {
+        margin-bottom: 60px;
+    }
+}
+
+#login-errors,
+#register-errors {
+    display: none;
+    color: red;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Account page */
+
+#account-content{
+    margin: 0 auto;
+}
+
+#account-nav {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.account-nav-item {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 9px 10px;
+}
+
+.account-nav-item:first-of-type {
+    padding-top: 0;
+}
+
+.account-nav-item--underline {
+    text-decoration: underline;
+}
+
+.account-heading {
+    font-size: 1.286rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-container {
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 15px 15px 20px;
+}
+
+.sub-section-container,
+.sub-section {
+    margin-bottom: 15px;
+}
+
+.sub-section-container:last-of-type {
+    margin-bottom: 0;
+}
+
+.sub-section-password {
+    margin-bottom: 5px;
+}
+
+.sub-section__heading {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+#account-details {
+    margin-bottom: 30px;
+}
+
+#account-address {
+    margin-bottom: 40px;
+}
+
+.update-form input {
+    padding: 6px 10px;
+}
+
+.update-form .sub-section__heading {
+    margin-bottom: 6px;
+}
+
+.update-form .button {
+    margin-bottom: 15px;
+}
+
+.cancel {
+    display: block;
+    text-decoration: underline;
+}
+
+.sub-section--new-password input {
+    margin-bottom: 15px;
+}
+
+@media screen and (min-width: 768px) {
+    #account-nav {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    .account-nav-item:first-of-type {
+        padding-top: 20px;
+    }
+
+    .account-nav-item {
+        padding: 20px 10px;
+    }
+
+    .account-heading {
+        margin-bottom: 20px;
+        font-size: 1.4rem;
+    }
+
+    .section-container {
+        padding: 15px 20px 20px;
+    }
+
+    #account-details,
+    #account-address {
+        margin-bottom: 0;
+    }
+}
+
+
