@@ -4,8 +4,6 @@ from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils import timezone
 from django.db import models
 from django.conf import settings
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 class AccountUserManager(UserManager):
     def _create_user(self, username, email, password, **extra_fields):
