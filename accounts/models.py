@@ -44,7 +44,7 @@ class User(AbstractUser):
 
 class Address(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
-    house_number_name = models.CharField(max_length=40)
+    house_number_name = models.CharField("House number/name", max_length=40)
     street = models.CharField(max_length=40)
     town = models.CharField(max_length=40)
     postcode = models.CharField(max_length=10)

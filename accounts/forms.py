@@ -62,9 +62,6 @@ class UserDetailsFrom(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email']
 
 class AddressFrom(forms.ModelForm):
-
-    house_number_name = forms.CharField(max_length=40, label="House number/name")
-
     class Meta:
         model = Address
         fields = ['house_number_name', 'street', 'town', 'postcode']
