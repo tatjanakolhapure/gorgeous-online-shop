@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.utils import timezone
 from django.db import models
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class AccountUserManager(UserManager):
     def _create_user(self, username, email, password, **extra_fields):
@@ -39,3 +42,11 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=40)
 
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
+
+
+class Address(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    house_number_name = models.CharField(max_length=40)
+    street = models.CharField(max_length=40)
+    town = models.CharField(max_length=40)
+    postcode = models.CharField(max_length=10)
