@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.static import serve
+
 from accounts import views as accounts_views
 from home import views as home_views
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,4 +30,5 @@ urlpatterns = [
     url(r'^account/details/edit_details/(?P<user_id>\d+)/$', accounts_views.edit_details, name='edit_details'),
     url(r'^account/details/edit_address/(?P<user_id>\d+)/$', accounts_views.edit_address, name='edit_address'),
     url('^', include('django.contrib.auth.urls')),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 ]
