@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from accounts.models import User
+from accounts.models import User, Address
 from django.core.exceptions import ValidationError
 
 
@@ -11,8 +11,18 @@ class UserRegistrationForm(UserCreationForm):
     )
 
     password2 = forms.CharField(
-        label='Password Confirmation',
+        label='Confirm password',
         widget=forms.PasswordInput
+    )
+
+    first_name = forms.CharField(
+        label='Name',
+        widget=forms.TextInput
+    )
+
+    last_name = forms.CharField(
+        label='Surname',
+        widget=forms.TextInput
     )
 
     class Meta:
@@ -41,6 +51,20 @@ class UserRegistrationForm(UserCreationForm):
 
         return instance
 
+
 class UserLoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+class UserDetailsFrom(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+class AddressFrom(forms.ModelForm):
+
+    house_number_name = forms.CharField(max_length=40, label="House number/name")
+
+    class Meta:
+        model = Address
+        fields = ['house_number_name', 'street', 'town', 'postcode']
