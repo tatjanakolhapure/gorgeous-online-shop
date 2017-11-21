@@ -60,6 +60,7 @@
 				    fn.submitRegisterForm();
 				    fn.submitLoginForm();
 				    fn.loginRegisterTabs();
+				    fn.productsByCategory();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -294,10 +295,8 @@
                         success: function(data) {
                             window.location.href = '/account/details/';
                         },
-                        error: function(data, error, status) {
-                            console.log(data);
+                        error: function(data, error) {
                             console.log(error);
-                            console.log(status);
                             jQuery("#register-errors").text(data.responseJSON.message).show();
                         }
                     });
@@ -321,10 +320,8 @@
                             console.log(data);
                             window.location.href = '/account/details/';
                         },
-                        error: function(data, error, status) {
-                            console.log(data);
+                        error: function(data, error) {
                             console.log(error);
-                            console.log(status);
                             jQuery("#login-errors").text(data.responseJSON.message).show();
                         }
                     });
@@ -348,6 +345,25 @@
                 // on load of the page: switch to the currently selected tab
                 var hash = window.location.hash;
                 formsContainer.find('.nav-tabs').find('a[href="' + hash + '"]').tab('show');
+            },
+
+            productsByCategory: function() {
+			    var checkbox = jQuery('#filter-category').find('input');
+                checkbox.on("change", function () {
+                    var data = jQuery('#filter-category').find('input:checked').serializeArray();
+                    jQuery.ajax({
+                        url: "/products/",
+                        type: 'GET',
+                        data: data,
+                        success: function(data) {
+                            jQuery('#products-list').html(data);
+                        },
+                        error: function(data, error) {
+                            console.log(error);
+                        }
+                    });
+                    return false;
+                });
             }
 		};
 
