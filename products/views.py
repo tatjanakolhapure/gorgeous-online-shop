@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.template.loader import render_to_string
@@ -10,6 +9,7 @@ from .models import Category, Product, Size, Color
 def products_list(request):
 
     selected_categories = None
+
     all_products = Product.objects.all()
     categories = Category.objects.all()
     sizes = Size.objects.all()
@@ -17,7 +17,16 @@ def products_list(request):
 
     if request.GET.getlist('category'):
         selected_categories = Category.objects.filter(category__in=request.GET.getlist('category'))
-        all_products = Product.objects.filter(category__in=selected_categories)
+        all_products = [product for product in all_products if product.category in selected_categories]
+
+    if request.GET.getlist('size'):
+        selected_sizes = Size.objects.filter(size__in=request.GET.getlist('size'))
+        all_products = [product for product in all_products if product.size.filter(size__in=selected_sizes)]
+
+    if request.GET.getlist('color'):
+        selected_color_objects = Color.objects.filter(color__in=request.GET.getlist('color'))
+        selected_colors = [color.color for color in selected_color_objects]
+        all_products = [product for product in all_products if product.color.filter(color__in=selected_colors)]
 
     # filter products which are in stock
     products_in_stock = list(set([product for product in all_products for stock in product.stock_set.all() if stock.amount > 0]))
@@ -28,8 +37,8 @@ def products_list(request):
 
     args = {
         'selected_categories': selected_categories,
-        'categories': categories,
         'products': products_new_in,
+        'categories': categories,
         'sizes': sizes,
         'colors': colors,
     }
