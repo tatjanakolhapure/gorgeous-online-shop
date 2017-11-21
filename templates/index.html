@@ -7,7 +7,7 @@
                 <div class="slider-caption">
                     <h2 class="slider-caption__heading">Dress Like a Queen</h2>
                     <p class="slider-caption__tagline">Create your gorgeous look!</p>
-                    <a href="" class="button">Start shopping</a>
+                    <a href="{% url 'products_list' %}" class="button">Start shopping</a>
                 </div>
             </div>
             <div class="slider-item slider-item--two">
@@ -15,7 +15,7 @@
                 <div class="slider-caption">
                     <h2 class="slider-caption__heading">Fresh New Styles</h2>
                     <p class="slider-caption__tagline">New arrivals every week</p>
-                    <a href="" class="button">Start shopping</a>
+                    <a href="{% url 'products_list' %}" class="button">Start shopping</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                         </a>
                         <h2 class="collection__heading">It’s time for a new dress</h2>
                         <p class="collection__description">Refresh your look with our exclusive dresses.</p>
-                        <a href="" class="button">Shop dresses</a>
+                        <a href="/products/?category=dresses" class="button">Shop dresses</a>
                     </div>
                     <div class="collection">
                         <a href="" class="collection__img-container img-container">
@@ -37,7 +37,7 @@
                         </a>
                         <h2 class="collection__heading">Get warm for winter!</h2>
                         <p class="collection__description">Check out our new collection of coats & jackets for this winter.</p>
-                        <a href="" class="button">Shop coats</a>
+                        <a href="/products/?category=coats" class="button">Shop coats</a>
                     </div>
                     <div class="collection">
                         <a href="" class="collection__img-container img-container">
@@ -45,7 +45,7 @@
                         </a>
                         <h2 class="collection__heading">Shoes for any occasion</h2>
                         <p class="collection__description">Complete your look with shoes for any occasion.</p>
-                        <a href="" class="button">Shop shoes</a>
+                        <a href="/products/?category=shoes" class="button">Shop shoes</a>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                         <div class="parallax-content">
                             <h2 class="parallax-heading">Be gorgeous</h2>
                             <p class="parallax-tagline">You deserve it</p>
-                            <a href="" class="button">Shop now</a>
+                            <a href="{% url 'products_list' %}" class="button">Shop now</a>
                         </div>
                     </div>
                 </div>
