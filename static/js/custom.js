@@ -61,6 +61,7 @@
 				    fn.submitLoginForm();
 				    fn.loginRegisterTabs();
 				    fn.filterProducts();
+				    fn.sortProducts();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -351,6 +352,25 @@
 			    var checkbox = jQuery('.collapse').find('input');
                 checkbox.on("change", function () {
                     var data = jQuery('.collapse').find('input:checked').serializeArray();
+                    jQuery.ajax({
+                        url: "/products/",
+                        type: 'GET',
+                        data: data,
+                        success: function(data) {
+                            jQuery('#products-list').html(data);
+                        },
+                        error: function(data, error) {
+                            console.log(error);
+                        }
+                    });
+                    return false;
+                });
+            },
+
+            sortProducts: function() {
+			    var sortSelect = jQuery('#sort');
+                sortSelect.on("change", function () {
+                    var data = sortSelect.serializeArray();
                     console.log(data);
                     jQuery.ajax({
                         url: "/products/",

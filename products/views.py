@@ -7,9 +7,7 @@ from django.http import HttpResponse
 from .models import Category, Product, Size, Color
 
 def products_list(request):
-
     selected_categories = None
-
     all_products = Product.objects.all()
     categories = Category.objects.all()
     sizes = Size.objects.all()
@@ -32,12 +30,19 @@ def products_list(request):
     products_in_stock = list(set([product for product in all_products for stock in product.stock_set.all() if stock.amount > 0]))
     # create a list of products, each item is a dictionary with product object and image object
     products_list = [dict(product=product, image=product.image_set.all()[0]) for product in products_in_stock]
-    # sort products by new in
-    products_new_in = sorted(products_list, key=lambda k: k['product'].created, reverse=True)
+
+    # sort products by new in by default
+    products_sorted = sorted(products_list, key=lambda k: k['product'].created, reverse=True)
+
+    if request.GET.getlist('sort'):
+        if 'low-to-high' in request.GET.getlist('sort'):
+            products_sorted = sorted(products_list, key=lambda k: k['product'].price)
+        if 'high-to-low' in request.GET.getlist('sort'):
+            products_sorted = sorted(products_list, key=lambda k: k['product'].price, reverse=True)
 
     args = {
         'selected_categories': selected_categories,
-        'products': products_new_in,
+        'products': products_sorted,
         'categories': categories,
         'sizes': sizes,
         'colors': colors,
@@ -45,7 +50,7 @@ def products_list(request):
 
     # in case of ajax call update products html
     if request.is_ajax():
-        html = render_to_string('filtered_products.html', {'products': products_new_in})
+        html = render_to_string('filtered_products.html', {'products': products_sorted})
         return HttpResponse(html)
 
     return render(request, 'products_list.html', args)
