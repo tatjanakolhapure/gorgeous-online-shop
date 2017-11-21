@@ -29,4 +29,5 @@ admin.site.register(Image, ImageAdmin)
 
 class StockAdmin(admin.ModelAdmin):
     list_display = ['amount', 'product', 'size', 'color']
+    list_filter = ['product__name', 'size__size', 'color__color']
 admin.site.register(Stock, StockAdmin)
