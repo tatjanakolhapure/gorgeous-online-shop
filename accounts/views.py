@@ -5,10 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.context_processors import csrf
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.db import IntegrityError
 
-from django.conf import settings
 from accounts.models import Address, User
 from accounts.forms import UserRegistrationForm, UserLoginForm, AddressFrom, UserDetailsFrom
 
