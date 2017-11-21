@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col">
+                <h1 class="heading heading--top">All clothing and shoes</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="products-content" class="col-sm-12 col-xl-10">
+                <div class="row">
+                    <div class="col">
+                       <div id="sort-products">
+                           <label for="sort">Sort by</label>
+                           <select name="sort" id="sort">
+                               <option value="new-in">New in</option>
+                               <option value="low-to-high">Low to high</option>
+                               <option value="high-to-low">High to low</option>
+                           </select>
+                       </div>
+                   </div>
+                </div>
+                <div class="row">
+                    <div id="filters-container" class="col-2">
+                        <h3>Filter by</h3>
+                        <div id="filters" role="tablist" aria-multiselectable="true">
+                            <div class="filter">
+                                <div class="filter-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <a data-toggle="collapse" data-parent="#filters" href="#filter-category" aria-expanded="true" aria-controls="filter-category">
+                                            <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Category</span>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="filter-category" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="filter-block">
+                                        {% for category in categories %}
+                                            <label><input type="checkbox" name="category" value="{{ category.category }}" {% if category in selected_categories %} checked {% endif %}>{{ category.category }}</label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter">
+                                <div class="filter-header" role="tab" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#filters" href="#filter-size" aria-expanded="false" aria-controls="filter-size">
+                                            <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Size</span>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="filter-size" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="filter-block">
+                                        {% for size in sizes %}
+                                            <label><input type="checkbox" name="category" value="{{ size.size }}">{{ size.size }}</label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter">
+                                <div class="filter-header" role="tab" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#filters" href="#filter-color" aria-expanded="false" aria-controls="filter-color">
+                                            <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Color</span>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="filter-color" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="filter-block">
+                                        {% for color in colors %}
+                                            <label><input type="checkbox" name="category" value="{{ color.color }}">{{ color.color }}</label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="products-list" class="col-10">
+                        {% for product in products %}
+                            <a href="#" class="product">
+                                <img class="product__img" src="/media/{{ product.image.image }}" alt="">
+                                <p class="product-name">{{ product.product.name }}</p>
+                                <p class="product-price">£{{ product.product.price }}</p>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
