@@ -60,7 +60,7 @@
 				    fn.submitRegisterForm();
 				    fn.submitLoginForm();
 				    fn.loginRegisterTabs();
-				    fn.productsByCategory();
+				    fn.filterProducts();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -347,10 +347,11 @@
                 formsContainer.find('.nav-tabs').find('a[href="' + hash + '"]').tab('show');
             },
 
-            productsByCategory: function() {
-			    var checkbox = jQuery('#filter-category').find('input');
+            filterProducts: function() {
+			    var checkbox = jQuery('.collapse').find('input');
                 checkbox.on("change", function () {
-                    var data = jQuery('#filter-category').find('input:checked').serializeArray();
+                    var data = jQuery('.collapse').find('input:checked').serializeArray();
+                    console.log(data);
                     jQuery.ajax({
                         url: "/products/",
                         type: 'GET',
