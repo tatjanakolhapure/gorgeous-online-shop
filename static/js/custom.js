@@ -419,8 +419,8 @@
                     // get values of selected checkboxes
                     var data = jQuery('.collapse').find('input:checked').serializeArray();
                     // push values of start and end price to checkboxes values
-                    data.push({'name':'start_price','value': values[0]});
-                    data.push({'name':'end_price','value': values[1]});
+                    data.push({'name':'start_price','value': values[0].replace('£','')});
+                    data.push({'name':'end_price','value': values[1].replace('£','')});
                     jQuery.ajax({
                         url: "/products/",
                         type: 'GET',
