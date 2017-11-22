@@ -62,6 +62,7 @@
 				    fn.loginRegisterTabs();
 				    fn.filterProducts();
 				    fn.sortProducts();
+				    fn.priceRangeSlider();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -372,6 +373,51 @@
                 sortSelect.on("change", function () {
                     var data = sortSelect.serializeArray();
                     console.log(data);
+                    jQuery.ajax({
+                        url: "/products/",
+                        type: 'GET',
+                        data: data,
+                        success: function(data) {
+                            jQuery('#products-list').html(data);
+                        },
+                        error: function(data, error) {
+                            console.log(error);
+                        }
+                    });
+                    return false;
+                });
+            },
+
+            priceRangeSlider: function() {
+                var priceRangeSlider = document.getElementById('price-range');
+                // create price range slider
+                noUiSlider.create(priceRangeSlider, {
+                    start: [ 0, 100 ],
+                    snap: true,
+                    connect: true,
+                    range: {
+                        'min': 0,
+                        '10%': 10,
+                        '20%': 20,
+                        '30%': 30,
+                        '40%': 40,
+                        '50%': 50,
+                        '60%': 60,
+                        '70%': 70,
+                        '80%': 80,
+                        '90%': 90,
+                        'max': 100
+                    }
+                });
+
+                priceRangeSlider.noUiSlider.on('change', function() {
+                    // get values of start and end price
+                    var values = priceRangeSlider.noUiSlider.get();
+                    // get values of selected checkboxes
+                    var data = jQuery('.collapse').find('input:checked').serializeArray();
+                    // push values of start and end price to checkboxes values
+                    data.push({'name':'start_price','value': values[0]});
+                    data.push({'name':'end_price','value': values[1]});
                     jQuery.ajax({
                         url: "/products/",
                         type: 'GET',
