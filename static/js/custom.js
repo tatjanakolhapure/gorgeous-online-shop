@@ -407,7 +407,10 @@
                         '80%': 80,
                         '90%': 90,
                         'max': 100
-                    }
+                    },
+                    format: wNumb({
+                        prefix: '£ '
+                    })
                 });
 
                 priceRangeSlider.noUiSlider.on('change', function() {
@@ -430,6 +433,15 @@
                         }
                     });
                     return false;
+                });
+
+                var snapValues = [
+                    document.getElementById('slider-snap-value-lower'),
+	                document.getElementById('slider-snap-value-upper')
+                ];
+
+                priceRangeSlider.noUiSlider.on('update', function( values, handle ) {
+                    snapValues[handle].innerHTML = values[handle];
                 });
             }
 		};
