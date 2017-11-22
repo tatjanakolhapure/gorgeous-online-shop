@@ -1279,6 +1279,7 @@ body {
     margin-bottom: 15px;
     margin-left: 2%;
     text-align: center;
+    vertical-align: top;
 }
 
 .product:hover {
