@@ -20,7 +20,10 @@ def products_list(request):
         all_products = [product for product in all_products if product.category in selected_categories]
 
     if request.GET.getlist('size'):
-        selected_sizes = Size.objects.filter(size__in=request.GET.getlist('size'))
+        # get size objects for selected sizes
+        selected_sizes_objects = Size.objects.filter(size__in=request.GET.getlist('size'))
+        # get sizes strings for selected sizes
+        selected_sizes = [size.size for size in selected_sizes_objects]
         # filter products for selected sizes
         all_products = [product for product in all_products if product.size.filter(size__in=selected_sizes)]
 
