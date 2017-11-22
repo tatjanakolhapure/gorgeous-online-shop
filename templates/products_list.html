@@ -27,14 +27,14 @@
                         <h3>Filter by</h3>
                         <div id="filters" role="tablist" aria-multiselectable="true">
                             <div class="filter">
-                                <div class="filter-header" role="tab" id="headingOne">
+                                <div class="filter-header" role="tab" id="category">
                                     <h5 class="mb-0">
                                         <a data-toggle="collapse" data-parent="#filters" href="#filter-category" aria-expanded="true" aria-controls="filter-category">
                                             <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Category</span>
                                         </a>
                                     </h5>
                                 </div>
-                                <div id="filter-category" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="filter-category" class="collapse" role="tabpanel" aria-labelledby="category">
                                     <div class="filter-block">
                                         {% for category in categories %}
                                             <label><input type="checkbox" name="category" value="{{ category.category }}" {% if category in selected_categories %} checked {% endif %}>{{ category.category }}</label>
@@ -43,14 +43,14 @@
                                 </div>
                             </div>
                             <div class="filter">
-                                <div class="filter-header" role="tab" id="headingTwo">
+                                <div class="filter-header" role="tab" id="size">
                                     <h5 class="mb-0">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#filters" href="#filter-size" aria-expanded="false" aria-controls="filter-size">
                                             <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Size</span>
                                         </a>
                                     </h5>
                                 </div>
-                                <div id="filter-size" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div id="filter-size" class="collapse" role="tabpanel" aria-labelledby="size">
                                     <div class="filter-block">
                                         {% for size in sizes %}
                                             <label><input type="checkbox" name="size" value="{{ size.size }}">{{ size.size }}</label>
@@ -59,18 +59,32 @@
                                 </div>
                             </div>
                             <div class="filter">
-                                <div class="filter-header" role="tab" id="headingThree">
+                                <div class="filter-header" role="tab" id="color">
                                     <h5 class="mb-0">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#filters" href="#filter-color" aria-expanded="false" aria-controls="filter-color">
                                             <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Color</span>
                                         </a>
                                     </h5>
                                 </div>
-                                <div id="filter-color" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div id="filter-color" class="collapse" role="tabpanel" aria-labelledby="color">
                                     <div class="filter-block">
                                         {% for color in colors %}
                                             <label><input type="checkbox" name="color" value="{{ color.color }}">{{ color.color }}</label>
                                         {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filter">
+                                <div class="filter-header" role="tab" id="price">
+                                    <h5 class="mb-0">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#filters" href="#filter-price" aria-expanded="false" aria-controls="filter-price">
+                                            <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Price</span>
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div id="filter-price" class="collapse" role="tabpanel" aria-labelledby="price">
+                                    <div class="filter-block">
+                                        <div id="price-range"></div>
                                     </div>
                                 </div>
                             </div>
