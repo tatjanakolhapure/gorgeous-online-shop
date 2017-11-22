@@ -1337,6 +1337,57 @@ body {
     float: right;
 }
 
+#pagination {
+    margin-top: 25px;
+    text-align: center;
+    display: block;
+}
+
+.pagination__current,
+.pagination__pages {
+    display: block;
+}
+
+.pagination__current,
+.pagination__page {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+.pagination__current {
+    margin-bottom: 15px;
+}
+
+.pagination__page {
+    display: inline-block;
+    background: white;
+    border: 1px solid #C08329;
+    color: #C08329;
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    margin-right: 7px;
+}
+
+.pagination__page:hover,
+.pagination__page:focus,
+.pagination__page:visited,
+.pagination__page:active {
+    color: #C08329;
+}
+
+.pagination__page-current {
+    background: #C08329;
+    color: white;
+}
+
+.pagination__page-current:hover,
+.pagination__page-current:focus,
+.pagination__page-current:visited,
+.pagination__page-current:active {
+    color: white;
+}
+
 @media screen and (min-width: 992px) {
     .filter-block {
         width: 100%;

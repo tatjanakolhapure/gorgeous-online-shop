@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from decimal import *
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import render_to_string
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -58,9 +59,22 @@ def products_list(request):
             # sort products by price high to low
             products_sorted = sorted(products_list, key=lambda k: k['product'].price, reverse=True)
 
+    paginator = Paginator(products_sorted, 8)  # Show certain amount of products per page
+
+    page = request.GET.get('page')
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        products = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        products = paginator.page(paginator.num_pages)
+
     args = {
         'selected_categories': selected_categories,
-        'products': products_sorted,
+        'products': products,
         'categories': categories,
         'sizes': sizes,
         'colors': colors,
@@ -68,7 +82,7 @@ def products_list(request):
 
     # in case of ajax call update products html
     if request.is_ajax():
-        html = render_to_string('filtered_products.html', {'products': products_sorted})
+        html = render_to_string('filtered_products.html', {'products': products})
         return HttpResponse(html)
 
     return render(request, 'products_list.html', args)

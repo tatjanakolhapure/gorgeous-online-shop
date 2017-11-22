@@ -5,3 +5,17 @@
         <p class="product-price">£{{ product.product.price }}</p>
     </a>
 {% endfor %}
+<div id="pagination">
+    <div class="pagination__current">
+        Showing items {{ products.start_index }}-{{ products.end_index }} of {{ products.paginator.count }}.
+    </div>
+    <div class="pagination__pages">
+        {% if products.has_previous %}
+            <a class="pagination__page" href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a>
+        {% endif %}
+            <div class="pagination__page pagination__page-current">{{ products.number }}</div>
+        {% if products.has_next %}
+            <a class="pagination__page" href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a>
+        {% endif %}
+    </div>
+</div>
