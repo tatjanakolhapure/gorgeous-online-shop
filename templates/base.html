@@ -46,6 +46,7 @@
                             Shop<i class="fa fa-angle-down" aria-hidden="true"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="shop-menu">
+                            <a class="dropdown-item" href="{% url 'products_list' %}">All</a>
                             <a class="dropdown-item" href="/products/?category=coats">Coats</a>
                             <a class="dropdown-item" href="/products/?category=dresses">Dresses</a>
                             <a class="dropdown-item" href="/products/?category=shoes">Shoes</a>
@@ -111,6 +112,7 @@
                 <div class="row footer-links__sections">
                     <div class="col-6 col-md-4 footer-links__section-one">
                         <h3 class="heading heading--footer">Categories</h3>
+                        <a href="/products/">All</a>
                         <a href="/products/?category=coats">Coats</a>
                         <a href="/products/?category=dresses">Dresses</a>
                         <a href="/products/?category=shoes">Shoes</a>
