@@ -3,10 +3,10 @@ from decimal import *
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import render_to_string
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Category, Product, Size, Color
+from .models import Category, Product, Size, Color, Stock
 
 def products_list(request):
     selected_categories = None
@@ -86,3 +86,16 @@ def products_list(request):
         return HttpResponse(html)
 
     return render(request, 'products_list.html', args)
+
+
+def product (request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    images = product.image_set.all()
+    sizes = product.size.all()
+    stock = Stock.objects.filter(product=product, amount__gt=0)
+    sizes_available = sorted(set([item.size for item in stock]), key=lambda k: k.size)
+
+    args = {'product': product, 'images': images, 'sizes': sizes, 'sizes_available': sizes_available}
+
+    return render(request, 'product.html', args)
