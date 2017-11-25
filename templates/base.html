@@ -47,11 +47,11 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="shop-menu">
                             <a class="dropdown-item" href="{% url 'products_list' %}">All</a>
-                            <a class="dropdown-item" href="/products/?category=coats">Coats</a>
-                            <a class="dropdown-item" href="/products/?category=dresses">Dresses</a>
-                            <a class="dropdown-item" href="/products/?category=shoes">Shoes</a>
-                            <a class="dropdown-item" href="/products/?category=tops">Tops</a>
-                            <a class="dropdown-item" href="/products/?category=trousers">Trousers</a>
+                            <a class="dropdown-item" href="{% url 'products_list' 'coats' %}">Coats</a>
+                            <a class="dropdown-item" href="{% url 'products_list' 'dresses' %}">Dresses</a>
+                            <a class="dropdown-item" href="{% url 'products_list' 'shoes' %}">Shoes</a>
+                            <a class="dropdown-item" href="{% url 'products_list' 'tops' %}">Tops</a>
+                            <a class="dropdown-item" href="{% url 'products_list' 'trousers' %}">Trousers</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -112,12 +112,12 @@
                 <div class="row footer-links__sections">
                     <div class="col-6 col-md-4 footer-links__section-one">
                         <h3 class="heading heading--footer">Categories</h3>
-                        <a href="/products/">All</a>
-                        <a href="/products/?category=coats">Coats</a>
-                        <a href="/products/?category=dresses">Dresses</a>
-                        <a href="/products/?category=shoes">Shoes</a>
-                        <a href="/products/?category=tops">Tops</a>
-                        <a href="/products/?category=trousers">Trousers</a>
+                        <a href="{% url 'products_list' %}">All</a>
+                        <a href="{% url 'products_list' 'coats' %}">Coats</a>
+                        <a href="{% url 'products_list' 'dresses' %}">Dresses</a>
+                        <a href="{% url 'products_list' 'shoes' %}">Shoes</a>
+                        <a href="{% url 'products_list' 'tops' %}">Tops</a>
+                        <a href="{% url 'products_list' 'trousers' %}">Trousers</a>
                     </div>
                     <div class="col-6 col-md-4 footer-links__section-two">
                         <h3 class="heading heading--footer">Any questions?</h3>

@@ -8,12 +8,18 @@ from django.http import HttpResponse
 
 from .models import Category, Product, Size, Color, Stock
 
-def products_list(request):
+def products_list(request, category_name=None):
     selected_categories = None
     all_products = Product.objects.all()
     categories = Category.objects.all()
     sizes = Size.objects.all()
     colors = Color.objects.all()
+
+    if category_name:
+        category = get_object_or_404(Category, category=category_name)
+        all_products = Product.objects.filter(category=category)
+    else:
+        category = None
 
     if request.GET.getlist('category'):
         selected_categories = Category.objects.filter(category__in=request.GET.getlist('category'))
@@ -76,6 +82,7 @@ def products_list(request):
         'selected_categories': selected_categories,
         'products': products,
         'categories': categories,
+        'category': category,
         'sizes': sizes,
         'colors': colors,
     }

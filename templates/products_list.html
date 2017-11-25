@@ -40,8 +40,8 @@
                                 </div>
                                 <div id="filter-category" class="collapse" role="tabpanel" aria-labelledby="category">
                                     <div class="filter-block">
-                                        {% for category in categories %}
-                                            <label><input type="checkbox" name="category" value="{{ category.category }}" {% if category in selected_categories %} checked {% endif %}>{{ category.category }}</label>
+                                        {% for category_object in categories %}
+                                            <label><input type="checkbox" name="category" value="{{ category_object.category }}" {% if category_object in selected_categories or category_object == category %} checked {% endif %}>{{ category_object.category }}</label>
                                         {% endfor %}
                                     </div>
                                 </div>
