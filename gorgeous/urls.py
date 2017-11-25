@@ -35,5 +35,7 @@ urlpatterns = [
     url('^', include('django.contrib.auth.urls')),
 
     url(r'^products/$', products_views.products_list, name='products_list'),
+    url(r'^product/(?P<product_id>\d+)/$', products_views.product, name='product'),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]
