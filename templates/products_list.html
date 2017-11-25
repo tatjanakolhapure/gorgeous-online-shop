@@ -11,7 +11,7 @@
         <div class="row">
             <div id="products-content" class="col-sm-12 col-xl-10">
                 <div class="row">
-                    <div class="col">
+                    <div id="products-nav" class="col">
                        <div id="sort-products">
                            <label for="sort">Sort by</label>
                            <select name="sort" id="sort">
@@ -20,17 +20,21 @@
                                <option value="high-to-low">High to low</option>
                            </select>
                        </div>
+                       <button id="filter-products" class="filters-button">Filter</button>
                    </div>
                 </div>
                 <div class="row">
-                    <div id="filters-container" class="col-2">
+                    <div id="filters-container" class="col-sm-12 col-md-2">
                         <h3>Filter by</h3>
                         <div id="filters" role="tablist" aria-multiselectable="true">
                             <div class="filter">
                                 <div class="filter-header" role="tab" id="category">
                                     <h5 class="mb-0">
-                                        <a data-toggle="collapse" data-parent="#filters" href="#filter-category" aria-expanded="true" aria-controls="filter-category">
-                                            <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Category</span>
+                                        <a data-toggle="collapse" data-parent="#filters" href="#filter-category" aria-expanded="false" aria-controls="filter-category">
+                                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                            <span>Category</span>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
                                         </a>
                                     </h5>
                                 </div>
@@ -46,7 +50,10 @@
                                 <div class="filter-header" role="tab" id="size">
                                     <h5 class="mb-0">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#filters" href="#filter-size" aria-expanded="false" aria-controls="filter-size">
-                                            <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Size</span>
+                                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                            <span>Size</span>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
                                         </a>
                                     </h5>
                                 </div>
@@ -62,7 +69,10 @@
                                 <div class="filter-header" role="tab" id="color">
                                     <h5 class="mb-0">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#filters" href="#filter-color" aria-expanded="false" aria-controls="filter-color">
-                                            <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Color</span>
+                                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                            <span>Color</span>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
                                         </a>
                                     </h5>
                                 </div>
@@ -78,7 +88,10 @@
                                 <div class="filter-header" role="tab" id="price">
                                     <h5 class="mb-0">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#filters" href="#filter-price" aria-expanded="false" aria-controls="filter-price">
-                                            <i class="fa fa-sort-desc" aria-hidden="true"></i><span>Price</span>
+                                            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                                            <span>Price</span>
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
                                         </a>
                                     </h5>
                                 </div>
@@ -90,9 +103,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <button id="reset-filters" class="filters-button">Reset</button>
+                            <button id="close-filters" class="filters-button">Done</button>
                         </div>
                     </div>
-                    <div id="products-list" class="col-10">
+                    <div id="products-list" class="col-sm-12 col-md-10">
                         {% for product in products %}
                             <a href="#" class="product">
                                 <img class="product__img" src="/media/{{ product.image.image }}" alt="">
