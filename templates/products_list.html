@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
            <div class="col">
-                <h1 class="heading heading--top">All clothing and shoes</h1>
+                <h1 class="heading heading--top">{% if category %}{{ category.category }}{% else %}All clothing and shoes{% endif %}</h1>
             </div>
         </div>
         <div class="row">
