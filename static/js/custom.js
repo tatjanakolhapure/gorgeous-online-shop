@@ -63,8 +63,11 @@
 				    fn.loginRegisterTabs();
 				    fn.filterProducts();
 				    fn.sortProducts();
-				    fn.priceRangeSlider();
+				    if (global.priceRangeSlider != null) {
+				        fn.priceRangeSlider();
+                    }
                     fn.mobileFilters();
+                    fn.productSlider();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -322,7 +325,6 @@
                         data: formData,
                         dataType: 'json',
                         success: function(data) {
-                            console.log(data);
                             window.location.href = '/account/details/';
                         },
                         error: function(data, error) {
@@ -375,7 +377,6 @@
 			    var sortSelect = jQuery('#sort');
                 sortSelect.on("change", function () {
                     var data = sortSelect.serializeArray();
-                    console.log(data);
                     jQuery.ajax({
                         url: "/products/",
                         type: 'GET',
@@ -529,6 +530,22 @@
                         openFilter.find('.fa.fa-minus').show();
                     }
                 }
+            },
+
+            productSlider: function() {
+			    jQuery('.product-images').slick({
+			        slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: true,
+                    fade: true
+                });
+                jQuery('.product-thumbnails').slick({
+                    slidesToShow: 5,
+                    asNavFor: '.product-images',
+                    focusOnSelect: true,
+                    vertical: true,
+                    arrows: false
+                });
             }
 		};
 
