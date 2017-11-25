@@ -1616,11 +1616,20 @@ body {
     margin-right: 7px;
 }
 
-.pagination__page:hover,
-.pagination__page:focus,
 .pagination__page:visited,
 .pagination__page:active {
     color: #C08329;
+}
+
+.pagination__page:hover,
+.pagination__page:focus {
+    color: #a36f23;
+    border: 1px solid #a36f23;
+}
+
+.pagination__page-current:focus,
+.pagination__page-current:hover {
+    border: 1px solid #C08329;
 }
 
 .pagination__page-current {
