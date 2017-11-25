@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col-sm-12 col-lg-10 col-xl-8 product-container">
+               <div class="row">
+                   <div class="col-2 col-sm-2 col-md-1 product-thumbnails-container">
+                       <div class="product-thumbnails">
+                           {% for image in images %}
+                               <div class="product-thumbnail"><img src="/media/{{ image.image }}" alt=""></div>
+                           {% endfor %}
+                       </div>
+                   </div>
+                   <div class="col-10 col-sm-10 col-md-7 product-images-container">
+                       <div class="product-images">
+                           {% for image in images %}
+                               <div class="product-image"><img src="/media/{{ image.image }}" alt=""></div>
+                           {% endfor %}
+                       </div>
+                       <div class="product-sharing-icons">
+                           <a class="sharing-icon" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                           <a class="sharing-icon" href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                           <a class="sharing-icon" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                           <a class="sharing-icon" href=""><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                       </div>
+                   </div>
+                   <div class="col-sm-12 col-md-4 product-description">
+                       <h1 class="product-description__name">{{ product.name }}</h1>
+                       <h2 class="product-description__price">£{{ product.price }}</h2>
+                       <label class="product-description__size" for="size-select">Size</label>
+                       <select name="size" id="size-select">
+                           <option value="" selected disabled hidden>Please select</option>
+                           {% for size in sizes %}
+                               <option value="{{ size.size }}"{% if size not in sizes_available %}disabled{% endif %}>
+                                   {{ size.size }}{% if size not in sizes_available %} - Out of stock{% endif %}
+                               </option>
+                           {% endfor %}
+                       </select>
+                       <button class="button product-description__button">Add to bag</button>
+                       <div class="product-sharing-icons">
+                           <a class="sharing-icon" href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                           <a class="sharing-icon" href=""><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                           <a class="sharing-icon" href=""><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                           <a class="sharing-icon" href=""><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                       </div>
+                       {% autoescape off %}
+                        {{ product.description }}
+                       {% endautoescape %}
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+{% endblock %}
