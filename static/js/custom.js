@@ -68,6 +68,7 @@
                     }
                     fn.mobileFilters();
                     fn.productSlider();
+                    fn.zoomProductImage();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -545,6 +546,20 @@
                     focusOnSelect: true,
                     vertical: true,
                     arrows: false
+                });
+            },
+
+            zoomProductImage: function() {
+			    var imgUrl;
+			    jQuery('.product-images').on('afterChange', function(slick){
+			        // get img url from the current slide after each slide change
+			        imgUrl = jQuery('.product-image.slick-current').find('img').attr('src');
+			    });
+                // settings for image zoom
+			    jQuery('.product-image').zoom({
+                    on: 'click',
+                    url: imgUrl,
+                    magnify: 1.1
                 });
             }
 		};
