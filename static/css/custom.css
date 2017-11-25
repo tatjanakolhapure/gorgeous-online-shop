@@ -917,11 +917,11 @@ body {
     margin-top: 15px;
 }
 
-.footer-links__section-three a {
+.sharing-icon.sharing-icon {
     display: inline;
 }
 
-.footer-links__section-three .fa {
+.sharing-icon .fa {
     font-size: 1.714rem;
     margin-right: 12px;
 }
@@ -1657,5 +1657,160 @@ body {
 
     .pagination__current {
         margin-bottom: 15px;
+    }
+}
+
+/*Product page*/
+
+.product-container {
+    margin: 25px auto 40px;
+}
+
+.product-thumbnails-container {
+    display: none;
+    padding: 0;
+    max-height: 580px;
+}
+
+.product-images-container {
+    max-width: 100%;
+}
+
+.product-thumbnails img,
+.product-images img {
+    height: 100%;
+    width: 100%;
+}
+
+.product-image,
+.product-thumbnail {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.product-image:focus,
+.product-thumbnail:focus {
+    outline: none;
+}
+
+.product-thumbnail:focus img {
+    outline: 1px solid #C08329;
+}
+
+.product-image:focus img {
+    outline: none;
+}
+
+.product-description {
+    word-break: keep-all;
+}
+
+.product-description__name,
+.product-description__size {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+.product-description__name {
+    font-size: 1.643rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.product-description__size,
+#size-select {
+    margin-bottom: 20px;
+    display: block;
+}
+
+.product-description__button {
+    display: block;
+    margin: 0 auto 25px;
+}
+
+.product-description__price {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.product-description__size {
+    font-size: 1.133rem;
+    margin-bottom: 5px;
+}
+
+#size-select {
+    padding: 8px 5px;
+    width: 100%;
+}
+
+.product-sharing-icons {
+    display: none;
+    text-align: center;
+}
+
+.product-description .product-sharing-icons {
+    display: block;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 480px) {
+    .product-thumbnails-container {
+        display: block;
+    }
+
+    .product-images-container {
+        max-width: 83.333333%;;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .product-container {
+        margin: 25px auto 60px;
+    }
+
+    .product-images-container {
+        max-width: 58.333333%;
+    }
+
+    .product-sharing-icons {
+        display: block;
+        text-align: center;
+    }
+
+    .product-description .product-sharing-icons {
+        display: none;
+    }
+
+    .product-image {
+        margin-bottom: 15px;
+    }
+
+    .product-description__name {
+        font-size: 1.867rem;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+    .product-description__price {
+        font-size: 1.667rem;
+        text-align: left;
+    }
+
+    .product-description__button {
+        margin: 0 0 20px;
+    }
+}
+
+@media screen and (min-width : 1440px) {
+    .product-container {
+        padding: 0 5%;
+    }
+}
+
+@media screen and (min-width : 1824px) {
+    .product-container {
+        padding: 0 8%;
     }
 }
