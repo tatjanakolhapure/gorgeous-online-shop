@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db import models
+from tinymce import models as tinymce_models
 from django.utils import timezone
 
 class Category(models.Model):
@@ -33,7 +34,7 @@ class Color(models.Model):
 class Product(models.Model):
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     name = models.CharField(max_length=40)
-    description = models.TextField()
+    description = tinymce_models.HTMLField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     size = models.ManyToManyField('Size')
     color = models.ManyToManyField('Color')
