@@ -109,7 +109,7 @@
                     </div>
                     <div id="products-list" class="col-sm-12 col-md-10">
                         {% for product in products %}
-                            <a href="#" class="product">
+                            <a href="{% url 'product' product.product.id %}" class="product">
                                 <img class="product__img" src="/media/{{ product.image.image }}" alt="">
                                 <p class="product-name">{{ product.product.name }}</p>
                                 <p class="product-price">£{{ product.product.price }}</p>
