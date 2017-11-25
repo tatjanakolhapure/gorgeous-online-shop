@@ -8,7 +8,8 @@
 	{
 		var global = {
 		    dropdownShop: jQuery(".dropdown--shop"),
-            dropdownAccount: jQuery(".dropdown--account")
+            dropdownAccount: jQuery(".dropdown--account"),
+            priceRangeSlider: document.getElementById('price-range')
 		};
 
 	    var fn = {
@@ -63,10 +64,12 @@
 				    fn.filterProducts();
 				    fn.sortProducts();
 				    fn.priceRangeSlider();
+                    fn.mobileFilters();
                 });
 
 				jQuery(window).on("resize", function() {
 				    fn.hideMenuDropDown();
+				    fn.mobileFiltersResize();
                 });
 			},
 
@@ -389,9 +392,8 @@
             },
 
             priceRangeSlider: function() {
-                var priceRangeSlider = document.getElementById('price-range');
                 // create price range slider
-                noUiSlider.create(priceRangeSlider, {
+                noUiSlider.create(global.priceRangeSlider, {
                     start: [ 0, 100 ],
                     snap: true,
                     connect: true,
@@ -408,14 +410,15 @@
                         '90%': 90,
                         'max': 100
                     },
+                    // add £ to price values to display in the front end
                     format: wNumb({
                         prefix: '£ '
                     })
                 });
 
-                priceRangeSlider.noUiSlider.on('change', function() {
+                global.priceRangeSlider.noUiSlider.on('change', function() {
                     // get values of start and end price
-                    var values = priceRangeSlider.noUiSlider.get();
+                    var values = global.priceRangeSlider.noUiSlider.get();
                     // get values of selected checkboxes
                     var data = jQuery('.collapse').find('input:checked').serializeArray();
                     // push values of start and end price to checkboxes values
@@ -435,14 +438,97 @@
                     return false;
                 });
 
+                // get price range values
                 var snapValues = [
                     document.getElementById('slider-snap-value-lower'),
 	                document.getElementById('slider-snap-value-upper')
                 ];
-
-                priceRangeSlider.noUiSlider.on('update', function( values, handle ) {
+                // show price range values in the front end
+                global.priceRangeSlider.noUiSlider.on('update', function( values, handle ) {
                     snapValues[handle].innerHTML = values[handle];
                 });
+            },
+
+            mobileFilters: function() {
+			    // open filters and hide necessary elements when clicking on filter
+                jQuery('#filter-products').on('click', function(){
+                    jQuery('#filters-container').show();
+                    jQuery('#promotion').hide();
+                    jQuery('.heading--top').hide();
+                    jQuery('#products-nav').hide();
+                });
+                // toggle plus and minus icons when clicking on accordion heading
+                // on mobile only
+                jQuery('.filter-header').find('a').on('click', function() {
+                    if (jQuery(window).width() < 768 ) {
+                        jQuery(this).find('.fa.fa-plus').toggle();
+                        jQuery(this).find('.fa.fa-minus').toggle();
+                    }
+                });
+                // hide filters and show necessary elements when clicking on done
+                jQuery('#close-filters').on('click', function(){
+                    jQuery('#filters-container').hide();
+                    jQuery('#promotion').show();
+                    jQuery('.heading--top').show();
+                    jQuery('#products-nav').show();
+                });
+                // reset inputs and price range slider when clicking reset
+                jQuery('#reset-filters').on('click', function(){
+                    jQuery('.filter-block').find('input:checked').prop('checked', false);
+                    global.priceRangeSlider.noUiSlider.reset();
+                    // get values of start and end price
+                    var values = global.priceRangeSlider.noUiSlider.get();
+                    // get values of selected checkboxes
+                    var data = jQuery('.collapse').find('input:checked').serializeArray();
+                    // push values of start and end price to checkboxes values
+                    data.push({'name':'start_price','value': values[0].replace('£','')});
+                    data.push({'name':'end_price','value': values[1].replace('£','')});
+                    jQuery.ajax({
+                        url: "/products/",
+                        type: 'GET',
+                        data: data,
+                        success: function(data) {
+                            jQuery('#products-list').html(data);
+                        },
+                        error: function(data, error) {
+                            console.log(error);
+                        }
+                    });
+                    return false;
+                });
+            },
+
+            mobileFiltersResize: function() {
+			    var openFilter = jQuery('.filter-header').find('a[aria-expanded="true"]'),
+                    mobileHeader = jQuery('#mobile-header');
+			    // check is mobile header is visible to match CSS media queries
+			    if (mobileHeader.is(':visible') == false) {
+			        // if mobile header is not visible
+			        // show necessary elements on desktop on resize
+                    //jQuery('#filters-container').show();
+                    jQuery('#promotion').show();
+                    jQuery('.heading--top').show();
+                    jQuery('#products-nav').show();
+                    // if filter is open hide minus icon
+                    if (openFilter) {
+                        openFilter.find('.fa.fa-minus').hide();
+                    }
+                }
+			    // check is mobile header is visible to match CSS media queries
+                if (mobileHeader.is(':visible')) {
+			        // check if filters are open
+                    if (jQuery('#reset-filters').is(':visible')) {
+                        // hide necessary elements if filters are open
+                        jQuery(jQuery('.heading--top')).hide();
+                        jQuery('#promotion').hide();
+                        jQuery('#products-nav').hide();
+                    }
+			        // if filter is expanded hide plus and show minus icon on mobile
+                    if (openFilter) {
+                        openFilter.find('.fa.fa-plus').hide();
+                        openFilter.find('.fa.fa-minus').show();
+                    }
+                }
             }
 		};
 
