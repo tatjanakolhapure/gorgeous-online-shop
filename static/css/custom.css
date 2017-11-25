@@ -1787,6 +1787,11 @@ body {
         margin-bottom: 15px;
     }
 
+    .product-image:hover {
+        cursor: crosshair; /* fallback for IE */
+        cursor: -webkit-zoom-in;
+    }
+
     .product-description__name {
         font-size: 1.867rem;
         text-align: left;
