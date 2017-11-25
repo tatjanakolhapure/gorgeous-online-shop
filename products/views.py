@@ -93,7 +93,9 @@ def product (request, product_id):
 
     images = product.image_set.all()
     sizes = product.size.all()
+    # filter stock where amount is more than 0 for the selected product
     stock = Stock.objects.filter(product=product, amount__gt=0)
+    # get available sizes for the product, remove duplicates and sort by size field
     sizes_available = sorted(set([item.size for item in stock]), key=lambda k: k.size)
 
     args = {'product': product, 'images': images, 'sizes': sizes, 'sizes_available': sizes_available}
