@@ -17,26 +17,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.static import serve
 
-from accounts import views as accounts_views
-from home import views as home_views
-from products import views as products_views
 from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
-    url(r'^$', home_views.get_index, name='home'),
-
-    url(r'^login/$', accounts_views.login, name='login'),
-    url(r'^logout/$', accounts_views.logout, name='logout'),
-    url(r'^account/details/$', accounts_views.account, name='account'),
-    url(r'^account/details/edit_details/(?P<user_id>\d+)/$', accounts_views.edit_details, name='edit_details'),
-    url(r'^account/details/edit_address/(?P<user_id>\d+)/$', accounts_views.edit_address, name='edit_address'),
+    url(r'^', include('home.urls')),
     url('^', include('django.contrib.auth.urls')),
-
-    url(r'^products/$', products_views.products_list, name='products_list'),
-    url(r'^products/(?P<category_name>[-\w]+)/$', products_views.products_list, name='products_list'),
-    url(r'^product/(?P<product_id>\d+)/$', products_views.product, name='product'),
+    url(r'^account/', include('accounts.urls')),
+    url(r'^products/', include('products.urls')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^tinymce/', include('tinymce.urls')),
 ]
