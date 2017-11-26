@@ -95,7 +95,7 @@ def products_list(request, category_name=None):
     return render(request, 'products_list.html', args)
 
 
-def product (request, product_id):
+def product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     images = product.image_set.all()
