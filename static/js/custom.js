@@ -68,7 +68,11 @@
                     }
                     fn.mobileFilters();
                     fn.productSlider();
-                    fn.zoomProductImage();
+                    if (jQuery('.product-images').length > 0) {
+                        fn.zoomProductImage();
+                    }
+                    fn.addToCart();
+                    fn.updateCart();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -560,6 +564,61 @@
                     on: 'click',
                     url: imgUrl,
                     magnify: 1.1
+                });
+            },
+
+            addToCart: function() {
+			    var cart_frm = jQuery('.product-description').find('.cart-form');
+                cart_frm.on("submit", function () {
+                    var formData = jQuery(this).serializeArray(),
+                        selectedSize = formData[0].value,
+                        errorMessage = jQuery('.error-message'),
+                        successMessage = jQuery('.success-message');
+                    jQuery.ajax({
+                        type: cart_frm.attr('method'),
+                        url: cart_frm.attr('action'),
+                        data: formData,
+                        success: function() {
+                            // insert selected size into success message html
+                            jQuery('.selected-size').text(selectedSize);
+                            // hide error message and show success message
+                            if(errorMessage.is(":visible")){
+                                errorMessage.hide();
+                            }
+                            successMessage.show();
+                        },
+                        error: function(data, error) {
+                            console.log(error);
+                            // add error message to html
+                            errorMessage.find('span').html(selectedSize + " size is no more available");
+                            // hide success message and show error message
+                            if(successMessage.is(":visible")){
+                                successMessage.hide();
+                            }
+                            errorMessage.show();
+                        }
+                    });
+                    return false;
+                });
+            },
+
+            updateCart: function() {
+			    var cart_frm = jQuery('.cart').find('form');
+                cart_frm.on("submit", function () {
+                    var formData = jQuery(this).serializeArray();
+                    jQuery.ajax({
+                        type: cart_frm.attr('method'),
+                        url: cart_frm.attr('action'),
+                        data: formData,
+                        success: function(data) {
+                            console.log("success");
+                        },
+                        error: function(data, error) {
+                            console.log(error);
+                            console.log(data);
+                        }
+                    });
+                    return false;
                 });
             }
 		};
