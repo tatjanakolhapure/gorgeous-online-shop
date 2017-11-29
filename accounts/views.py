@@ -29,12 +29,12 @@ def login(request):
                     auth.login(request, user)
                     return JsonResponse({"status":"200"})
                 else:
-                    return JsonResponse({"message": "Your email or password was not recognised"}, status=404)
+                    return JsonResponse({"message": "Your email or password was not recognised"}, status=400)
 
         except IntegrityError:
-            return JsonResponse({"message": "User with this email already exists"}, status=404)
+            return JsonResponse({"message": "User with this email already exists"}, status=400)
         else:
-            return JsonResponse({"message": "Passwords do not match"}, status=404)
+            return JsonResponse({"message": "Passwords do not match"}, status=400)
 
     else:
         form_register = UserRegistrationForm()
@@ -50,7 +50,7 @@ def login(request):
                 auth.login(request, user)
                 return JsonResponse({"status": "200"})
             else:
-                return JsonResponse({"message": "Your email or password was not recognised"}, status=404)
+                return JsonResponse({"message": "Your email or password was not recognised"}, status=400)
 
     else:
         form_login = UserLoginForm()
