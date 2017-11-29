@@ -1662,6 +1662,11 @@ body {
 
 /*Product page*/
 
+.product-description #id_quantity,
+.product-description label[for='id_quantity'] {
+    display: none;
+}
+
 .product-container {
     margin: 25px auto 40px;
 }
@@ -1755,6 +1760,25 @@ body {
     margin-bottom: 20px;
 }
 
+.message {
+    display: none;
+    border: 1px dashed rgba(0,0,0,0.2);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: red;
+}
+
+.success-message p {
+    margin-bottom: 7px;
+}
+
+.info-message {
+    font-weight: 700;
+}
+
 @media screen and (min-width: 480px) {
     .product-thumbnails-container {
         display: block;
@@ -1805,6 +1829,10 @@ body {
 
     .product-description__button {
         margin: 0 0 20px;
+    }
+
+    .success-message p {
+        margin-bottom: 10px;
     }
 }
 

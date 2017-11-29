@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 from .models import Category, Product, Size, Color, Stock
+from cart.forms import CartForm
 
 def products_list(request, category_name=None):
     selected_categories = None
@@ -104,7 +105,8 @@ def product(request, product_id):
     stock = Stock.objects.filter(product=product, amount__gt=0)
     # get available sizes for the product, remove duplicates and sort by size field
     sizes_available = sorted(set([item.size for item in stock]), key=lambda k: k.size)
+    cart_form = CartForm()
 
-    args = {'product': product, 'images': images, 'sizes': sizes, 'sizes_available': sizes_available}
+    args = {'product': product, 'images': images, 'sizes': sizes, 'sizes_available': sizes_available, 'cart_form': cart_form}
 
     return render(request, 'product.html', args)
