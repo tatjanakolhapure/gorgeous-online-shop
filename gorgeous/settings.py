@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'tinymce',
     'home',
     'accounts',
-    'products'
+    'products',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,7 @@ AUTH_USER_MODEL = 'accounts.User'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+CART_SESSION_ID = 'cart'
