@@ -90,6 +90,8 @@ class Cart(object):
             # get product
             product = Product.objects.get(pk=int(item['product_id']))
             item['product'] = product
+            # get product image
+            item['image'] = product.image_set.all()[0]
             # get all product sizes
             item['all_sizes'] = product.size.all()
             # filter stock where amount is more than 0 for the selected product
@@ -104,8 +106,17 @@ class Cart(object):
         # count all items in the cart
         return sum(item['quantity'] for item in self.cart)
 
-    def get_total_price(self):
+    def get_subtotal_price(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart)
+
+    def get_delivery_price(self):
+        if self.get_subtotal_price() > 75:
+            return 0
+        else:
+            return 2.95
+
+    def get_total_price(self):
+        return round(self.get_subtotal_price() + Decimal(self.get_delivery_price()), 2)
 
     def clear(self):
         # remove cart from session
