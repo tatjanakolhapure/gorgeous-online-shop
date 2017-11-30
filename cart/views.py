@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from products.models import Product
 from .cart import Cart
@@ -26,7 +26,15 @@ def cart_add(request, product_id):
                                 update=form.cleaned_data['update'])
         if updated_cart:
             # if cart updated return success status
-            return HttpResponse(status=200)
+            subtotal_price = cart.get_subtotal_price()
+            delivery_price = cart.get_delivery_price()
+            total_price = cart.get_total_price()
+            data = {
+                'subtotal_price': subtotal_price,
+                'delivery_price': delivery_price,
+                'total_price': total_price
+            }
+            return JsonResponse(data, status=200)
         else:
             # if cart not updated return error message
             return HttpResponse(status=400)
