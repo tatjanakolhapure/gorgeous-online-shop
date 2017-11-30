@@ -25,7 +25,6 @@ def cart_add(request, product_id):
         updated_cart = cart.add(product=product, size=size, quantity=form.cleaned_data['quantity'],
                                 update=form.cleaned_data['update'])
         if updated_cart:
-            print "updated"
             # if cart updated return success status
             return HttpResponse(status=200)
         else:
