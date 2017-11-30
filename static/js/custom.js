@@ -9,7 +9,8 @@
 		var global = {
 		    dropdownShop: jQuery(".dropdown--shop"),
             dropdownAccount: jQuery(".dropdown--account"),
-            priceRangeSlider: document.getElementById('price-range')
+            priceRangeSlider: document.getElementById('price-range'),
+            mobileHeader: jQuery('#mobile-header')
 		};
 
 	    var fn = {
@@ -73,11 +74,14 @@
                     }
                     fn.addToCart();
                     fn.updateCart();
+                    fn.shoppingBagQuantity();
+                    fn.shoppingBagButtons();
                 });
 
 				jQuery(window).on("resize", function() {
 				    fn.hideMenuDropDown();
 				    fn.mobileFiltersResize();
+				    fn.shoppingBagQuantity();
                 });
 			},
 
@@ -505,13 +509,11 @@
             },
 
             mobileFiltersResize: function() {
-			    var openFilter = jQuery('.filter-header').find('a[aria-expanded="true"]'),
-                    mobileHeader = jQuery('#mobile-header');
+			    var openFilter = jQuery('.filter-header').find('a[aria-expanded="true"]');
 			    // check is mobile header is visible to match CSS media queries
-			    if (mobileHeader.is(':visible') == false) {
+			    if (global.mobileHeader.is(':visible') == false) {
 			        // if mobile header is not visible
 			        // show necessary elements on desktop on resize
-                    //jQuery('#filters-container').show();
                     jQuery('#promotion').show();
                     jQuery('.heading--top').show();
                     jQuery('#products-nav').show();
@@ -521,7 +523,7 @@
                     }
                 }
 			    // check is mobile header is visible to match CSS media queries
-                if (mobileHeader.is(':visible')) {
+                if (global.mobileHeader.is(':visible')) {
 			        // check if filters are open
                     if (jQuery('#reset-filters').is(':visible')) {
                         // hide necessary elements if filters are open
@@ -605,20 +607,71 @@
             updateCart: function() {
 			    var cart_frm = jQuery('.cart-product__form');
                 cart_frm.on("submit", function () {
-                    var formData = jQuery(this).serializeArray();
+                    var formErrorMsg = jQuery(this).find('.cart-error-message'),
+                        formButtons = jQuery(this).find('.cart-product__buttons'),
+                        formData = jQuery(this).serializeArray();
                     jQuery.ajax({
                         type: jQuery(this).attr('method'),
                         url: jQuery(this).attr('action'),
                         data: formData,
                         success: function(data) {
-                            console.log("success");
+                            // hide error message if visible
+                            if(formErrorMsg.is(':visible')) {
+                                formErrorMsg.fadeOut(200);
+                            }
+                            // hide buttons
+                            formButtons.fadeOut(200);
+                            // update prices
+                            jQuery('.price--subtotal').text('£'+data.subtotal_price);
+                            jQuery('.price--delivery').text('£'+data.delivery_price);
+                            jQuery('.price--total').text('£'+data.total_price);
                         },
-                        error: function(data, error) {
+                        error: function(error) {
                             console.log(error);
-                            console.log(data);
+                            // show error message
+                            formErrorMsg.show();
                         }
                     });
                     return false;
+                });
+            },
+
+            shoppingBagQuantity: function() {
+			    // change text for quantity label depending on screen size
+                // check if mobile header is visible to match CSS media queries
+			    if (global.mobileHeader.is(':visible') == true) {
+                    jQuery('label[for=id_quantity]').text('Qty:');
+                }
+                else {
+                    jQuery('label[for=id_quantity]').text('Quantity:');
+                }
+            },
+
+            shoppingBagButtons: function() {
+			    var previousValue,
+                    newValue;
+			    // on focus get previous select value
+                // on change get new select value and show buttons
+			    jQuery('.cart-product__form-select').find('select').on('focus', function (){
+			        previousValue = this.value;
+                }).on('change', function(){
+			        newValue = this.value;
+                    jQuery(this).parent().next().fadeIn(200);
+                });
+			    // when clicking cancel change the relevant select value to previous one
+                // hide buttons and hide error message (if visible)
+			    jQuery('.cart-product__button--cancel').on('click', function(){
+			        jQuery(this).parent().fadeOut(200);
+			        var formErrorMsg = jQuery(this).parent().next();
+			        if(formErrorMsg.is(':visible')){
+			            formErrorMsg.fadeOut(200);
+                    }
+			        if(previousValue.startsWith('UK')){
+			            jQuery('#size-update').val(previousValue);
+                    }
+                    else {
+			            jQuery('#id_quantity').val(previousValue);
+                    }
                 });
             }
 		};
