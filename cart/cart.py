@@ -51,6 +51,11 @@ class Cart(object):
                         # if product is in the list and it is update request
                         # change size
                         item['size'] = size
+                        # update quantity
+                        if (stock.amount - quantity) < 0:
+                            return False
+                        else:
+                            item['quantity'] = quantity
                     else:
                         # if product is in the list and same product added with different size
                         # add new size
