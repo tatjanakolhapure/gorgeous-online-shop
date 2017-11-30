@@ -603,12 +603,12 @@
             },
 
             updateCart: function() {
-			    var cart_frm = jQuery('.cart').find('form');
+			    var cart_frm = jQuery('.cart-product__form');
                 cart_frm.on("submit", function () {
                     var formData = jQuery(this).serializeArray();
                     jQuery.ajax({
-                        type: cart_frm.attr('method'),
-                        url: cart_frm.attr('action'),
+                        type: jQuery(this).attr('method'),
+                        url: jQuery(this).attr('action'),
                         data: formData,
                         success: function(data) {
                             console.log("success");
