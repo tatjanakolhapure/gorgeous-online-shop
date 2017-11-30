@@ -1988,6 +1988,10 @@ body {
     padding: 10px 0;
 }
 
+.cart-container--total {
+    margin-bottom: 40px;
+}
+
 @media screen and (min-width : 768px) {
     .cart-container {
         padding: 20px;
@@ -2074,6 +2078,14 @@ body {
     }
 
     .cart-products {
+        margin-bottom: 0;
+    }
+
+    .cart-container--products {
+        margin-bottom: 60px;
+    }
+
+    .cart-container--total {
         margin-bottom: 0;
     }
 }
