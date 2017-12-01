@@ -1872,6 +1872,10 @@ body {
 
 .cart-product {
     position: relative;
+}
+
+.cart-product,
+.cart-prices {
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
@@ -1891,7 +1895,8 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-.cart-product__price {
+.cart-product__price,
+#size-update {
     margin-bottom: 7px;
 }
 
@@ -1900,7 +1905,6 @@ body {
 }
 
 #size-update {
-    margin-bottom: 7px;
     width: 70px;
 }
 
@@ -1917,12 +1921,10 @@ body {
     position: absolute;
     top: 0;
     right: -10px;
-    font-weight: 400;
     padding: 10px;
 }
 
 .cart-product__buttons {
-    padding-top: 7px;
     display: none;
 }
 
@@ -1957,18 +1959,16 @@ body {
     margin-right: 15px;
 }
 
-.cart-prices {
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    margin-bottom: 10px;
-}
-
 .cart-container--total .price {
     float: right;
 }
 
 .cart-total {
     font-size: 1.214rem;
+}
+
+.cart-total,
+.cart-products {
     margin-bottom: 10px;
 }
 
@@ -1976,10 +1976,6 @@ body {
     display: block;
     width: 100%;
     text-align: center;
-}
-
-.cart-products {
-    margin-bottom: 10px;
 }
 
 .cart-error-message {
@@ -2015,7 +2011,8 @@ body {
         width: unset;
     }
 
-    .cart-product {
+    .cart-product,
+    .cart-prices {
         padding-bottom: 20px;
         margin-bottom: 20px;
     }
@@ -2026,8 +2023,6 @@ body {
 
     .cart-product__details p {
         line-height: unset;
-        font-weight: 700;
-        font-family: 'Raleway', sans-serif;
     }
 
     .cart-product__price {
@@ -2052,18 +2047,6 @@ body {
         margin-right: 5px;
     }
 
-    .cart-remove .fa-close {
-        position: absolute;
-        top: 0;
-        right: -10px;
-        font-weight: 400;
-        padding: 10px;
-    }
-
-    .cart-product__buttons {
-        padding-top: 0;
-    }
-
     .cart-product__button {
         margin-right: 5px;
     }
@@ -2076,26 +2059,18 @@ body {
         margin-right: 15px;
     }
 
-    .cart-prices {
-        padding-bottom: 20px;
-        margin-bottom: 20px;
-    }
-
     .cart-total {
         font-size: 1.133rem;
         margin-bottom: 20px;
     }
 
-    .cart-products {
+    .cart-products,
+    .cart-container--total {
         margin-bottom: 0;
     }
 
     .cart-container--products {
         margin-bottom: 60px;
-    }
-
-    .cart-container--total {
-        margin-bottom: 0;
     }
 }
 
