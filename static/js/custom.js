@@ -589,7 +589,7 @@
                             }
                             successMessage.show();
                             // update price in shopping bag
-                            jQuery('.price--subtotal').text('£'+data.subtotal_price);
+                            jQuery('.price--total').text('£'+data.total_price);
                         },
                         error: function(data, error) {
                             console.log(error);
