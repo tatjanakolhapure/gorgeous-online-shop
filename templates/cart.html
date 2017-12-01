@@ -10,6 +10,7 @@
         </div>
         <div class="row">
            <div class="cart col-12 col-lg-10 col-xl-8">
+                {% if cart %}
                 <div class="row">
                     <div class="cart-products col-12 col-md-7">
                         <div class="cart-container cart-container--products">
@@ -61,7 +62,13 @@
                             <a href="#" class="button button--checkout">Checkout</a>
                         </div>
                     </div>
-               </div>
+                </div>
+                {% else %}
+                    <div class="cart-empty">
+                        <p>Your shopping bag is empty.</p>
+                        <a href="{% url 'products_list' %}" class="button">Shop now</a>
+                    </div>
+                {% endif %}
            </div>
         </div>
     </div>

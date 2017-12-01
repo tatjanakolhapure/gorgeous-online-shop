@@ -1992,6 +1992,15 @@ body {
     margin-bottom: 40px;
 }
 
+.cart-empty {
+    font-weight: 700;
+    text-align: center;
+}
+
+.cart-empty p {
+    margin-bottom: 20px;
+}
+
 @media screen and (min-width : 768px) {
     .cart-container {
         padding: 20px;
