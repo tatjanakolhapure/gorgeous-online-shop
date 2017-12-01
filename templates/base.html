@@ -85,7 +85,7 @@
                 </div>
                 <a href="{% url 'cart_detail' %}" class="icon-container icon-container--bag">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                    <p class="icon-name"><span class="icon-name--hide">Bag</span> (0)</p>
+                    <p class="icon-name"><span class="icon-name--hide">Bag</span> (<span class="price--subtotal">£{{ cart.get_subtotal_price }}</span>)</p>
                 </a>
             </div>
         </nav>
@@ -95,7 +95,6 @@
         <a href="{% url 'home' %}"><img class="logo logo--mobile" src="{% static "images/logo.svg" %}" alt="logo"></a>
         <a href="{% url 'cart_detail' %}" class="icon-container icon-container--bag">
             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-            <p class="icon-name"><span class="icon-name__bag-items">(0)</span></p>
         </a>
     </header>
     <main id="main-content">

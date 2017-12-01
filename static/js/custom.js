@@ -580,7 +580,7 @@
                         type: cart_frm.attr('method'),
                         url: cart_frm.attr('action'),
                         data: formData,
-                        success: function() {
+                        success: function(data) {
                             // insert selected size into success message html
                             jQuery('.selected-size').text(selectedSize);
                             // hide error message and show success message
@@ -588,6 +588,8 @@
                                 errorMessage.hide();
                             }
                             successMessage.show();
+                            // update price in shopping bag
+                            jQuery('.price--subtotal').text('£'+data.subtotal_price);
                         },
                         error: function(data, error) {
                             console.log(error);
