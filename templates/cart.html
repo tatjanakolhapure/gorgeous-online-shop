@@ -59,7 +59,7 @@
                             <div class="cart-total">
                                 <p><span>Total</span> <span class="price price--total">£{{ cart.get_total_price }}</span></p>
                             </div>
-                            <a href="#" class="button button--checkout">Checkout</a>
+                            <a href="{% url 'checkout' %}" class="button button--checkout">Checkout</a>
                         </div>
                     </div>
                 </div>

@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^', include('home.urls')),
     url('^', include('django.contrib.auth.urls')),
     url(r'^cart/', include('cart.urls')),
+    url(r'^orders/', include('orders.urls')),
     url(r'^account/', include('accounts.urls')),
     url(r'^products/', include('products.urls')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
