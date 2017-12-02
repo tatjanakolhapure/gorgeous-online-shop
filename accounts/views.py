@@ -59,7 +59,7 @@ def login(request):
     args.update(csrf(request))
     return render(request, 'login.html', args)
 
-@login_required(login_url='/login/')
+@login_required(login_url='/account/login/')
 def account(request):
     user = request.user
     try:
@@ -74,7 +74,7 @@ def logout(request):
     return redirect(reverse('home'))
 
 
-@login_required
+@login_required(login_url='/account/login/')
 def edit_address(request, user_id):
     user = get_object_or_404(User, pk=user_id)
     address = get_object_or_404(Address, user=user)
@@ -92,7 +92,7 @@ def edit_address(request, user_id):
 
     return render(request, 'account_address_form.html', args)
 
-@login_required
+@login_required(login_url='/account/login/')
 def edit_details(request, user_id):
     user = get_object_or_404(User, pk=user_id)
 
