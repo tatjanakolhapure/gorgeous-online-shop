@@ -2,7 +2,6 @@ from decimal import Decimal
 
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-
 from products.models import Product, Stock
 
 # class created following instructions by Antonio Mele
@@ -22,7 +21,7 @@ class Cart(object):
         new_product = {'product_id': str(product.id), 'quantity': 1, 'price': str(product.price), 'size': size}
         size_object = product.size.filter(size=size)
         # get stock for the selected size
-        stock = Stock.objects.get(product=product, size=size_object)
+        stock = get_object_or_404(Stock, product=product, size=size_object)
 
         # add product to the cart or update its quantity/size
         if self.cart:
@@ -93,7 +92,7 @@ class Cart(object):
         # iterate over the items in the cart and get the products from the database
         for item in self.cart:
             # get product
-            product = Product.objects.get(pk=int(item['product_id']))
+            product = get_object_or_404(Product, pk=int(item['product_id']))
             item['product'] = product
             # get product image
             item['image'] = product.image_set.all()[0]
