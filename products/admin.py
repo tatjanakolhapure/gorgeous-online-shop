@@ -9,23 +9,24 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['category']
 admin.site.register(Category, CategoryAdmin)
 
+class ImageInline(admin.TabularInline):
+    model = Image
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'price', 'created']
     list_filter = ['category__category', 'size__size', 'color__color', 'created']
     list_editable = ['price']
-admin.site.register(Product, ProductAdmin)
+    inlines = [ImageInline]
 
+admin.site.register(Product, ProductAdmin)
 class SizeAdmin(admin.ModelAdmin):
     list_display = ['size']
-admin.site.register(Size, SizeAdmin)
 
+admin.site.register(Size, SizeAdmin)
 class ColorAdmin(admin.ModelAdmin):
     list_display = ['color']
-admin.site.register(Color, ColorAdmin)
 
-class ImageAdmin(admin.ModelAdmin):
-    list_display = ['name', 'image', 'product']
-admin.site.register(Image, ImageAdmin)
+admin.site.register(Color, ColorAdmin)
 
 class StockAdmin(admin.ModelAdmin):
     list_display = ['amount', 'product', 'size', 'color']
