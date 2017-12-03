@@ -2,13 +2,52 @@
 {% load static %}
 
 {% block content %}
-    <h1>Checkout</h1>
-    <div class="order-info">
-        <h3>Your order</h3>
-        <ul>{% for item in cart %}
-            <li>{{ item.quantity }}x {{ item.product.name }}<span>£{{ item.total_price }}</span></li>
-        {% endfor %}
-        </ul>
-        <p>Total: £{{ cart.get_total_price }}</p>
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col">
+                <h1 class="heading heading--top">Checkout</h1>
+            </div>
+        </div>
+        <div class="row">
+           <div class="checkout col-12 col-lg-10 col-xl-8">
+                <div class="checkout-container checkout-summary clearfix">
+                    <p class="checkout-title">Order summary</p>
+                    {% for item in cart %}
+                        <div class="cart-product">
+                            {% with product=item.product %}
+                                <img class="cart-product__img" src="/media/{{ item.image.image }}" alt="">
+                                <div class="cart-product__details">
+                                    <p>{{ product.name }}</p>
+                                    <p class="cart-product__price">£{{ item.price }}</p>
+                                    <p class="cart-product__size"><span>Size:</span> {{ item.size }}</p>
+                                    <p class="cart-product__quantity"><span>Quantity:</span> {{ item.quantity }}</p>
+                                </div>
+                            {% endwith %}
+                        </div>
+                    {% endfor %}
+                    <div class="cart-prices">
+                        <p><span>Subtotal</span> <span class="price price--subtotal">£{{ cart.get_subtotal_price }}</span></p>
+                        <p><span>Delivery</span> <span class="price price--delivery">£{{ cart.get_delivery_price }}</span></p>
+                    </div>
+                    <div class="cart-total">
+                        <p><span>Total</span> <span class="price price--total">£{{ cart.get_total_price }}</span></p>
+                    </div>
+                    <a href="{% url 'cart_detail' %}" class="button button--bag">Edit bag</a>
+                </div>
+                <div class="checkout-container checkout-details">
+                    <div class="checkout-details__address">
+                        <p class="checkout-title">Delivery address</p>
+                        <p>{{ user.first_name }} {{ user.last_name }}</p>
+                        <p>{{ address.house_number_name }}</p>
+                        <p>{{ address.street }}</p>
+                        <p>{{ address.town }}</p>
+                        <p>{{ address.postcode }}</p>
+                    </div>
+                    <div class="checkout-details__payment">
+                        <p class="checkout-title">Payment method</p>
+                    </div>
+                </div>
+           </div>
+        </div>
     </div>
 {% endblock %}
