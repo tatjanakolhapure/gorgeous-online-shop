@@ -11,20 +11,34 @@
         <div class="row">
            <div class="checkout col-12 col-lg-10 col-xl-8">
                 <div class="checkout-container checkout-summary clearfix">
-                    <p class="checkout-title">Order summary</p>
-                    {% for item in cart %}
-                        <div class="cart-product">
-                            {% with product=item.product %}
-                                <img class="cart-product__img" src="/media/{{ item.image.image }}" alt="">
-                                <div class="cart-product__details">
-                                    <p>{{ product.name }}</p>
-                                    <p class="cart-product__price">£{{ item.price }}</p>
-                                    <p class="cart-product__size"><span>Size:</span> {{ item.size }}</p>
-                                    <p class="cart-product__quantity"><span>Quantity:</span> {{ item.quantity }}</p>
-                                </div>
-                            {% endwith %}
+                    <div id="summary" role="tablist" aria-multiselectable="true">
+                        <div class="checkout-title" role="tab" id="category">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#summary" href="#summary-products" aria-expanded="true" aria-controls="summary-products">
+                                    <span>Order Summary</span>
+                                    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                </a>
+                            </h5>
                         </div>
-                    {% endfor %}
+                        <div id="summary-products" class="collapse show" role="tabpanel" aria-labelledby="products">
+                            <div>
+                                {% for item in cart %}
+                                    <div class="cart-product">
+                                        {% with product=item.product %}
+                                            <img class="cart-product__img" src="/media/{{ item.image.image }}" alt="">
+                                            <div class="cart-product__details">
+                                                <p>{{ product.name }}</p>
+                                                <p class="cart-product__price">£{{ item.price }}</p>
+                                                <p class="cart-product__size"><span>Size:</span> {{ item.size }}</p>
+                                                <p class="cart-product__quantity"><span>Quantity:</span> {{ item.quantity }}</p>
+                                            </div>
+                                        {% endwith %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
                     <div class="cart-prices">
                         <p><span>Subtotal</span> <span class="price price--subtotal">£{{ cart.get_subtotal_price }}</span></p>
                         <p><span>Delivery</span> <span class="price price--delivery">£{{ cart.get_delivery_price }}</span></p>

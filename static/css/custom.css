@@ -1865,7 +1865,7 @@ body {
 }
 
 .cart-product__details {
-    width: 72%;
+    width: 69%;
     display: inline-block;
     vertical-align: top;
 }
@@ -1920,7 +1920,7 @@ body {
 .cart-remove .fa-close {
     position: absolute;
     top: 0;
-    right: -10px;
+    right: 0;
     padding: 10px;
 }
 
@@ -2008,18 +2008,10 @@ body {
         margin-right: 17px;
     }
 
-    .cart-product__details {
-        width: unset;
-    }
-
     .cart-product,
     .cart-prices {
         padding-bottom: 20px;
         margin-bottom: 20px;
-    }
-
-    .cart-product__details p:first-of-type {
-        max-width: unset;
     }
 
     .cart-product__details p {
@@ -2073,6 +2065,10 @@ body {
     .cart-container--products {
         margin-bottom: 60px;
     }
+
+    .cart-remove .fa-close {
+        right: -10px;
+    }
 }
 
 @media screen and (min-width : 1440px) {
@@ -2112,7 +2108,16 @@ body {
     margin-bottom: 10px;
 }
 
-.checkout-title {
+.checkout-title h5 {
+    font-weight: 700;
+}
+
+.checkout-title h5 a {
+    display: block;
+}
+
+.checkout-title,
+.checkout-title h5 {
     font-size: 1.286rem;
 }
 
@@ -2154,6 +2159,28 @@ body {
     margin-bottom: 10px;
 }
 
+.checkout-title .fa {
+    float: right;
+}
+
+.checkout-title a[aria-expanded="false"] .fa-chevron-up,
+.checkout-title a[aria-expanded="true"] .fa-chevron-down {
+
+    display: none;
+}
+
+.checkout-title a[aria-expanded="false"] .fa-chevron-down,
+.checkout-title a[aria-expanded="true"] .fa-chevron-up {
+    display: inline-block;
+}
+
+
+@media screen and (min-width : 425px) {
+    .checkout-summary .cart-product__img {
+        width: 17%;
+    }
+}
+
 @media screen and (min-width : 768px) {
     .checkout {
         margin-bottom: 60px;
@@ -2170,7 +2197,8 @@ body {
         margin: 0;
     }
 
-    .checkout-title {
+    .checkout-title,
+    .checkout-title h5 {
         font-size: 1.4rem;
     }
 
@@ -2180,10 +2208,16 @@ body {
     }
 
     .checkout-summary .cart-product__img {
-        width: 20%;
+        width: 24%;
     }
 
     .checkout-details__address {
         margin-bottom: 20px;
+    }
+}
+
+@media screen and (min-width : 1440px) {
+    .checkout-summary .cart-product__img {
+        width: 17%;
     }
 }

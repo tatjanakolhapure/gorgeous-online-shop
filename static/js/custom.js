@@ -76,6 +76,7 @@
                     fn.updateCart();
                     fn.shoppingBagQuantity();
                     fn.shoppingBagButtons();
+                    fn.checkoutAccordion();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -675,6 +676,13 @@
 			            jQuery('#id_quantity').val(previousValue);
                     }
                 });
+            },
+
+            checkoutAccordion: function(){
+			    // check if mobile header is visible to match CSS media queries
+			    if (global.mobileHeader.is(':visible') == true) {
+                    jQuery('#summary-products').removeClass('show');
+                }
             }
 		};
 
