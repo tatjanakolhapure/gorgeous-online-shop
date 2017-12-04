@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col">
+                <h1 class="heading heading--top">Checkout</h1>
+            </div>
+        </div>
+        <div class="row">
+           <div class="checkout col-12 col-lg-10 col-xl-8">
+                <div class="checkout-container checkout-summary clearfix">
+                    <div id="summary" role="tablist" aria-multiselectable="true">
+                        <div class="checkout-title" role="tab" id="category">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#summary" href="#summary-products" aria-expanded="true" aria-controls="summary-products">
+                                    <span>Order Summary</span>
+                                    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="summary-products" class="collapse show" role="tabpanel" aria-labelledby="products">
+                            {% for item in cart %}
+                                <div class="cart-product">
+                                    {% with product=item.product %}
+                                        <img class="cart-product__img" src="/media/{{ item.image.image }}" alt="">
+                                        <div class="cart-product__details">
+                                            <p>{{ product.name }}</p>
+                                            <p class="cart-product__price">£{{ item.price }}</p>
+                                            <p class="cart-product__size"><span>Size:</span> {{ item.size }}</p>
+                                            <p class="cart-product__quantity"><span>Quantity:</span> {{ item.quantity }}</p>
+                                        </div>
+                                    {% endwith %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="cart-prices">
+                        <p><span>Subtotal</span> <span class="price price--subtotal">£{{ cart.get_subtotal_price }}</span></p>
+                        <p><span>Delivery</span> <span class="price price--delivery">£{{ cart.get_delivery_price }}</span></p>
+                    </div>
+                    <div class="cart-total">
+                        <p><span>Total</span> <span class="price price--total">£{{ cart.get_total_price }}</span></p>
+                    </div>
+                    <a href="{% url 'cart_detail' %}" class="button button--bag">Edit bag</a>
+                </div>
+                <div class="checkout-container checkout-details">
+                    <div class="checkout-details__address">
+                        <p class="checkout-title">Delivery address</p>
+                        <p>{{ user.first_name }} {{ user.last_name }}</p>
+                        <p>{{ address.house_number_name }}</p>
+                        <p>{{ address.street }}</p>
+                        <p>{{ address.town }}</p>
+                        <p>{{ address.postcode }}</p>
+                    </div>
+                    <div class="checkout-details__payment">
+                        <p class="checkout-title">Billing Address</p>
+                        <form class="payment-form" action="{% url 'checkout' %}" method="post">
+                            {% csrf_token %}
+                            <div class="card-errors">
+                                <p class="stripe-error-message"></p>
+                            </div>
+                            {% if messages %}
+                                <div class="checkout-messages">
+                                    {% for message in messages %}
+                                        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {{ form.address_line1.label_tag }}
+                            {{ form.address_line1 }}
+                            {{ form.address_line2.label_tag }}
+                            {{ form.address_line2 }}
+                            {{ form.address_city.label_tag }}
+                            {{ form.address_city }}
+                            {{ form.address_zip.label_tag }}
+                            {{ form.address_zip }}
+                            <p class="checkout-title">Card details</p>
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                            {{ form.card_number.label_tag }}
+                            {{ form.card_number }}
+                            <div class="select-labels">
+                                {{ form.expiry_month.label_tag }}
+                                {{ form.cvv.label_tag }}
+                            </div>
+                            {{ form.expiry_month }}
+                            {{ form.expiry_year }}
+                            {{ form.cvv }}
+                            {{ form.stripe_id }}
+                            <button class="button button--payment" type="submit">Place order</button>
+                        </form>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        Stripe.publishableKey = '{{ publishable }}';
+        // ]]>
+    </script>
+    <script src="{% static "js/stripe.js" %}"></script>
+{% endblock script %}
