@@ -10,7 +10,7 @@ from django.contrib import messages
 
 from .models import OrderItem, Order
 from accounts.models import Address
-from products.models import Size
+from products.models import Size, Stock
 from cart.cart import Cart
 from .forms import PaymentForm
 
@@ -45,8 +45,13 @@ def checkout(request):
                     charge.save()
                     for item in cart:
                         size = get_object_or_404(Size, size=item['size'])
-                        OrderItem.objects.create(order=order, product=item['product'], size=size, price=item['price'],
+                        product = item['product']
+                        stock = get_object_or_404(Stock, product=product, size=size)
+                        OrderItem.objects.create(order=order, product=product, size=size, price=item['price'],
                                                  quantity=item['quantity'])
+                        stock.amount -= item['quantity']
+                        stock.save()
+
                     # clear the cart
                     cart.clear()
                 else:
