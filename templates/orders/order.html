@@ -1,6 +1,54 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block content %}
-    Your Order
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col">
+                <h1 class="heading heading--top">Order {{ order.order.id }}</h1>
+            </div>
+        </div>
+        <div class="row">
+           <div id="account-content" class="col-sm-12 col-lg-10 col-xl-8">
+               <div class="row">
+                   <div id="account-nav" class="col-sm-12 col-md-2">
+                       <div class="account-nav-item">
+                           <a href="{% url 'account' %}">My details</a>
+                       </div>
+                       <div class="account-nav-item account-nav-item--underline">
+                           <a href="{% url 'orders_list' %}">My orders</a>
+                       </div>
+                   </div>
+                   <div id="account-orders" class="col-sm-12 col-md-10 col-xl-8">
+                        <div class="account-order__details">
+                            <p><span class="bold">Order date:</span> {{ order.date }}</p>
+                            <p><span class="bold">Order status:</span> {{ order.order.status }}</p>
+                            <p><span class="bold delivery-method">Delivery method:</span> UK Standard (2-4 working days)</p>
+                            <p><span class="bold">Delivery address:</span> {{ order.order.address }}, {{ order.order.town }}, {{ order.order.postcode }}</p>
+                        </div>
+                       <div class="account-order__order-items">
+                           {% for item in order_items %}
+                               <div class="order-item">
+                                   <img class="order-item__img" src="/media/{{ item.image.image }}" alt="">
+                                   <div class="product-item__details">
+                                       <div class="order-item__name-size">
+                                           <p>{{ item.item.product.name }}</p>
+                                           <p class="product-item__size"><span>Size:</span> {{ item.item.size }}</p>
+                                       </div>
+                                       <p class="product-item__quantity"><span>Quantity:</span> {{ item.item.quantity }}</p>
+                                       <p class="order-item__price"><span>Price:</span> £{{ item.item.price }}</p>
+                                   </div>
+                               </div>
+                           {% endfor %}
+                       </div>
+                       <div class="cart-prices order-prices">
+                           <p><span>Subtotal</span> <span class="price price--subtotal">£{{ order.subtotal }}</span></p>
+                           <p><span>Delivery</span> <span class="price price--delivery">£{{ order.delivery }}</span></p>
+                       </div>
+                       <div class="cart-total">
+                           <p><span>Total</span> <span class="price price--total">£{{ order.total }}</span></p>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div>
 {% endblock %}
