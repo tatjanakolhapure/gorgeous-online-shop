@@ -115,12 +115,12 @@ class Cart(object):
 
     def get_delivery_price(self):
         if self.get_subtotal_price() > 75:
-            return 0
+            return '{0:.2f}'.format(0)
         else:
-            return 2.95
+            return '{0:.2f}'.format(2.95)
 
     def get_total_price(self):
-        return round(self.get_subtotal_price() + Decimal(self.get_delivery_price()), 2)
+        return '{0:.2f}'.format(round(self.get_subtotal_price() + Decimal(self.get_delivery_price()), 2))
 
     def clear(self):
         # remove cart from session
