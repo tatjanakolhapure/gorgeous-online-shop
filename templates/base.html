@@ -36,7 +36,7 @@
                             {% endif %}
                             {% if user.is_authenticated %}
                                 <a class="dropdown-item" href="{% url 'account' %}">My details</a>
-                                <a class="dropdown-item" href="#">My orders</a>
+                                <a class="dropdown-item" href="{% url 'orders_list' %}">My orders</a>
                                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                             {% endif %}
                         </div>
@@ -77,7 +77,7 @@
                             {% endif %}
                             {% if user.is_authenticated %}
                                 <a class="dropdown-item" href="{% url 'account' %}">My details</a>
-                                <a class="dropdown-item" href="#">My orders</a>
+                                <a class="dropdown-item" href="{% url 'orders_list' %}">My orders</a>
                                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                             {% endif %}
                         </div>
