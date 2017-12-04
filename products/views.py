@@ -90,10 +90,10 @@ def products_list(request, category_name=None):
 
     # in case of ajax call update products html
     if request.is_ajax():
-        html = render_to_string('filtered_products.html', {'products': products})
+        html = render_to_string('products/filtered_products.html', {'products': products})
         return HttpResponse(html)
 
-    return render(request, 'products_list.html', args)
+    return render(request, 'products/products_list.html', args)
 
 
 def product(request, product_id):
@@ -109,4 +109,4 @@ def product(request, product_id):
 
     args = {'product': product, 'images': images, 'sizes': sizes, 'sizes_available': sizes_available, 'cart_form': cart_form}
 
-    return render(request, 'product.html', args)
+    return render(request, 'products/product.html', args)

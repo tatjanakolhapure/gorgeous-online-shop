@@ -19,21 +19,21 @@
             </ul>
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="login">
-                    <div id="login-errors"></div>
                     <form role="form" method="post" action="{% url 'login' %}">
                         {% csrf_token %}
                         {{ form_login }}
+                        <div id="login-errors"></div>
                         <div class="form-group">
                             <button type="submit" class="button" name="login" value="Login">Login</button>
                         </div>
                     </form>
                 </div>
                 <div role="tabpanel" class="tab-pane fade in" id="register">
-                    <div id="register-errors"></div>
                     <form role="form" method="post" action="{% url 'login' %}">
                         {% csrf_token %}
                         {{ form_register }}
                         {{ form_address }}
+                        <div id="register-errors"></div>
                         <div class="form-group">
                             <button type="submit" class="button" name="register" value="Register">Create account</button>
                         </div>

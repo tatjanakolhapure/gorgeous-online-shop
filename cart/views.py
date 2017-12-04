@@ -51,4 +51,4 @@ def cart_detail(request):
         # to allow updating its quantity and size
         item['update_quantity_form'] = CartForm(initial={'quantity': item['quantity'],'update': True})
     args = {'cart': cart}
-    return render(request, 'cart.html', args)
+    return render(request, 'cart/cart.html', args)

@@ -57,16 +57,16 @@ def login(request):
 
     args = {'form_register': form_register, 'form_address': form_address, 'form_login': form_login}
     args.update(csrf(request))
-    return render(request, 'login.html', args)
+    return render(request, 'accounts/login.html', args)
 
 @login_required(login_url='/account/login/')
 def account(request):
     user = request.user
     try:
-        address = get_object_or_404(Address, user=user)
-    except Exception as e:
+        address = Address.objects.get(user=user)
+    except Exception as Address.DoesNotExist:
         address = None
-    return render(request, 'account.html', {'address': address})
+    return render(request, 'accounts/account.html', {'address': address})
 
 
 def logout(request):
@@ -90,7 +90,7 @@ def edit_address(request, user_id):
     args = {'form': form}
     args.update(csrf(request))
 
-    return render(request, 'account_address_form.html', args)
+    return render(request, 'accounts/account_address_form.html', args)
 
 @login_required(login_url='/account/login/')
 def edit_details(request, user_id):
@@ -107,4 +107,4 @@ def edit_details(request, user_id):
     args = {'form': form}
     args.update(csrf(request))
 
-    return render(request, 'account_details_form.html', args)
+    return render(request, 'accounts/account_details_form.html', args)
