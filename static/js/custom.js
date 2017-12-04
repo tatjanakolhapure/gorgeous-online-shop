@@ -77,12 +77,14 @@
                     fn.shoppingBagQuantity();
                     fn.shoppingBagButtons();
                     fn.checkoutAccordion();
+                    fn.orderButtonText();
                 });
 
 				jQuery(window).on("resize", function() {
 				    fn.hideMenuDropDown();
 				    fn.mobileFiltersResize();
 				    fn.shoppingBagQuantity();
+				    fn.orderButtonText();
                 });
 			},
 
@@ -682,6 +684,16 @@
 			    // check if mobile header is visible to match CSS media queries
 			    if (global.mobileHeader.is(':visible') == true) {
                     jQuery('#summary-products').removeClass('show');
+                }
+            },
+
+            orderButtonText: function(){
+                // check if mobile header is visible to match CSS media queries
+			    if (global.mobileHeader.is(':visible') == true) {
+                    jQuery('.button--order').text('View');
+			    }
+			    else {
+                    jQuery('.button--order').text('View order');
                 }
             }
 		};
