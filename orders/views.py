@@ -53,7 +53,8 @@ def checkout(request):
                     messages.error(request, "We were unable to take a payment with that card")
             except stripe.error.CardError, e:
                 messages.error(request, "Your card was declined")
-        return redirect(reverse('order', args={'order_id': order.id}))
+
+        return redirect(reverse('order', kwargs={'order_id': order.id}))
 
     else:
         args = {'address': address, 'cart': cart, 'form': form, 'publishable': settings.STRIPE_PUBLISHABLE}
