@@ -1009,7 +1009,8 @@ body {
     width: 50%;
 }
 
-#forms-container input {
+#forms-container input,
+.payment-form input {
     width: 100%;
     height: 37px;
     margin-bottom: 8px;
@@ -1017,7 +1018,8 @@ body {
     padding: 0 8px;
 }
 
-#forms-container input:last-of-type {
+#login-errors,
+#register-errors {
     margin-bottom: 20px;
 }
 
@@ -1035,6 +1037,13 @@ body {
     list-style: none;
     font-weight: 700;
     color: red;
+}
+
+#login-errors,
+#register-errors {
+    display: none;
+    color: red;
+    font-weight: 700;
 }
 
 @media screen and (min-width: 768px) {
@@ -1060,26 +1069,20 @@ body {
         margin-bottom: 20px;
     }
 
-    #forms-container input {
+    #forms-container input,
+    .payment-form input {
         margin-bottom: 12px;
         padding: 0 12px;
     }
 
-    #forms-container input:last-of-type {
+    #login-errors,
+    #register-errors {
         margin-bottom: 30px;
     }
 
     #forms-container .form-group {
         margin-bottom: 60px;
     }
-}
-
-#login-errors,
-#register-errors {
-    display: none;
-    color: red;
-    font-weight: 700;
-    margin-bottom: 15px;
 }
 
 /* Account page */
@@ -2174,6 +2177,46 @@ body {
     display: inline-block;
 }
 
+.card-errors,
+.checkout-messages {
+    display: none;
+}
+
+.payment-form select {
+    height: 37px;
+    margin-bottom: 8px;
+}
+
+.select-labels,
+.button--payment {
+    display: block;
+}
+
+#id_cvv {
+    width: 42px;
+    margin-bottom: 20px;
+}
+
+label[for='id_expiry_month'],
+label[for='id_cvv'] {
+    display: inline-block;
+}
+
+#id_expiry_month {
+    margin-right: 10px;
+}
+
+#id_expiry_year {
+    margin-right: 20px;
+}
+
+label[for='id_expiry_month'] {
+    margin-right: 28px;
+}
+
+#id_address_zip {
+    margin-bottom: 15px;
+}
 
 @media screen and (min-width : 425px) {
     .checkout-summary .cart-product__img {
@@ -2212,6 +2255,19 @@ body {
     }
 
     .checkout-details__address {
+        margin-bottom: 20px;
+    }
+
+    #id_cvv {
+        width: 50px;
+        margin-bottom: 30px;
+    }
+
+    .payment-form select {
+        margin-bottom: 12px;
+    }
+
+    #id_address_zip {
         margin-bottom: 20px;
     }
 }
