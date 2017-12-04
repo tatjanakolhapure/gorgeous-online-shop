@@ -15,15 +15,15 @@
                     <div class="cart-products col-12 col-md-7">
                         <div class="cart-container cart-container--products">
                             {% for item in cart %}
-                                <div class="cart-product">
+                                <div class="product-item">
                                     {% with product=item.product %}
-                                        <img class="cart-product__img" src="/media/{{ item.image.image }}" alt="">
-                                        <div class="cart-product__details">
+                                        <img class="product-item__img" src="/media/{{ item.image.image }}" alt="">
+                                        <div class="product-item__details">
                                             <p>{{ product.name }}</p>
-                                            <p class="cart-product__price">£{{ item.price }}</p>
-                                            <form class="cart-product__form" action="{% url 'cart_add' product.id %}" method="post">
+                                            <p class="product-item__price">£{{ item.price }}</p>
+                                            <form class="product-item__form" action="{% url 'cart_add' product.id %}" method="post">
                                                 {% csrf_token %}
-                                                <div class="cart-product__form-select">
+                                                <div class="product-item__form-select">
                                                     <label for="size-update">Size:</label>
                                                     <select name="size" id="size-update" required>
                                                         {% for size in item.all_sizes %}
@@ -36,9 +36,9 @@
                                                     {{ item.update_quantity_form.quantity }}
                                                     {{ item.update_quantity_form.update }}
                                                 </div>
-                                                <div class="cart-product__buttons">
-                                                    <button class="button cart-product__button cart-product__button--update" type="submit">Update</button>
-                                                    <p class="cart-product__button cart-product__button--cancel">Cancel</p>
+                                                <div class="product-item__buttons">
+                                                    <button class="button product-item__button product-item__button--update" type="submit">Update</button>
+                                                    <p class="product-item__button product-item__button--cancel">Cancel</p>
                                                 </div>
                                                 <p class="cart-error-message">Quantity is not available</p>
                                             </form>
