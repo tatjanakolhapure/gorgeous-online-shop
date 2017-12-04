@@ -24,28 +24,28 @@
                 <div id="collections" class="col">
                     <h1 class="heading">Explore our collections</h1>
                     <div class="collection">
-                        <a href="" class="collection__img-container img-container">
+                        <a href="{% url 'products_list' 'dresses' %}" class="collection__img-container img-container">
                             <img class="img-container__img" src="{% static "images/dress-01-1.jpg" %}" alt="">
                         </a>
                         <h2 class="collection__heading">It’s time for a new dress</h2>
                         <p class="collection__description">Refresh your look with our exclusive dresses.</p>
-                        <a href="/products?category=dresses" class="button">Shop dresses</a>
+                        <a href="{% url 'products_list' 'dresses' %}" class="button">Shop dresses</a>
                     </div>
                     <div class="collection">
-                        <a href="" class="collection__img-container img-container">
+                        <a href="{% url 'products_list' 'coats' %}" class="collection__img-container img-container">
                             <img class="img-container__img" src="{% static "images/coat-01-1.jpg" %}" alt="">
                         </a>
                         <h2 class="collection__heading">Get warm for winter!</h2>
                         <p class="collection__description">Check out our new collection of coats & jackets for this winter.</p>
-                        <a href="/products?category=coats" class="button">Shop coats</a>
+                        <a href="{% url 'products_list' 'coats' %}" class="button">Shop coats</a>
                     </div>
                     <div class="collection">
-                        <a href="" class="collection__img-container img-container">
+                        <a href="{% url 'products_list' 'shoes' %}" class="collection__img-container img-container">
                             <img class="collection__img-shoes img-container__img" src="{% static "images/shoes-01-1.jpg" %}" alt="">
                         </a>
                         <h2 class="collection__heading">Shoes for any occasion</h2>
                         <p class="collection__description">Complete your look with shoes for any occasion.</p>
-                        <a href="/products?category=shoes" class="button">Shop shoes</a>
+                        <a href="{% url 'products_list' 'shoes' %}" class="button">Shop shoes</a>
                     </div>
                 </div>
             </div>
@@ -64,55 +64,15 @@
             <div class="row">
                 <h2 class="heading">Popular this week</h2>
                 <div id="home-popular" class="col-sm-10">
-                    <div class="slider-item slider-item--one">
-                        <a href="" class="slider-item__container">
-                            <img class="slider-item__img" src="{% static "images/dress-02-1.jpg" %}" alt="">
-                            <p class="product-name">Flounce Marled Bodycon Dress</p>
-                            <p class="product-price">£35</p>
-                        </a>
-                    </div>
-                    <div class="slider-item slider-item--two">
-                          <a href="" class="slider-item__container">
-                              <img class="slider-item__img" src="{% static "images/top-01-1.jpg" %}" alt="">
-                              <p class="product-name">Tiered Ruffle-Sleeve Top</p>
-                              <p class="product-price">£17</p>
-                        </a>
-                    </div>
-                    <div class="slider-item slider-item--three">
-                        <a href="" class="slider-item__container">
-                            <img class="slider-item__img" src="{% static "images/shoes-02-1.jpg" %}" alt="">
-                            <p class="product-name">Faux Suede Embroidered Boots</p>
-                            <p class="product-price">£29</p>
-                        </a>
-                    </div>
-                    <div class="slider-item slider-item--four">
-                        <a href="" class="slider-item__container">
-                            <img class="slider-item__img" src="{% static "images/top-02-1.jpg" %}" alt="">
-                            <p class="product-name">Tiered Flounce-Sleeve Mesh Top</p>
-                            <p class="product-price">£15</p>
-                        </a>
-                    </div>
-                    <div class="slider-item slider-item--five">
-                        <a href="" class="slider-item__container">
-                            <img class="slider-item__img" src="{% static "images/top-03-1.jpg" %}" alt="">
-                            <p class="product-name">Semi-Sheer Floral Print Top</p>
-                            <p class="product-price">£10</p>
-                        </a>
-                    </div>
-                    <div class="slider-item slider-item--six">
-                        <a href="" class="slider-item__container">
-                            <img class="slider-item__img" src="{% static "images/dress-03-1.jpg" %}" alt="">
-                            <p class="product-name">Velvet Off-The-Shoulder Dress</p>
-                            <p class="product-price">£44</p>
-                        </a>
-                    </div>
-                    <div class="slider-item slider-item--seven">
-                        <a href="" class="slider-item__container">
-                            <img class="slider-item__img" src="{% static "images/top-04-1.jpg" %}" alt="">
-                            <p class="product-name">Plunging Self-Tie Crop Top</p>
-                            <p class="product-price">£22</p>
-                        </a>
-                    </div>
+                    {% for product in bestsellers %}
+                        <div class="slider-item">
+                            <a href="" class="slider-item__container">
+                                <img class="slider-item__img" src="/media/{{ product.image.image }}" alt="">
+                                <p class="product-name">{{ product.product.name }}</p>
+                                <p class="product-price">{{ product.product.price }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
