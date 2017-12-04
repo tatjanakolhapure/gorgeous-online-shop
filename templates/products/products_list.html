@@ -27,7 +27,7 @@
                     <div id="filters-container" class="col-sm-12 col-md-2">
                         <h3>Filter by</h3>
                         <div id="filters" role="tablist" aria-multiselectable="true">
-                            <div class="filter">
+                            <div class="filter" {% if category %}style="display:none;"{% endif %}>
                                 <div class="filter-header" role="tab" id="category">
                                     <h5 class="mb-0">
                                         <a data-toggle="collapse" data-parent="#filters" href="#filter-category" aria-expanded="false" aria-controls="filter-category">
