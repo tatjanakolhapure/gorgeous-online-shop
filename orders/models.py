@@ -15,6 +15,8 @@ class Order(models.Model):
         ('delivered', 'Delivered')
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    # save address as a string instead as a foreign key to address model
+    # so the address cannot be changed
     address = models.CharField(max_length=255)
     town = models.CharField(max_length=40)
     postcode = models.CharField(max_length=10)

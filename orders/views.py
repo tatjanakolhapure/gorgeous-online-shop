@@ -22,43 +22,48 @@ def checkout(request):
     user = request.user
     address = get_object_or_404(Address, user__exact=user)
     form = PaymentForm()
-
     if request.method == 'POST':
         form = PaymentForm(request.POST)
         order = ''
         if form.is_valid():
             try:
+                # create stripe charge object
                 charge = stripe.Charge.create(
+                    # amount in units
                     amount=int(cart.get_total_price()*100),
                     currency="GBP",
                     card=form.cleaned_data['stripe_id']
                 )
                 if charge.paid:
+                    # create order if charge was created successfully and paid
                     order = Order.objects.create(
                         user=user,
+                        # save address in one string
                         address='%s %s' % (address.house_number_name, address.street),
                         town=address.town,
                         postcode=address.postcode,
                         stripe_id=form.cleaned_data['stripe_id']
                     )
+                    # add description to charge giving order details
                     charge.description = 'Order %s for %s %s, %s' % (order.id, user.first_name, user.last_name, user.email)
                     charge.save()
                     for item in cart:
                         size = get_object_or_404(Size, size=item['size'])
                         product = item['product']
                         stock = get_object_or_404(Stock, product=product, size=size)
+                        # create order item for each product in the cart
                         OrderItem.objects.create(order=order, product=product, size=size, price=item['price'],
                                                  quantity=item['quantity'])
+                        # update stock for each product
                         stock.amount -= item['quantity']
                         stock.save()
-
                     # clear the cart
                     cart.clear()
                 else:
                     messages.error(request, "We were unable to take a payment with that card")
             except stripe.error.CardError, e:
                 messages.error(request, "Your card was declined")
-
+        # redirect to order page
         return redirect(reverse('order', kwargs={'order_id': order.id}))
 
     else:
