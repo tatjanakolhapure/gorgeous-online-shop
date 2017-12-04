@@ -10,9 +10,9 @@ class OrderItemInline(admin.TabularInline):
     raw_id_fields = ['product']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'first_name', 'last_name', 'email', 'address', 'town', 'postcode', 'paid', 'status',
+    list_display = ['id', 'user', 'address', 'town', 'postcode', 'status', 'stripe_id',
                     'created', 'updated']
-    list_filter = ['status', 'paid', 'created', 'updated']
+    list_filter = ['status', 'created', 'updated']
     inlines = [OrderItemInline]
 
 admin.site.register(Order, OrderAdmin)
