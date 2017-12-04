@@ -23,14 +23,14 @@
                         </div>
                         <div id="summary-products" class="collapse show" role="tabpanel" aria-labelledby="products">
                             {% for item in cart %}
-                                <div class="cart-product">
+                                <div class="product-item">
                                     {% with product=item.product %}
-                                        <img class="cart-product__img" src="/media/{{ item.image.image }}" alt="">
-                                        <div class="cart-product__details">
+                                        <img class="product-item__img" src="/media/{{ item.image.image }}" alt="">
+                                        <div class="product-item__details">
                                             <p>{{ product.name }}</p>
-                                            <p class="cart-product__price">£{{ item.price }}</p>
-                                            <p class="cart-product__size"><span>Size:</span> {{ item.size }}</p>
-                                            <p class="cart-product__quantity"><span>Quantity:</span> {{ item.quantity }}</p>
+                                            <p class="product-item__price">£{{ item.price }}</p>
+                                            <p class="product-item__size"><span>Size:</span> {{ item.size }}</p>
+                                            <p class="product-item__quantity"><span>Quantity:</span> {{ item.quantity }}</p>
                                         </div>
                                     {% endwith %}
                                 </div>
