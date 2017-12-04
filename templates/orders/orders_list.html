@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col">
+                <h1 class="heading heading--top">My orders</h1>
+            </div>
+        </div>
+        <div class="row">
+           <div id="account-content" class="col-sm-12 col-lg-10 account-content--orders">
+               <div class="row">
+                   <div id="account-nav" class="col-sm-12 col-md-2">
+                       <div class="account-nav-item">
+                           <a href="{% url 'account' %}">My details</a>
+                       </div>
+                       <div class="account-nav-item account-nav-item--underline">
+                           <a href="{% url 'orders_list' %}">My orders</a>
+                       </div>
+                   </div>
+                   <div id="account-orders" class="col-sm-12 col-md-10">
+                       <table class="account-orders__table">
+                           <tr>
+                               <th class="account-orders__title">Order date</th>
+                               <th class="account-orders__title mobile-hide">Order number</th>
+                               <th class="account-orders__title mobile-hide">Items</th>
+                               <th class="account-orders__title mobile-hide">Total</th>
+                               <th class="account-orders__title">Order status</th>
+                               <th class="account-orders__title"></th>
+                           </tr>
+                           {% for order in orders %}
+                               <tr>
+                                   <td>{{ order.date }}</td>
+                                   <td class="mobile-hide">{{ order.order.id }}</td>
+                                   <td class="mobile-hide">{{ order.items }}</td>
+                                   <td class="mobile-hide">£{{ order.total }}</td>
+                                   <td>{{ order.order.status }}</td>
+                                   <td class="account-orders__view">
+                                       <a href="{% url 'order' order.order.id %}" class="button button--order">View order</a>
+                                   </td>
+                               </tr>
+                           {% endfor %}
+                       </table>
+                   </div>
+               </div>
+            </div>
+        </div>
+{% endblock %}

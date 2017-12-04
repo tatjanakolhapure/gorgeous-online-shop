@@ -2277,3 +2277,61 @@ label[for='id_expiry_month'] {
         width: 17%;
     }
 }
+
+/* Orders */
+
+.account-orders__table {
+    width: 100%;
+}
+
+.account-orders__title {
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.account-orders__table td {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.account-orders__view {
+    width: 60px;
+}
+
+.mobile-hide {
+    display: none;
+}
+
+@media screen and (min-width : 576px) {
+    .mobile-hide {
+        display: table-cell;
+    }
+}
+
+@media screen and (min-width : 768px) {
+    #account-orders {
+        padding-top: 35px;
+    }
+
+    .account-orders__view {
+        width: 140px;
+    }
+
+    .account-orders__table td {
+        padding: 15px 0;
+    }
+}
+
+@media screen and (min-width : 1440px) {
+    .account-content--orders {
+        padding: 0 5%;
+    }
+}
+
+@media screen and (min-width : 1824px) {
+    .account-content--orders {
+        padding: 0 8%;
+    }
+}
