@@ -73,4 +73,22 @@ def checkout(request):
 
 @login_required(login_url='/account/login/')
 def order(request, order_id):
-    return render(request, 'orders/order.html')
+    order=get_object_or_404(Order, id=order_id)
+    order_data = dict(order=order, total=order.get_total_cost(), subtotal=order.get_subtotal_cost(),
+             delivery=order.get_delivery_cost(), date=order.created.strftime('%d %b %Y'))
+    order_items = [dict(item=item, image=item.product.image_set.all()[0]) for item in order.items.all()]
+    args={'order': order_data, 'order_items': order_items}
+    return render(request, 'orders/order.html', args)
+
+
+@login_required(login_url='/account/login/')
+def orders_list(request):
+    user = request.user
+    orders = Order.objects.filter(user__exact=user)
+    orders_data = [
+        dict(order=order, total=order.get_total_cost(),
+        items=sum([item.quantity for item in order.items.all()]), date=order.created.strftime('%d %b %y'))
+        for order in orders
+    ]
+    args= {'orders': orders_data}
+    return render(request, 'orders/orders_list.html', args)
