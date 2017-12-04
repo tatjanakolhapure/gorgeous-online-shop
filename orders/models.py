@@ -33,12 +33,12 @@ class Order(models.Model):
 
     def get_delivery_cost(self):
         if self.get_subtotal_cost() > 75:
-            return 0
+            return '{0:.2f}'.format(0)
         else:
-            return 2.95
+            return '{0:.2f}'.format(2.95)
 
     def get_total_cost(self):
-        return round(self.get_subtotal_cost() + Decimal(self.get_delivery_cost()), 2)
+        return '{0:.2f}'.format(round(self.get_subtotal_cost() + Decimal(self.get_delivery_cost()), 2))
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items')
