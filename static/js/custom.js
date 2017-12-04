@@ -610,10 +610,10 @@
             },
 
             updateCart: function() {
-			    var cart_frm = jQuery('.cart-product__form');
+			    var cart_frm = jQuery('.product-item__form');
                 cart_frm.on("submit", function () {
                     var formErrorMsg = jQuery(this).find('.cart-error-message'),
-                        formButtons = jQuery(this).find('.cart-product__buttons'),
+                        formButtons = jQuery(this).find('.product-item__buttons'),
                         formData = jQuery(this).serializeArray();
                     jQuery.ajax({
                         type: jQuery(this).attr('method'),
@@ -657,7 +657,7 @@
                     newValue;
 			    // on focus get previous select value
                 // on change get new select value and show buttons
-			    jQuery('.cart-product__form-select').find('select').on('focus', function (){
+			    jQuery('.product-item__form-select').find('select').on('focus', function (){
 			        previousValue = this.value;
                 }).on('change', function(){
 			        newValue = this.value;
@@ -665,7 +665,7 @@
                 });
 			    // when clicking cancel change the relevant select value to previous one
                 // hide buttons and hide error message (if visible)
-			    jQuery('.cart-product__button--cancel').on('click', function(){
+			    jQuery('.product-item__button--cancel').on('click', function(){
 			        jQuery(this).parent().fadeOut(200);
 			        var formErrorMsg = jQuery(this).parent().next();
 			        if(formErrorMsg.is(':visible')){
