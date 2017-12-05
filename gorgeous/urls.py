@@ -15,9 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.views.static import serve
 
-from .settings import MEDIA_ROOT
 import views
 
 urlpatterns = [
@@ -28,7 +26,6 @@ urlpatterns = [
     url(r'^orders/', include('orders.urls')),
     url(r'^account/', include('accounts.urls')),
     url(r'^products/', include('products.urls')),
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^contact/', views.contact, name='contact'),
 ]
