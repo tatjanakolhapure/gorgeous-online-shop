@@ -12,7 +12,7 @@
            <div class="checkout col-12 col-lg-10 col-xl-8">
                 <div class="checkout-container checkout-summary clearfix">
                     <div id="summary" role="tablist" aria-multiselectable="true">
-                        <div class="checkout-title" role="tab" id="category">
+                        <div class="section-title" role="tab" id="category">
                             <h5 class="mb-0">
                                 <a data-toggle="collapse" data-parent="#summary" href="#summary-products" aria-expanded="true" aria-controls="summary-products">
                                     <span>Order Summary</span>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="checkout-container checkout-details">
                     <div class="checkout-details__address">
-                        <p class="checkout-title">Delivery address</p>
+                        <p class="section-title">Delivery address</p>
                         <p>{{ user.first_name }} {{ user.last_name }}</p>
                         <p>{{ address.house_number_name }}</p>
                         <p>{{ address.street }}</p>
@@ -56,7 +56,7 @@
                         <p>{{ address.postcode }}</p>
                     </div>
                     <div class="checkout-details__payment">
-                        <p class="checkout-title">Billing Address</p>
+                        <p class="section-title">Billing Address</p>
                         <form class="payment-form" action="{% url 'checkout' %}" method="post">
                             {% csrf_token %}
                             <div class="card-errors">
@@ -77,7 +77,7 @@
                             {{ form.address_city }}
                             {{ form.address_zip.label_tag }}
                             {{ form.address_zip }}
-                            <p class="checkout-title">Card details</p>
+                            <p class="section-title">Card details</p>
                             {{ form.name.label_tag }}
                             {{ form.name }}
                             {{ form.card_number.label_tag }}
