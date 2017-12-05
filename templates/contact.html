@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+           <div class="col">
+                <h1 class="heading heading--top">Contact Us</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div id="contact-container" class="col-10 col-md-8 col-xl-6">
+                <div class="contact-method">
+                    <p class="section-title">By Email</p>
+                    <p>For any inquiries, please send us an email with your question at <a class="contact-link" href="mailto:customerservice@gorgeous.com">ukcustomerservice@gorgeous.com.</a></p>
+                    <p>Our Customer Service Team will review and respond to your email as quickly as possible.</p>
+                </div>
+                <div class="contact-method">
+                    <p class="section-title">By Phone</p>
+                    <p class="phone-number">020 7555 7777</p>
+                    <p>Our UK Customer Service team are here to help Monday to Saturday: 8am to 8pm and Sunday: 10am to 6pm GMT.</p>
+                    <p>Calls are charged at a basic rate. Please refer to your service provider for all charges.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

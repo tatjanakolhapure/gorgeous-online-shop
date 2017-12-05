@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.views.static import serve
 
 from .settings import MEDIA_ROOT
+import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     url(r'^products/', include('products.urls')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^contact/', views.contact, name='contact'),
 ]
