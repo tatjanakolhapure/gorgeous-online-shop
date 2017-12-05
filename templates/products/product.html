@@ -8,14 +8,14 @@
                    <div class="col-2 col-sm-2 col-md-1 product-thumbnails-container">
                        <div class="product-thumbnails">
                            {% for image in images %}
-                               <div class="product-thumbnail"><img src="/media/{{ image.image }}" alt=""></div>
+                               <div class="product-thumbnail"><img src="{{ image.image.url }}" alt=""></div>
                            {% endfor %}
                        </div>
                    </div>
                    <div class="col-10 col-sm-10 col-md-7 product-images-container">
                        <div class="product-images">
                            {% for image in images %}
-                               <div class="product-image"><img src="/media/{{ image.image }}" alt=""></div>
+                               <div class="product-image"><img src="{{ image.image.url }}" alt=""></div>
                            {% endfor %}
                        </div>
                        <div class="product-sharing-icons">

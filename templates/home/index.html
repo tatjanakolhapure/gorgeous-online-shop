@@ -67,7 +67,7 @@
                     {% for product in bestsellers %}
                         <div class="slider-item">
                             <a href="{% url 'product' product.product.id %}" class="slider-item__container">
-                                <img class="slider-item__img" src="/media/{{ product.image.image }}" alt="">
+                                <img class="slider-item__img" src="{{ product.image.image.url }}" alt="">
                                 <p class="product-name">{{ product.product.name }}</p>
                                 <p class="product-price">{{ product.product.price }}</p>
                             </a>
