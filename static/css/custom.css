@@ -282,6 +282,7 @@ a:active {
         font-weight: 400;
     }
 
+    #main-menu .nav-link:active,
     .nav-link:active {
         background: none;
         color: rgba(0,0,0,.7)!important;
