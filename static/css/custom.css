@@ -2100,23 +2100,23 @@ body {
     float: right;
 }
 
-.checkout-title {
+.section-title {
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     font-weight: 700;
     margin-bottom: 10px;
 }
 
-.checkout-title h5 {
+.section-title h5 {
     font-weight: 700;
 }
 
-.checkout-title h5 a {
+.section-title h5 a {
     display: block;
 }
 
-.checkout-title,
-.checkout-title h5 {
+.section-title,
+.section-title h5 {
     font-size: 1.286rem;
 }
 
@@ -2128,7 +2128,7 @@ body {
     float: right;
 }
 
-.checkout-summary .checkout-title {
+.checkout-summary .section-title {
     padding-bottom: 4px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
 }
@@ -2158,18 +2158,18 @@ body {
     margin-bottom: 10px;
 }
 
-.checkout-title .fa {
+.section-title .fa {
     float: right;
 }
 
-.checkout-title a[aria-expanded="false"] .fa-chevron-up,
-.checkout-title a[aria-expanded="true"] .fa-chevron-down {
+.section-title a[aria-expanded="false"] .fa-chevron-up,
+.section-title a[aria-expanded="true"] .fa-chevron-down {
 
     display: none;
 }
 
-.checkout-title a[aria-expanded="false"] .fa-chevron-down,
-.checkout-title a[aria-expanded="true"] .fa-chevron-up {
+.section-title a[aria-expanded="false"] .fa-chevron-down,
+.section-title a[aria-expanded="true"] .fa-chevron-up {
     display: inline-block;
 }
 
@@ -2236,12 +2236,12 @@ label[for='id_expiry_month'] {
         margin: 0;
     }
 
-    .checkout-title,
-    .checkout-title h5 {
+    .section-title,
+    .section-title h5 {
         font-size: 1.4rem;
     }
 
-    .checkout-summary .checkout-title {
+    .checkout-summary .section-title {
         padding-bottom: 12px;
         margin-bottom: 20px;
     }
@@ -2444,5 +2444,41 @@ label[for='id_expiry_month'] {
 @media screen and (min-width : 1440px) {
     .order-item .product-item__details {
         width: 80%;
+    }
+}
+
+/* Contact */
+
+#contact-container {
+    margin: 0 auto;
+}
+
+#contact-container p {
+    margin-bottom: 7px;
+}
+
+.contact-link,
+.contact-link:hover,
+.contact-link:focus,
+.contact-link:visited {
+    text-decoration: underline;
+}
+
+.contact-method {
+    margin-bottom: 20px;
+}
+
+.phone-number {
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+}
+
+@media screen and (min-width : 768px) {
+    #contact-container p {
+        margin-bottom: 12px;
+    }
+
+    .contact-method {
+        margin-bottom: 30px;
     }
 }
