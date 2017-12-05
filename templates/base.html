@@ -55,13 +55,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -120,10 +114,7 @@
                     </div>
                     <div class="col-6 col-md-4 footer-links__section-two">
                         <h3 class="heading heading--footer">Any questions?</h3>
-                        <a href="">About</a>
-                        <a href="">Delivery</a>
-                        <a href="">Returns</a>
-                        <a href="">Contact Us</a>
+                        <a href="{% url 'contact' %}">Contact Us</a>
                     </div>
                     <div class="col-12 col-md-4 footer-links__section-three">
                         <h3 class="heading heading--footer">Stay connected</h3>
