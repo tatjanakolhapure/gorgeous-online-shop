@@ -81,6 +81,9 @@
                 });
 
 				jQuery(window).on("resize", function() {
+				    if (jQuery('.product-images').length > 0) {
+                        fn.zoomProductImage();
+                    }
 				    fn.hideMenuDropDown();
 				    fn.mobileFiltersResize();
 				    fn.shoppingBagQuantity();
@@ -559,17 +562,20 @@
             },
 
             zoomProductImage: function() {
-			    var imgUrl;
-			    jQuery('.product-images').on('afterChange', function(slick){
-			        // get img url from the current slide after each slide change
-			        imgUrl = jQuery('.product-image.slick-current').find('img').attr('src');
-			    });
-                // settings for image zoom
-			    jQuery('.product-image').zoom({
-                    on: 'click',
-                    url: imgUrl,
-                    magnify: 1.1
-                });
+			     // check if mobile header is visible to match CSS media queries
+			    if (global.mobileHeader.is(':visible') == false) {
+                    var imgUrl;
+                    jQuery('.product-images').on('afterChange', function (slick) {
+                        // get img url from the current slide after each slide change
+                        imgUrl = jQuery('.product-image.slick-current').find('img').attr('src');
+                    });
+                    // settings for image zoom
+                    jQuery('.product-image').zoom({
+                        on: 'click',
+                        url: imgUrl,
+                        magnify: 1.1
+                    });
+                }
             },
 
             addToCart: function() {
