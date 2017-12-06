@@ -28,7 +28,7 @@
                        <div class="account-order__order-items">
                            {% for item in order_items %}
                                <div class="order-item">
-                                   <img class="order-item__img" src="/media/{{ item.image.image }}" alt="">
+                                   <img class="order-item__img" src="{{ item.image.image.url }}" alt="">
                                    <div class="product-item__details">
                                        <div class="order-item__name-size">
                                            <p>{{ item.item.product.name }}</p>

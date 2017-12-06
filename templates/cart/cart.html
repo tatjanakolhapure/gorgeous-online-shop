@@ -17,7 +17,7 @@
                             {% for item in cart %}
                                 <div class="product-item">
                                     {% with product=item.product %}
-                                        <img class="product-item__img" src="/media/{{ item.image.image }}" alt="">
+                                        <img class="product-item__img" src="{{ item.image.image.url }}" alt="">
                                         <div class="product-item__details">
                                             <p>{{ product.name }}</p>
                                             <p class="product-item__price">£{{ item.price }}</p>
