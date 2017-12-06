@@ -576,6 +576,9 @@
                         magnify: 1.1
                     });
                 }
+                else {
+			        jQuery('.product-image').trigger('zoom.destroy');
+                }
             },
 
             addToCart: function() {
