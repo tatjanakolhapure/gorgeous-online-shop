@@ -1,6 +1,6 @@
 {% for product in products %}
 <a href="{% url 'product' product.product.id %}" class="product">
-    <img class="product__img" src="/media/{{ product.image.image }}" alt="">
+    <img class="product__img" src="{{ product.image.image.url }}" alt="">
     <p class="product-name">{{ product.product.name }}</p>
     <p class="product-price">£{{ product.product.price }}</p>
 </a>
