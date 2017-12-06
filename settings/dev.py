@@ -1,3 +1,4 @@
+from decouple import config
 from base import *
 
 DEBUG = True
@@ -13,5 +14,5 @@ DATABASES = {
 }
 
 # Stripe environment variables
-STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_oV4e35Zirwo0wmm7ZrjgZO1k')
-STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_wUTLcpVb8nhWmDxUhBKd0Yxc')
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', config('STRIPE_PUBLISHABLE'))
+STRIPE_SECRET = os.getenv('STRIPE_SECRET', config('STRIPE_SECRET'))
