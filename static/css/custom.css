@@ -427,14 +427,15 @@ body {
     font-family: 'FontAwesome';
     font-size: 1.571rem;
     font-weight: 400;
+    padding: 15px;
 }
 
 .slick-next {
-    right: 15px;
+    right: 30px;
 }
 
 .slick-prev {
-    left: 15px;
+    left: 5px;
     z-index: 5;
 }
 
