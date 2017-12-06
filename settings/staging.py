@@ -13,7 +13,7 @@ DATABASES = {
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE', 'pk_test_oV4e35Zirwo0wmm7ZrjgZO1k')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET', 'sk_test_wUTLcpVb8nhWmDxUhBKd0Yxc')
 
-#ALLOWED_HOSTS.append('your-heroku-app.herokuapp.com')
+ALLOWED_HOSTS.append('gorgeous-shop.herokuapp.com')
 
 # Log DEBUG information to the console
 LOGGING = {
