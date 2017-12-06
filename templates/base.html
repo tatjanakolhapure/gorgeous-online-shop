@@ -19,9 +19,7 @@
 </head>
 <body>
     <header id="main-header" class="clearfix container-fluid">
-        <a href="{% url 'home' %}">
-            <object class="logo logo--main" data="{% static "images/logo.svg" %}" type="image/svg+xml"></object>
-        </a>
+        <a href="{% url 'home' %}"><img class="logo logo--main" src="{% static "images/logo.svg" %}" alt="logo"></a>
         <nav id="navigation" class="navbar navbar-light bg-faded">
             <div id="main-menu">
                 <ul class="navbar-nav">
@@ -88,9 +86,7 @@
     </header>
     <header id="mobile-header" class="container-fluid">
         <button class="btn-hamburger"><i class="fa fa-bars" aria-hidden="true"></i></button>
-        <a href="{% url 'home' %}">
-            <object class="logo logo--mobile" data="{% static "images/logo.svg" %}" type="image/svg+xml"></object>
-        </a>
+        <a href="{% url 'home' %}"><img class="logo logo--mobile" src="{% static "images/logo.svg" %}" alt="logo"></a>
         <a href="{% url 'cart_detail' %}" class="icon-container icon-container--bag">
             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
         </a>
