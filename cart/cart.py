@@ -120,7 +120,7 @@ class Cart(object):
             return '{0:.2f}'.format(2.95)
 
     def get_total_price(self):
-        return '{0:.2f}'.format(round(self.get_subtotal_price() + Decimal(self.get_delivery_price()), 2))
+        return round(self.get_subtotal_price() + Decimal(self.get_delivery_price()), 2)
 
     def clear(self):
         # remove cart from session

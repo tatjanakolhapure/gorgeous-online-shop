@@ -30,7 +30,7 @@ def checkout(request):
                 # create stripe charge object
                 charge = stripe.Charge.create(
                     # amount in units
-                    amount=int(cart.get_total_price()*100),
+                    amount=int(cart.get_total_price())*100,
                     currency="GBP",
                     card=form.cleaned_data['stripe_id']
                 )
