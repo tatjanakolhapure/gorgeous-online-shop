@@ -9,12 +9,12 @@ from django.http import JsonResponse
 from django.db import IntegrityError
 
 from accounts.models import Address, User
-from accounts.forms import UserRegistrationForm, UserLoginForm, AddressFrom, UserDetailsFrom
+from accounts.forms import UserRegistrationForm, UserLoginForm, AddressForm, UserDetailsForm
 
 def login(request):
     if request.method == 'POST' and 'register' in request.POST:
         form_register = UserRegistrationForm(request.POST)
-        form_address = AddressFrom(request.POST)
+        form_address = AddressForm(request.POST)
 
         try:
             if all([form_register.is_valid(), form_address.is_valid()]):
@@ -38,7 +38,7 @@ def login(request):
 
     else:
         form_register = UserRegistrationForm()
-        form_address = AddressFrom()
+        form_address = AddressForm()
 
     if request.method == 'POST' and 'login' in request.POST:
 
@@ -80,12 +80,12 @@ def edit_address(request, user_id):
     address = get_object_or_404(Address, user=user)
 
     if request.method == "POST":
-        form = AddressFrom(request.POST, instance=address)
+        form = AddressForm(request.POST, instance=address)
         if form.is_valid():
             form.save()
             return redirect(reverse('account'))
     else:
-        form = AddressFrom(instance=address)
+        form = AddressForm(instance=address)
 
     args = {'form': form}
     args.update(csrf(request))
@@ -97,12 +97,12 @@ def edit_details(request, user_id):
     user = get_object_or_404(User, pk=user_id)
 
     if request.method == "POST":
-        form = UserDetailsFrom(request.POST, instance=user)
+        form = UserDetailsForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
             return redirect(reverse('account'))
     else:
-        form = UserDetailsFrom(instance=user)
+        form = UserDetailsForm(instance=user)
 
     args = {'form': form}
     args.update(csrf(request))

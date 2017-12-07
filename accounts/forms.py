@@ -56,12 +56,12 @@ class UserLoginForm(forms.Form):
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-class UserDetailsFrom(forms.ModelForm):
+class UserDetailsForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
 
-class AddressFrom(forms.ModelForm):
+class AddressForm(forms.ModelForm):
     class Meta:
         model = Address
         fields = ['house_number_name', 'street', 'town', 'postcode']
