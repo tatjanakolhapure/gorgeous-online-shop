@@ -79,6 +79,9 @@ def products_list(request, category_name=None):
         # If page is out of range (e.g. 9999), deliver last page of results.
         products = paginator.page(paginator.num_pages)
 
+    pages_range = paginator.page_range
+    current_page = int(page)
+
     args = {
         'selected_categories': selected_categories,
         'products': products,
@@ -86,6 +89,8 @@ def products_list(request, category_name=None):
         'category': category,
         'sizes': sizes,
         'colors': colors,
+        'current_page': current_page,
+        'pages_range': pages_range
     }
 
     # in case of ajax call update products html
