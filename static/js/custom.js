@@ -78,6 +78,7 @@
                     fn.shoppingBagButtons();
                     fn.checkoutAccordion();
                     fn.orderButtonText();
+                    fn.billingAddress();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -705,6 +706,23 @@
 			    else {
                     jQuery('.button--order').text('View order');
                 }
+            },
+
+            billingAddress: function(){
+                // allow users to use delivery address as billing address
+                // when checkbox is selected import values from delivery address
+                jQuery('#use-delivery-address').on('change', function(){
+                    if (jQuery('#use-delivery-address').is(':checked')) {
+                        jQuery('#id_address_line1').val(jQuery('.address-line1').text());
+                        jQuery('#id_address_line2').val(jQuery('.address-line2').text());
+                        jQuery('#id_address_city').val(jQuery('.address-city').text());
+                        jQuery('#id_address_zip').val(jQuery('.address-zip').text());
+                    }
+                    // when checkbox is not selected clear values from form
+                    else {
+                        jQuery('.billing-address').find('input').val('');
+                    }
+                });
             }
 		};
 

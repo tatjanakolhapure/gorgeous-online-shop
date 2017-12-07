@@ -50,13 +50,14 @@
                     <div class="checkout-details__address">
                         <p class="section-title">Delivery address</p>
                         <p>{{ user.first_name }} {{ user.last_name }}</p>
-                        <p>{{ address.house_number_name }}</p>
-                        <p>{{ address.street }}</p>
-                        <p>{{ address.town }}</p>
-                        <p>{{ address.postcode }}</p>
+                        <p class="address-line1">{{ address.house_number_name }}</p>
+                        <p class="address-line2">{{ address.street }}</p>
+                        <p class="address-city">{{ address.town }}</p>
+                        <p class="address-zip">{{ address.postcode }}</p>
                     </div>
                     <div class="checkout-details__payment">
                         <p class="section-title">Billing Address</p>
+                        <label for="use-delivery-address"><input type="checkbox" id="use-delivery-address" style="margin-right:10px; margin-bottom:15px;">Use delivery address</label>
                         <form class="payment-form" action="{% url 'checkout' %}" method="post">
                             {% csrf_token %}
                             <div class="card-errors">
@@ -69,14 +70,16 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            {{ form.address_line1.label_tag }}
-                            {{ form.address_line1 }}
-                            {{ form.address_line2.label_tag }}
-                            {{ form.address_line2 }}
-                            {{ form.address_city.label_tag }}
-                            {{ form.address_city }}
-                            {{ form.address_zip.label_tag }}
-                            {{ form.address_zip }}
+                            <div class="billing-address">
+                                {{ form.address_line1.label_tag }}
+                                {{ form.address_line1 }}
+                                {{ form.address_line2.label_tag }}
+                                {{ form.address_line2 }}
+                                {{ form.address_city.label_tag }}
+                                {{ form.address_city }}
+                                {{ form.address_zip.label_tag }}
+                                {{ form.address_zip }}
+                            </div>
                             <p class="section-title">Card details</p>
                             {{ form.name.label_tag }}
                             {{ form.name }}
