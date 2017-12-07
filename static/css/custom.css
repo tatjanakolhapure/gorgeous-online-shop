@@ -1989,9 +1989,12 @@ body {
 .cart-container--total {
     margin-bottom: 40px;
 }
+.cart-empty,
+.orders-empty {
+    font-weight: 700;
+}
 
 .cart-empty {
-    font-weight: 700;
     text-align: center;
 }
 

@@ -19,28 +19,32 @@
                        </div>
                    </div>
                    <div id="account-orders" class="col-sm-12 col-md-10">
-                       <table class="account-orders__table">
-                           <tr>
-                               <th class="account-orders__title">Order date</th>
-                               <th class="account-orders__title mobile-hide">Order number</th>
-                               <th class="account-orders__title mobile-hide">Items</th>
-                               <th class="account-orders__title mobile-hide">Total</th>
-                               <th class="account-orders__title">Order status</th>
-                               <th class="account-orders__title"></th>
-                           </tr>
-                           {% for order in orders %}
+                       {% if orders %}
+                           <table class="account-orders__table">
                                <tr>
-                                   <td>{{ order.date }}</td>
-                                   <td class="mobile-hide">{{ order.order.id }}</td>
-                                   <td class="mobile-hide">{{ order.items }}</td>
-                                   <td class="mobile-hide">£{{ order.total }}</td>
-                                   <td>{{ order.order.status }}</td>
-                                   <td class="account-orders__view">
-                                       <a href="{% url 'order' order.order.id %}" class="button button--order">View order</a>
-                                   </td>
+                                   <th class="account-orders__title">Order date</th>
+                                   <th class="account-orders__title mobile-hide">Order number</th>
+                                   <th class="account-orders__title mobile-hide">Items</th>
+                                   <th class="account-orders__title mobile-hide">Total</th>
+                                   <th class="account-orders__title">Order status</th>
+                                   <th class="account-orders__title"></th>
                                </tr>
-                           {% endfor %}
-                       </table>
+                               {% for order in orders %}
+                                   <tr>
+                                       <td>{{ order.date }}</td>
+                                       <td class="mobile-hide">{{ order.order.id }}</td>
+                                       <td class="mobile-hide">{{ order.items }}</td>
+                                       <td class="mobile-hide">£{{ order.total }}</td>
+                                       <td>{{ order.order.status }}</td>
+                                       <td class="account-orders__view">
+                                           <a href="{% url 'order' order.order.id %}" class="button button--order">View order</a>
+                                       </td>
+                                   </tr>
+                               {% endfor %}
+                           </table>
+                       {% else %}
+                           <p class="orders-empty">You have not got any orders yet.</p>
+                       {% endif %}
                    </div>
                </div>
             </div>
