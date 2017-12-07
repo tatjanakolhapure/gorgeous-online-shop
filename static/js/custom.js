@@ -487,7 +487,15 @@
                 });
                 // reset inputs and price range slider when clicking reset
                 jQuery('#reset-filters').on('click', function(){
-                    jQuery('.filter-block').find('input:checked').prop('checked', false);
+                    // if category filter is visible when on all products page
+                    // reset everything
+                    if (jQuery('.filter').first().is(':visible') == true){
+                        jQuery('.filter-block').find('input:checked').prop('checked', false);
+                    }
+                    // else reset everything except category
+                    else {
+                        jQuery('.filter-block').slice(1).find('input:checked').prop('checked', false);
+                    }
                     global.priceRangeSlider.noUiSlider.reset();
                     // get values of start and end price
                     var values = global.priceRangeSlider.noUiSlider.get();
