@@ -80,7 +80,10 @@ def products_list(request, category_name=None):
         products = paginator.page(paginator.num_pages)
 
     pages_range = paginator.page_range
-    current_page = int(page)
+    try:
+        current_page = int(page)
+    except Exception as e:
+        current_page = 1
 
     args = {
         'selected_categories': selected_categories,
