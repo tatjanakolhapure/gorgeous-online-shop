@@ -1,5 +1,3 @@
-import json
-
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
@@ -44,7 +42,7 @@ def login(request):
 
         form_login = UserLoginForm(request.POST)
         if form_login.is_valid():
-            user = auth.authenticate(email=request.POST.get('email'),
+            user = auth.authenticate(email=request.POST.get('login_email'),
                                      password=request.POST.get('password'))
             if user is not None:
                 auth.login(request, user)

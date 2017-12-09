@@ -53,7 +53,7 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserLoginForm(forms.Form):
-    email = forms.EmailField()
+    login_email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
 class UserDetailsForm(forms.ModelForm):
