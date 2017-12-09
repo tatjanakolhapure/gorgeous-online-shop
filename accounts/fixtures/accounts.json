@@ -1,0 +1,107 @@
+[
+{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$vEpLGc7WpOj3$oxA2Im+j98NNEphGzhwlR+OspCAn0nrZL3inBcnCbBA=",
+        "last_login": "2017-12-09T15:02:53.629Z",
+        "is_superuser": true,
+        "username": "tatjanagkolhapure@gmail.com",
+        "email": "tatjanagkolhapure@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2017-11-12T09:25:05.532Z",
+        "first_name": "Tatjana",
+        "last_name": "Kolhapure",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 16,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$LW3bBWUaNn7K$PrWzlenEbnt14pfhhck3Ygs9H5Kl2oyZVl6acQ8577o=",
+        "last_login": "2017-12-06T21:06:14.283Z",
+        "is_superuser": false,
+        "username": "karla.slinton@example.com",
+        "email": "karla.slinton@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-11-12T13:51:02.071Z",
+        "first_name": "Karla",
+        "last_name": "Slinton",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 17,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$lBOKXXTfQTUK$JNME+ysjYNXW/Xgsxk9IXRGe+m4eHmnCTyVT3Gzje08=",
+        "last_login": "2017-12-07T22:10:42.247Z",
+        "is_superuser": false,
+        "username": "john.smith@example.com",
+        "email": "john.smith@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-11-14T21:56:23.051Z",
+        "first_name": "John",
+        "last_name": "Smith",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 31,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$iQo8MXhxQBin$n7D59Fgl71wDjKY3+mX62Qz6B66Gbks00MWX0Chh014=",
+        "last_login": "2017-12-04T20:24:45.453Z",
+        "is_superuser": false,
+        "username": "silvia.consila@example.com",
+        "email": "silvia.consila@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2017-11-15T23:43:13.659Z",
+        "first_name": "Silvia",
+        "last_name": "Consila",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.address",
+    "pk": 1,
+    "fields": {
+        "user": 16,
+        "house_number_name": "11 Sunny Court",
+        "street": "Summer Road",
+        "town": "Brighton",
+        "postcode": "BN1 3LS"
+    }
+},
+{
+    "model": "accounts.address",
+    "pk": 2,
+    "fields": {
+        "user": 17,
+        "house_number_name": "27 Happy Court",
+        "street": "3 First Avenue",
+        "town": "Brighton",
+        "postcode": "BN3 1KL"
+    }
+},
+{
+    "model": "accounts.address",
+    "pk": 16,
+    "fields": {
+        "user": 31,
+        "house_number_name": "12 Mount Court",
+        "street": "Christening Road",
+        "town": "Manchester",
+        "postcode": "MS8 3LT"
+    }
+}
+]
