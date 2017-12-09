@@ -8,7 +8,7 @@ from django.shortcuts import render
 from products.models import Product
 
 def get_index(request):
-    # code for filtering popular products within last week or month
+    # code for filtering popular products
 
     # get the datetime for the beginning of the current month
     # now = timezone.now()
@@ -18,7 +18,7 @@ def get_index(request):
     # datetime for the beginning of the week
     #week_start = today - datetime.timedelta(days=datetime.datetime.today().weekday())
 
-    # get all products sold
+    # get all products sold sorted by quantity
     sold_products = sorted([
         dict(quantity=sum([item.quantity for item in product.order_items.all()]),
         product=product, image=product.image_set.all()[0]) for product in Product.objects.all()],
