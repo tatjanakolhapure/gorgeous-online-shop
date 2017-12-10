@@ -132,3 +132,33 @@ class ProductsListPageTest(TestCase):
         }
         products_list_page_template_output = render_to_response("products/products_list.html", args).content
         self.assertEquals(products_list_page.content, products_list_page_template_output)
+
+
+class ProductPageTest(TestCase):
+
+    fixtures = ['products']
+
+    def setUp(self):
+        super(ProductPageTest, self).setUp()
+        self.product = Product.objects.get(pk=10)
+        self.product_page = self.client.get(reverse('product', kwargs={'product_id': self.product.id}))
+
+    def test_product_page_resolves(self):
+        product_page = resolve(reverse('product', kwargs={'product_id': self.product.id}))
+        self.assertEqual(product_page.func, product)
+
+    def test_product_page_status_code_is_ok(self):
+        self.assertEqual(self.product_page.status_code, 200)
+
+    def test_product_page_uses_correct_template(self):
+        self.assertTemplateUsed(self.product_page, "products/product.html")
+
+    def test_product_page_content(self):
+        # check if product details are included in page content
+        self.assertIn(str(self.product.image_set.all()[0]), self.product_page.content)
+        self.assertIn(str(self.product.size.all()[0]), self.product_page.content)
+        self.assertIn(str(self.product.name), self.product_page.content)
+        self.assertIn(str(self.product.price), self.product_page.content)
+        # check if unavailable sizes options are disabled and display the right message
+        self.assertIn(str('<option value="UK 10" disabled>'), self.product_page.content)
+        self.assertIn(str('UK 10 - Out of stock'), self.product_page.content)
