@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from decimal import Decimal
 
 from django.test import TestCase
 from django.core.urlresolvers import resolve
@@ -85,6 +86,13 @@ class CartUpdateTest(TestCase):
                     if size in item['all_sizes']:
                         self.assertTrue(size in item['all_sizes'])
 
+        # check if subtotal price is correct
+        self.assertEqual(self.cart.get_subtotal_price(), self.product.price)
+        # check if delivery is free
+        self.assertEqual(self.cart.get_delivery_price(), '2.95')
+        # check if total price is correct
+        self.assertEqual(self.cart.get_total_price(), Decimal(77.95))
+
     def test_cart_update_product_size(self):
         # update product's size
         cart_update_page = self.client.post('/cart/add/10', {'size': 'UK 6', 'quantity': '1', 'update': 'True'})
@@ -158,6 +166,12 @@ class CartUpdateTest(TestCase):
         self.assertEqual(product_two['product'], product)
         self.assertEqual(product_two['quantity'], 1)
         self.assertEqual(product_two['size'], 'UK 6')
+        # check if subtotal price is correct
+        self.assertEqual(self.cart.get_subtotal_price(), self.product.price + product.price)
+        # check if delivery is free
+        self.assertEqual(self.cart.get_delivery_price(), '0.00')
+        # check if total price is the same as subtotal price
+        self.assertEqual(self.cart.get_subtotal_price(), self.cart.get_total_price())
 
     def test_cart_update_product_quantity_not_in_stock(self):
         # update product's quantity
@@ -175,3 +189,8 @@ class CartUpdateTest(TestCase):
             self.assertEqual(item['size'], 'UK 8')
             self.assertEqual(item['quantity'], 1)
 
+    def test_cart_remove_product(self):
+        self.client.post('/cart/remove/10/UK 8/')
+        self.cart.remove('10', 'UK 8')
+        # confirm that cart is empty
+        self.assertFalse(self.cart)
