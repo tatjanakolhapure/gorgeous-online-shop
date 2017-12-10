@@ -101,7 +101,6 @@ class CartUpdateTest(TestCase):
             self.assertEqual(item['size'], 'UK 6')
             self.assertEqual(item['quantity'], 1)
 
-
     def test_cart_update_product_quantity(self):
         # update product's quantity
         cart_update_page = self.client.post('/cart/add/10', {'size': 'UK 8', 'quantity': '3', 'update': 'True'})
@@ -117,7 +116,6 @@ class CartUpdateTest(TestCase):
         for item in self.cart:
             self.assertEqual(item['size'], 'UK 8')
             self.assertEqual(item['quantity'], 3)
-
 
     def test_cart_update_product_size_and_quantity(self):
         # update product's size and quantity
