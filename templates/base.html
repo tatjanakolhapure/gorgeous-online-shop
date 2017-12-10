@@ -79,7 +79,7 @@
                 </div>
                 <a href="{% url 'cart_detail' %}" class="icon-container icon-container--bag">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                    <p class="icon-name"><span class="icon-name--hide">Bag</span> (<span class="price--total">{% if cart %}£ {{ cart.get_total_price }}{% else %}0{% endif %}</span>)</p>
+                    <p class="icon-name"><span class="icon-name--hide">Bag</span> (<span class="price--total">{% if cart %}£ {{ cart.get_total_price }}{% else %}£ 0.00{% endif %}</span>)</p>
                 </a>
             </div>
         </nav>
