@@ -139,7 +139,7 @@ class UserDetailsFormTest(TestCase):
         self.assertTrue(form.is_valid())
         # save details
         form.save()
-        # check if bew name is user's name now
+        # check if new name is user's name now
         self.assertTrue('Elizabeth', self.user.first_name)
 
     def test_user_details_form_fails_without_last_name(self):
