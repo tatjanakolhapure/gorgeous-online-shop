@@ -33,7 +33,7 @@
                            <select name="size" id="size-select" required oninvalid="this.setCustomValidity('Please select size')" oninput="setCustomValidity('')">
                                <option value="" selected disabled hidden>Please select</option>
                                {% for size in sizes %}
-                                   <option value="{{ size.size }}"{% if size not in sizes_available %}disabled{% endif %}>
+                                   <option value="{{ size.size }}" {% if size not in sizes_available %}disabled{% endif %}>
                                        {{ size.size }}{% if size not in sizes_available %} - Out of stock{% endif %}
                                    </option>
                                {% endfor %}
