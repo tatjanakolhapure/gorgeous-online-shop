@@ -1170,6 +1170,12 @@ body {
     margin-bottom: 15px;
 }
 
+.update-errors {
+    margin-bottom: 20px;
+    color: red;
+    font-weight: 700;
+}
+
 @media screen and (min-width: 768px) {
     #account-nav {
         text-align: left;

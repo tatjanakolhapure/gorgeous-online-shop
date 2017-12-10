@@ -97,8 +97,16 @@ def edit_details(request, user_id):
     if request.method == "POST":
         form = UserDetailsForm(request.POST, instance=user)
         if form.is_valid():
-            form.save()
-            return redirect(reverse('account'))
+            try:
+                existing_user = User.objects.get(email=request.POST.get('email'))
+            except Exception as User.DoesNotExist:
+                existing_user = None
+
+            if existing_user and existing_user != user:
+                return JsonResponse({"message": "User with this email already exists"}, status=400)
+            else:
+                form.save()
+                return JsonResponse({"status": "200"})
     else:
         form = UserDetailsForm(instance=user)
 

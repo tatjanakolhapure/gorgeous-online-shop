@@ -79,6 +79,7 @@
                     fn.checkoutAccordion();
                     fn.orderButtonText();
                     fn.billingAddress();
+                    fn.editDetails();
                 });
 
 				jQuery(window).on("resize", function() {
@@ -722,6 +723,30 @@
                     else {
                         jQuery('.billing-address').find('input').val('');
                     }
+                });
+            },
+
+            editDetails: function(){
+                var edit_details_frm = jQuery('.update-form');
+                console.log(edit_details_frm);
+
+                edit_details_frm.on("submit", function () {
+                    console.log('submit');
+                    var formData = jQuery(this).serializeArray();
+                    jQuery.ajax({
+                        type: edit_details_frm.attr('method'),
+                        url: edit_details_frm.attr('action'),
+                        data: formData,
+                        dataType: 'json',
+                        success: function(data) {
+                            window.location.href = '/account/details/';
+                        },
+                        error: function(data, error) {
+                            console.log(error);
+                            jQuery(".update-errors").text(data.responseJSON.message);
+                        }
+                    });
+                    return false;
                 });
             }
 		};
