@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.db import models
 from django.conf import settings
 
+# followed example by Vitor Freitas
+# https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#abstractbaseuser
 class AccountUserManager(UserManager):
     def _create_user(self, username, email, password, **extra_fields):
         now = timezone.now()
