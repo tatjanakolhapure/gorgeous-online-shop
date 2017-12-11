@@ -29,16 +29,16 @@ class Order(models.Model):
         ordering = ('-created',)
 
     def get_subtotal_cost(self):
-        return sum(item.get_cost() for item in self.items.all())
+        return '{0:.2f}'.format(sum(item.get_cost() for item in self.items.all()))
 
     def get_delivery_cost(self):
-        if self.get_subtotal_cost() > 75:
+        if Decimal(self.get_subtotal_cost()) > Decimal(75.00):
             return '{0:.2f}'.format(0)
         else:
             return '{0:.2f}'.format(2.95)
 
     def get_total_cost(self):
-        return '{0:.2f}'.format(round(self.get_subtotal_cost() + Decimal(self.get_delivery_cost()), 2))
+        return '{0:.2f}'.format(Decimal(self.get_subtotal_cost()) + Decimal(self.get_delivery_cost()))
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items')

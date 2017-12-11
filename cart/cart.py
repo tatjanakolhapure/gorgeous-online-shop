@@ -111,16 +111,16 @@ class Cart(object):
         return sum(item['quantity'] for item in self.cart)
 
     def get_subtotal_price(self):
-        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart)
+        return '{0:.2f}'.format(sum(Decimal(item['price']) * item['quantity'] for item in self.cart))
 
     def get_delivery_price(self):
-        if self.get_subtotal_price() > 75:
+        if Decimal(self.get_subtotal_price()) > Decimal(75.00):
             return '{0:.2f}'.format(0)
         else:
             return '{0:.2f}'.format(2.95)
 
     def get_total_price(self):
-        return round(self.get_subtotal_price() + Decimal(self.get_delivery_price()), 2)
+        return '{0:.2f}'.format(Decimal(self.get_subtotal_price()) + Decimal(self.get_delivery_price()))
 
     def clear(self):
         # remove cart from session
