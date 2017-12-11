@@ -87,11 +87,11 @@ class CartUpdateTest(TestCase):
                         self.assertTrue(size in item['all_sizes'])
 
         # check if subtotal price is correct
-        self.assertEqual(self.cart.get_subtotal_price(), self.product.price)
+        self.assertEqual(Decimal(self.cart.get_subtotal_price()), self.product.price)
         # check if delivery is free
         self.assertEqual(self.cart.get_delivery_price(), '2.95')
         # check if total price is correct
-        self.assertEqual(self.cart.get_total_price(), Decimal(77.95))
+        self.assertEqual(self.cart.get_total_price(), '77.95')
 
     def test_cart_update_product_size(self):
         # update product's size
@@ -167,7 +167,7 @@ class CartUpdateTest(TestCase):
         self.assertEqual(product_two['quantity'], 1)
         self.assertEqual(product_two['size'], 'UK 6')
         # check if subtotal price is correct
-        self.assertEqual(self.cart.get_subtotal_price(), self.product.price + product.price)
+        self.assertEqual(Decimal(self.cart.get_subtotal_price()), self.product.price + product.price)
         # check if delivery is free
         self.assertEqual(self.cart.get_delivery_price(), '0.00')
         # check if total price is the same as subtotal price
