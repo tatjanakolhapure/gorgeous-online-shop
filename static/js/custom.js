@@ -728,10 +728,7 @@
 
             editDetails: function(){
                 var edit_details_frm = jQuery('.update-form');
-                console.log(edit_details_frm);
-
                 edit_details_frm.on("submit", function () {
-                    console.log('submit');
                     var formData = jQuery(this).serializeArray();
                     jQuery.ajax({
                         type: edit_details_frm.attr('method'),

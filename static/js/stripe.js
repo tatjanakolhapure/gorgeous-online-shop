@@ -22,7 +22,6 @@
             formButton.attr("disabled", true);
             Stripe.createToken(card, function(status, response) {
                 if (status === 200) {
-                    console.log(status, response);
                     jQuery(".card-errors").hide();
                     jQuery("#id_stripe_id").val(response.id);
                     form.submit();
