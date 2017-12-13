@@ -116,3 +116,52 @@ readability. On the Checkout page, for example, order form is on the left and pr
 
 ## Functionality
 
+Django project has the following apps:
+- gorgeous
+- home
+- accounts
+- products
+- cart
+- orders
+
+In the templates folder there is a folder for each app templates.
+
+### Gorgeous app
+The main app gorgeous has urls file where urls from all other apps are imported, as also admin.site, tinymce and
+django.contrib.auth urls (for updating password). Gorgeous app has one view to render
+contact page.
+
+### Home app
+Home app has one view to render homepage. Popular products data is passed to the template to display bestsellers in the
+"Popular this week" slider. At the moment bestsellers are filtered from all products sold (as there won't be orders made every week).
+But the logic for filtering the most sold products this week is in place and commented out in the view.
+
+### Accounts app
+Accounts app has customized user model. It accepts email as a username and has fields first_name and last_name.
+Superuser must be created in the back-end using "python manage.py createsuperuser" command. And first_name and last_name
+fields are also required when creating a superuser. Superusers can be shop managers. However they are not supposed to
+shop on the website. It can be changed in the future though if necessary. Accounts app also has customized authenticate
+and get_user function for user.
+
+Address model is used to save customer's delivery address.
+
+Accounts app has UserRegistrationForm, UserLoginForm, UserDetailsForm and AddressForm. UserRegistrationForm and
+AddressForm is used for registration. AddressForm is also used to edit customer's address. UserLoginForm is used for
+logging in to the account. UserDetailsForm is used to edit user's details. 
+
+Login and registration form data is submitted using ajax to avoid page refresh. On success the user is redirected to their
+account page and if form validation failed the error message is displayed for the user.
+
+In order to check which form has been submitted (as they are on the same page) submit button value is used.
+
+Account page displays user details and their address. There is a link to edit user details, user password or to edit
+user address. When user clicks on any of the links they are redirected to another page for editing the necessary
+details. They can click cancel to return to account page and if the click save, form validation will take place. In
+case of success they will be redirected to account page. UserDetailsForm data is submitted using ajax in order to
+display a message to the user if an email address has been taken already.
+
+When user clicks on logout they are redirected to homepage.
+
+### Products app
+
+Products app has several models. 
