@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Overview and goals](#overview-and-goals)
+- [Content](#content)
 - [Design](#design)
 - [Functionality](#functionality)
 - [Validation and Testing](#validation-and-testing)
@@ -29,6 +30,25 @@ details and get customer support contact information.
 
 The project was made keeping in mind possible future functionality updates.
 
+## Content
+
+The website has the following pages:
+- Homepage
+- Products page with all products
+- Products page for each category (dresses, tops, trousers, coats, shoes)
+- Individual product page
+- Shopping bag page
+- Checkout page
+- Login/ Register page
+- Account page
+- Account delivery address edit page
+- Account details edit page
+- Account password change page
+- Account password change complete page
+- Orders page
+- Individual order page
+- Contact page
+
 ## Design
 
 The wireframes were created during the initial planning stage before starting the project development.
@@ -41,13 +61,15 @@ Shop logo was created using Adobe Illustrator.
 The following colors used for the design - gold, black, white, grey. Gold color is used for logo, buttons and slider
 arrows, grey color is used as a background color for footer and shopping bag, checkout containers, as also for borders.
 Font is either in black or white, black color is used for copyright and promotion block background, as also for icons.
-
 [Colour Contrast Check](http://leaverou.github.io/contrast-ratio/) was used to check color contrast and choose the
 right color shades.
 
 The website is made as responsive as possible using media queries and jQuery.
 
 Bootstrap library was used for the website grid, as also for accordion, tabs and dropdown menu functionality.
+
+[Font Awesome Icons](http://fontawesome.io/icons/) were used for different icons on the website (account, shopping bag,
+ burger menu, social media, arrow icons etc.).
 
 The shop logo sits at the top middle of the page to make it stand out. On desktop site the size of the logo decreases
 when you scroll down the page so the header does not take too much space.
@@ -66,12 +88,19 @@ improve readability.
 [Slick.js slider](http://kenwheeler.github.io/slick/) is used to create all sliders on the website as it is easily
 customizable and works perfectly on all browsers.
 
+One page (Login/register page) is used as for both logging in and for registration. The page has two tabs. One tab with
+login form and one tab with registration form. So users can switch to the tab they need.
+
+All accounts pages have the same layout with account navigation on the left which has two sections: My details and
+My orders. The page the customer is on is underlined (either My details or My orders link). 
+
 On the products page the navigation for filtering products is displayed on the left as usually on shopping websites.
 Customers can expand or close filters. On the mobile site there is a button at the top of the products list to open
 filters in a pop up screen which overlays all the page (except header). It gives enough space for customers to view and
 select filters. There is a button to either reset filters or to close them. Select menu is used to sort products, It is
 positioned at the top right of the products list on desktop site and next to filters button on the mobile site.
-[noUiSlider.js library](https://refreshless.com/nouislider/) is used to filter products by price.
+[noUiSlider.js library](https://refreshless.com/nouislider/) is used to filter products by price. And
+[wNumb.js](https://refreshless.com/wnumb/) library is used to format numbers for noUiSlider.
 
 On the individual product page the product image thumbnails are displayed on the left of the main product image so the
 users do not have to scroll down to click on thumbnails. Users can click on thumbnails or on slider arrows to view
@@ -79,6 +108,11 @@ different product images. Users can also click on the main image to zoom it in. 
 Moore](http://www.jacklmoore.com/zoom/) is used for that purpose. Magnifying glass cursor is used on product image
 hover. But for Internet Explorer the crosshair cursor is used instead as a fallback. On the mobile site the image
 thumbnails are not displayed to save space but they are still displayed on tablet size screen.
+
+On the Shopping bag and Checkout page there are different sections with grey background to separate content for
+readability. On the Checkout page, for example, order form is on the left and product list is on the right. Product list
+ can be closed or expanded (it is closed on mobile by default to save space). Each product also has a borderline to
+ separate it from other products.
 
 ## Functionality
 
