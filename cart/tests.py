@@ -194,3 +194,8 @@ class CartUpdateTest(TestCase):
         self.cart.remove('10', 'UK 8')
         # confirm that cart is empty
         self.assertFalse(self.cart)
+
+    def test_clear_cart(self):
+        cart = self.cart.clear()
+        # confirm that cart is empty
+        self.assertFalse(cart)
