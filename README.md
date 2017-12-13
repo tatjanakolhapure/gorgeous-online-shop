@@ -2,7 +2,7 @@
 
 ## Table of Contents
 - [Overview and goals](#overview-and-goals)
-- [Content](#content)
+- [Pages](#pages)
 - [Design](#design)
 - [Functionality](#functionality)
 - [Validation and Testing](#validation-and-testing)
@@ -30,7 +30,7 @@ details and get customer support contact information.
 
 The project was made keeping in mind possible future functionality updates.
 
-## Content
+## Pages
 
 The website has the following pages:
 - Homepage
