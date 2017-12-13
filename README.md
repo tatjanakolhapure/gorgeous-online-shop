@@ -129,7 +129,8 @@ Django project has the following apps:
 - [cart](#cart-app)
 - [orders](#orders)
 
-In the templates folder there is a folder for each app templates.
+In the templates folder there is a folder for each app templates. Each app has their own tests created using Django
+TestCase class. Some apps also have fixtures to store data for tests.
 
 ### Gorgeous app
 The main app gorgeous has urls file where urls from all other apps are imported, as also admin.site, tinymce and
@@ -287,5 +288,3 @@ There is also a view to display all orders on the customer's page. The table is 
 columns with order date, order number, items number, total price, order status, each row has button "view order" on the
 right. On mobile screen the table shows only two columns - order date and order status, each row with a button "view"
 on the right.
-
-
