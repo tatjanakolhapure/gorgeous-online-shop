@@ -174,10 +174,10 @@ a:active {
 
 .icon-container--bag:hover,
 .icon-container--bag:focus,
-#account-menu:visited,
-#account-menu:active,
-#account-menu:hover,
-#account-menu:focus {
+#icon-account-menu:visited,
+#icon-account-menu:active,
+#icon-account-menu:hover,
+#icon-account-menu:focus {
     color: rgba(0,0,0,.7);
     text-decoration: none;
 }
