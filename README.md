@@ -69,7 +69,7 @@ The website is made as responsive as possible using media queries and jQuery.
 Bootstrap library was used for the website grid, as also for accordion, tabs and dropdown menu functionality.
 
 [Font Awesome Icons](http://fontawesome.io/icons/) were used for different icons on the website (account, shopping bag,
- burger menu, social media, arrow icons etc.).
+burger menu, social media, arrow icons etc.).
 
 The shop logo sits at the top middle of the page to make it stand out. On desktop site the size of the logo decreases
 when you scroll down the page so the header does not take too much space.
@@ -79,11 +79,15 @@ shopping bag on the right side. And on the mobile site there is a burger icon on
 click the menu slides in from the left and can be closed by sliding it left using a finger or by clicking on the burger
 icon. It is achieved using [SlideOut.js library](https://slideout.js.org/).
 
+In order to avoid dropdown menu from closing when clicking outside it on mobile
+[Mike Kane solution](https://stackoverflow.com/questions/19740121/keep-bootstrap-dropdown-open-when-clicked-off)
+was followed.
+
 The header with logo and the menu is fixed both on desktop and mobile site so it can be easily accessible at any time.
 
 The homepage uses full screen slider at the top of the page as also a parallax image on the page with a call for action
-to attract customers. All website pages are kept as clean as possible using white space to avoid distractions and
-improve readability.
+to attract customers. [Renan Breno example](https://codepen.io/RenanB/pen/GZeBNg) was followed to create parallax
+effect. All website pages are kept as clean as possible using white space to avoid distractions and improve readability.
 
 [Slick.js slider](http://kenwheeler.github.io/slick/) is used to create all sliders on the website as it is easily
 customizable and works perfectly on all browsers.
@@ -117,12 +121,12 @@ readability. On the Checkout page, for example, order form is on the left and pr
 ## Functionality
 
 Django project has the following apps:
-- gorgeous
-- home
-- accounts
-- products
-- cart
-- orders
+- [gorgeous](#gorgeous-app)
+- [home](#home-app)
+- [accounts](#accounts-app)
+- [products](#products-app)
+- [cart](#cart-app)
+- [orders](#orders)
 
 In the templates folder there is a folder for each app templates.
 
@@ -142,6 +146,8 @@ Superuser must be created in the back-end using "python manage.py createsuperuse
 fields are also required when creating a superuser. Superusers can be shop managers. However they are not supposed to
 shop on the website. It can be changed in the future though if necessary. Accounts app also has customized authenticate
 and get_user function for user.
+[Vitor Freitas guide](https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#abstractbaseuser)
+was followed to create customized users.
 
 Address model is used to save customer's delivery address.
 
@@ -164,4 +170,93 @@ When user clicks on logout they are redirected to homepage.
 
 ### Products app
 
-Products app has several models. 
+Products app has several models:
+- Category model to sort products by category.
+- Size model to apply different sizes for each product.
+- Color model to apply different colors for each product.
+- Image model to upload several images for each product. It has product field as a foreign key.
+- Product model to create products. Product model has category as a foreign key and size and color fields as
+ManyToManyFields, meaning that each product can have several sizes, colors and each size, color can belong to different
+products. Product model also has fields name, description, price and created.
+- Stock model saves amount available for each product with specific size and color. Amount is PositiveIntegerField and
+product, size and color are foreign keys.
+
+Category, Image, Product, Size, Color, Stock models are included on admin site so they can edit them or add new.
+
+Products app has three views. One view is to render products list. It has two urls, one for viewing all products and
+one for viewing specific category products. The view checks if category_name argument is passed in url. If it is passed
+in url the page renders only specific category products and also it does not show a filter to filter products by
+category. It also changes the title of the page accordingly.
+
+Only products which are in stock are displayed on the page.
+
+Ajax is used to filter products by category, size, color and price as also to sort them by new in, low to high or high
+to low. Every time a user selects a filter checkbox, updates price range slider or uses sort menu ajax makes get
+request to the view with selected data and products are filtered or sorted in the view using the selected data. The view
+renders a separate html file with new products data and returns a response with products html to ajax. This html is then
+placed in a specific container on the page.
+
+Django paginator is used to show products on different pages.
+
+Individual product page displays information about specific product. It shows product images on the left side and
+product description on the right side. The page displays all sizes in a select menu. If size is not in stock the option
+is greyed out and it says next to size name that it is out of stock. So users can only add items to bag which are in
+stock. 
+
+Product description is entered on admin site using tinymce text editor. And then it is displayed in the template using 
+autoescape tag to escape HTML. 
+
+### Cart app
+
+Cart app was created following Antonio Mele guide in the book Django By Example.
+
+The app has file cart.py which has different functions for the cart class. The cart is stored in the session. When the
+cart is initialized in the view the init function checks if the cart is already stored in the session, and if not, it
+creates an empty cart in the session.
+
+CartForm is used to add products to the cart or update them in the cart. It has a field quantity with select options
+from 1 to 10 and it has hidden field update. Its value is false by default but if form is used in the shopping cart to
+update items in the bag the update field value is changed to true in this case.
+
+The function add in the cart.py file is used for changing items in the cart. It has several conditions. If the cart is
+empty, the function adds new product to the cart. If the cart is not empty, the function checks if this product is
+already in the cart and which size is in the cart. And then the function either updates size or quantity accordingly.
+It also checks if the quantity requested is available in stock. When changes are made the function save is called to
+save the cart.
+
+CartForm is used on the product page to add product item to the shopping bag. The quantity field is hidden to add one
+item by default to the cart. When user clicks on "add to bag" button the post request is made to the cart app view 
+using ajax to add product item to the shopping bag. In case of success ajax shows the message that product was added to
+the bag mentioning product name and size. If product size is not available anymore (number of items for this size in
+shopping bag exceeds the amount in stock) ajax displays a message that this product in selected size is not available
+anymore.
+
+On shopping bag page the user can see items in the cart - product image, name, price, selected size and quantity. There
+are select menus for size and quantity so users can update values. If size is out of stock the option will be disabled
+so users won't be able to choose size which is not in stock. Ajax is used to update the shopping bag. When user selects
+a new size or new quantity, a button "update" and also link "cancel" appears. If user clicks on "cancel" the buttons
+will disappear and the size and quantity values will change to initial ones. If user clicks on "save" the buttons will
+disappear, new values will be selected and prices will be updated in the cart.
+
+Class cart in cart.py has also functions to calculate subtotal, delivery and total price for the cart, as also to
+iterate through cart items. Delivery price is £0 if user has £75 or more worth items in the cart. Iteration function
+adds additional information for each item in the cart which is used in the template. Cart also has function remove to
+remove item from the cart and clear function to empty the cart.
+
+To remove the item from the cart, another url is used to call remove function. After the item is removed from the cart
+the page refreshes. If the cart is empty the shopping bag page displays a message informing that shopping bag is empty
+and a button "shop now".
+
+Context processor is created for the cart so the total cart price would be available on each page. It is displayed in
+the header next to shopping bag icon.
+
+And session is set to expire on closing browser in settings. So the user will be logged out and shopping bag empty after
+user closes their browser.
+
+
+
+
+
+
+
+
