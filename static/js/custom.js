@@ -4,7 +4,7 @@
 
 ;(function(jQuery){
 	"use strict";
-	function Gorgeous()
+	var gorgeous = function()
 	{
 		var global = {
 		    dropdownShop: jQuery(".dropdown--shop"),
@@ -491,7 +491,7 @@
                 jQuery('#reset-filters').on('click', function(){
                     // if category filter is visible when on all products page
                     // reset everything
-                    if (jQuery('.filter').first().is(':visible') == true){
+                    if (jQuery('.filter').first().is(':visible')){
                         jQuery('.filter-block').find('input:checked').prop('checked', false);
                     }
                     // else reset everything except category
@@ -524,18 +524,6 @@
             mobileFiltersResize: function() {
 			    var openFilter = jQuery('.filter-header').find('a[aria-expanded="true"]');
 			    // check is mobile header is visible to match CSS media queries
-			    if (global.mobileHeader.is(':visible') == false) {
-			        // if mobile header is not visible
-			        // show necessary elements on desktop on resize
-                    jQuery('#promotion').show();
-                    jQuery('.heading--top').show();
-                    jQuery('#products-nav').show();
-                    // if filter is open hide minus icon
-                    if (openFilter) {
-                        openFilter.find('.fa.fa-minus').hide();
-                    }
-                }
-			    // check is mobile header is visible to match CSS media queries
                 if (global.mobileHeader.is(':visible')) {
 			        // check if filters are open
                     if (jQuery('#reset-filters').is(':visible')) {
@@ -548,6 +536,16 @@
                     if (openFilter) {
                         openFilter.find('.fa.fa-plus').hide();
                         openFilter.find('.fa.fa-minus').show();
+                    }
+                } else {
+			        // if mobile header is not visible
+			        // show necessary elements on desktop on resize
+                    jQuery('#promotion').show();
+                    jQuery('.heading--top').show();
+                    jQuery('#products-nav').show();
+                    // if filter is open hide minus icon
+                    if (openFilter) {
+                        openFilter.find('.fa.fa-minus').hide();
                     }
                 }
             },
@@ -656,7 +654,7 @@
             shoppingBagQuantity: function() {
 			    // change text for quantity label depending on screen size
                 // check if mobile header is visible to match CSS media queries
-			    if (global.mobileHeader.is(':visible') == true) {
+			    if (global.mobileHeader.is(':visible')) {
                     jQuery('label[for=id_quantity]').text('Qty:');
                 }
                 else {
@@ -694,14 +692,14 @@
 
             checkoutAccordion: function(){
 			    // check if mobile header is visible to match CSS media queries
-			    if (global.mobileHeader.is(':visible') == true) {
+			    if (global.mobileHeader.is(':visible')) {
                     jQuery('#summary-products').removeClass('show');
                 }
             },
 
             orderButtonText: function(){
                 // check if mobile header is visible to match CSS media queries
-			    if (global.mobileHeader.is(':visible') == true) {
+			    if (global.mobileHeader.is(':visible')) {
                     jQuery('.button--order').text('View');
 			    }
 			    else {
@@ -749,7 +747,6 @@
 		};
 
 		fn.init();
-	}
-
-	new Gorgeous();
+	};
+	gorgeous();
 })(jQuery);
