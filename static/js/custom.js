@@ -64,7 +64,7 @@
 				    fn.loginRegisterTabs();
 				    fn.filterProducts();
 				    fn.sortProducts();
-				    if (global.priceRangeSlider != null) {
+				    if (global.priceRangeSlider !== null) {
 				        fn.priceRangeSlider();
                     }
                     fn.mobileFilters();
