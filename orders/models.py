@@ -6,8 +6,9 @@ from django.db import models
 from django.conf import settings
 
 from products.models import Product, Size
-from accounts.models import Address
 
+# models created following examples by Antonio Mele
+# in the book Django By Example
 class Order(models.Model):
     STATUS_CHOICES = (
         ('processing', 'Processing'),
