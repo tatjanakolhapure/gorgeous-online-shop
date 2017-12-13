@@ -586,8 +586,8 @@ body {
     #home-banner .slider-item--two .slider-caption {
         top: 20%;
         left: 10%;
-        right: unset;
-        bottom: unset;
+        right: auto;
+        bottom: auto;
     }
 
     #home-banner .slider-item {
@@ -775,7 +775,7 @@ body {
     }
 
     .parallax-content {
-        left: unset;
+        left: auto;
     }
 }
 
@@ -1443,19 +1443,19 @@ body {
     }
 
     #products-nav {
-        margin-bottom: unset;
+        margin-bottom: auto;
         padding-left: inherit;
-        margin-left: unset;
+        margin-left: auto;
     }
 
     #sort-products {
         float: right;
-        padding-top: unset;
-        text-align: unset;
+        padding-top: initial;
+        text-align: left;
         height: auto;
         border: none;
         width: auto;
-        margin-right: unset;
+        margin-right: auto;
     }
 
     #sort-products label {
@@ -1493,7 +1493,7 @@ body {
         height: auto;
         position: relative;
         background: none;
-        left: unset;
+        left: auto;
         padding-top: 0;
     }
 
@@ -2025,10 +2025,10 @@ body {
     }
 
     .product-item__details p {
-        line-height: unset;
+        line-height: 1.5rem;
     }
 
-    .product-itemt__price {
+    .product-item__price {
         margin-bottom: 12px;
     }
 
@@ -2162,7 +2162,7 @@ body {
 }
 
 .checkout-summary .product-item__details p:first-of-type {
-    max-width: unset;
+    max-width: initial;
 }
 
 .checkout-details__address {
@@ -2369,7 +2369,7 @@ label[for='id_expiry_month'] {
 }
 
 .order-item .product-item__details p {
-    line-height: unset;
+    line-height: 1.5rem;
 }
 
 .order-item .product-item__details {
@@ -2377,7 +2377,7 @@ label[for='id_expiry_month'] {
 }
 
 .order-item .product-item__details p:first-of-type {
-    max-width: unset;
+    max-width: initial;
 }
 
 .order-prices {
