@@ -27,7 +27,7 @@
                         <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item dropdown dropdown--account">
-                        <div class="nav-link dropdown-toggle" id="account-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="nav-link dropdown-toggle" role="button" id="account-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Account<i class="fa fa-angle-down" aria-hidden="true"></i>
                         </div>
                         <div class="dropdown-menu" aria-labelledby="account-menu">
@@ -138,7 +138,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 {% block script %}{% endblock script %}
 <script src="{% static "js/custom.js" %}"></script>
 </html>
