@@ -93,7 +93,8 @@ effect. All website pages are kept as clean as possible using white space to avo
 customizable and works perfectly on all browsers.
 
 One page (Login/register page) is used as for both logging in and for registration. The page has two tabs. One tab with
-login form and one tab with registration form. So users can switch to the tab they need.
+login form and one tab with registration form. So users can switch to the tab they need. loginRegisterTabs jQuery
+function is used to show selected tab on page refresh.
 
 All accounts pages have the same layout with account navigation on the left which has two sections: My details and
 My orders. The page the customer is on is underlined (either My details or My orders link). 
@@ -115,8 +116,8 @@ thumbnails are not displayed to save space but they are still displayed on table
 
 On the Shopping bag and Checkout page there are different sections with grey background to separate content for
 readability. On the Checkout page, for example, order form is on the left and product list is on the right. Product list
- can be closed or expanded (it is closed on mobile by default to save space). Each product also has a borderline to
- separate it from other products.
+can be closed or expanded (it is closed on mobile by default to save space). Each product also has a borderline to
+separate it from other products.
 
 ## Functionality
 
@@ -137,8 +138,9 @@ contact page.
 
 ### Home app
 Home app has one view to render homepage. Popular products data is passed to the template to display bestsellers in the
-"Popular this week" slider. At the moment bestsellers are filtered from all products sold (as there won't be orders made every week).
-But the logic for filtering the most sold products this week is in place and commented out in the view.
+"Popular this week" slider. At the moment bestsellers are filtered from all products sold (as there won't be orders
+made every week). But the logic for filtering the most sold products this week is in place and commented out in the
+view.
 
 ### Accounts app
 Accounts app has customized user model. It accepts email as a username and has fields first_name and last_name.
@@ -155,8 +157,8 @@ Accounts app has UserRegistrationForm, UserLoginForm, UserDetailsForm and Addres
 AddressForm is used for registration. AddressForm is also used to edit customer's address. UserLoginForm is used for
 logging in to the account. UserDetailsForm is used to edit user's details. 
 
-Login and registration form data is submitted using ajax to avoid page refresh. On success the user is redirected to their
-account page and if form validation failed the error message is displayed for the user.
+Login and registration form data is submitted using ajax to avoid page refresh. On success the user is redirected to
+their account page and if form validation failed the error message is displayed for the user.
 
 In order to check which form has been submitted (as they are on the same page) submit button value is used.
 
@@ -253,10 +255,37 @@ the header next to shopping bag icon.
 And session is set to expire on closing browser in settings. So the user will be logged out and shopping bag empty after
 user closes their browser.
 
+### Orders app
 
+Orders app models were created following Antonio Mele guide in the book Django By Example.
 
+Order model is used to create orders. Each order stores address as a string so it would not change. Order also has
+status field which by default is processing. Shop managers can change order status on the admin site either to
+dispatched or to delivered. Order has field created (date and time of order creation), updated (date and time of last
+order update) and stripe_id field to store Stripe charge id. It is empty by default. Order also has foreign key to the
+user to find specific user orders. Order model has functions to calculate subtotal, delivery and total cost similarly
+as the cart has.
 
+OrderItem model has foreign key to the order, product and size. It has field price and quantity as well. OrderItem has
+also function to calculate its cost (price multiplied by quantity).
 
+Order app has PaymentForm for registering order. It has fields for billing address and card details as also stripe_id
+field.
 
+Checkout view gets information from the cart about the product items added to the cart. It renders a template which
+displays delivery address on the left with a payment form below and products list with prices on the right. User is able
+to tick "use delivery address" in billing address section and the form will be filled in with delivery address
+information.
+
+Stripe id is generated on form submission using functions in stripe.js file. This stripe id is then used
+to create a stripe charge. If form is not valid or payment was unsuccessful page refreshes and shows error messages for
+the user. If form is valid, stripe charge is created and if payment is successful order and order items are created as
+well. Stock is updated at the end as well and shopping bag cleared. User is redirected to their order page which
+displays information about the order.
+
+There is also a view to display all orders on the customer's page. The table is used to display orders information:
+columns with order date, order number, items number, total price, order status, each row has button "view order" on the
+right. On mobile screen the table shows only two columns - order date and order status, each row with a button "view"
+on the right.
 
 
