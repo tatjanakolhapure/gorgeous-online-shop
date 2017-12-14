@@ -285,12 +285,12 @@ information.
 
 Stripe id is generated on form submission using functions in stripe.js file. This stripe id is then used
 to create a stripe charge. If form is not valid or payment was unsuccessful page refreshes and shows error messages for
-the user. If form is valid, stripe charge is created and if payment is successful order and order items are created as
+the user. If form is valid, stripe charge is created and if payment is successful, order and order items are created as
 well. Stock is updated at the end as well and shopping bag cleared. User is redirected to their order page which
 displays information about the order.
 
 There is also a view to display all orders on the customer's page. The table is used to display orders information:
-columns with order date, order number, items number, total price, order status, each row has button "view order" on the
+columns with order date, order number, items number, total price, order status, each row has a button "view order" on the
 right. On mobile screen the table shows only two columns - order date and order status, each row with a button "view"
 on the right.
 
