@@ -297,4 +297,63 @@ on the right.
 ## Validation and Testing
 
 Each app has their own tests created using Django TestCase class. Some apps also have fixtures to store data for tests.
+All views, forms and pages were tested as much as possible using unit tests.
 
+Besides that the website was constantly tested during the development process. Browser developer tools were used to test
+HTML, CSS, JavaScript and responses from the server. For testing JavaScript console.log() function was used to log and
+test information and for testing Python the function print was used to test statements as also Python Console to test
+algorithms. The command "python manage.py shell" was often used in the terminal to test Django functions and database.
+The website also was tested from the user perspective and from the admin perspective.
+
+The website was tested in all browsers and functionality changed accordingly to make sure that the website works well
+in all browsers (e.g. initially Bootstrap carousel was used for sliders but it did not work correctly on Internet
+Explorer, and after not being able to find a solution, the Slick slider was used instead which worked perfectly in all
+browsers).
+
+The HTML code was validated using The W3C Markup Validation Service. Validation service noted that alt tag was missing
+for one image, role attribute was missing for one dropdown menu, type attribute was not required for script tag and all
+scripts were placed outside body element. All issues were addressed and code amended accordingly. 
+
+The CSS code was validated using CSS validator The W3C CSS Validation Service. The validation service did not approve
+the usage of the value unset for some properties so it was replaced with other values instead (auto or initial etc.).
+
+JavaScript code was validated using JSLint, Esprima, JSHint online validators. JSHint recommended using === operator
+instead of == operator to check if the value is true and to use !== operator instead of != operator to check if the
+value is null. All issues were fixed.
+
+The website was tested on different screen sizes using Google Device Toolbar in Developer Tools as also using
+Mobile/RWD Tester extension in Google Chrome. The website was tested on Windows desktop computer and on Android phones
+Samsung Galaxy S7 and HTC Desire Eye. The website was also tested in Safari browser on iPad Pro 10.2 and on Mac using
+online service [Crossbrowser Testing](https://crossbrowsertesting.com/). 
+
+## Deployment
+
+The repository for the project is available on GitHub.
+
+The project was deployed on Heroku using the guide provided by the course material. The following steps were taken:
+
+- Settings directory was created with different settings files (base settings, development settings and staging
+settings)
+- Requirements directory was created with different requirements files as well (base requirements, development
+requirements and staging requirements). The file with full requirements list was also kept in the root folder for
+deploying on Heroku
+- Heroku app was created on Heroku website in the section apps
+- Heroku app included in the list of ALLOWED_HOSTS in staging settings
+- Python package gunicorn was installed
+- Procfile and Procfile.windows files created
+- DJANGO_SETTINGS_MODULE variable set to settings.dev locally, on heroku DJANGO_SETTINGS_MODULE variable set to
+settings.staging
+- whitenoise package was installed to serve static files on heroku
+- Amazon Web Services used to serve media files online
+- Python Decouple package was installed to store secret keys securely in .env file which is ignored by version control,
+those keys then were set on heroku as well in Config Variables
+- heroku app connected to GitHub repository in the section Deploy
+- The command "heroku ps:scale web=1" was run
+- ClearDB MySQL was added as an add-on on heroku for database
+- CLEARDB_DATABASE_URL variable set on heroku
+- dj-database-url package installed for the project
+- migrations were run to create tables on heroku database
+- local database dumped in json file which was pushed to GitHub repository and heroku database tables populated with
+data from dumped json file
+
+The deployed website is available [here](https://gorgeous-shop.herokuapp.com/)
