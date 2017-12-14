@@ -122,6 +122,9 @@ readability. On the Checkout page, for example, order form is on the left and pr
 can be closed or expanded (it is closed on mobile by default to save space). Each product also has a borderline to
 separate it from other products.
 
+All the product images, prices and description was taken from [Forever 21](http://www.forever21.com/UK/) website. The
+rest of the images were found on Google.
+
 ## Functionality
 
 Django project has the following apps:
@@ -173,9 +176,6 @@ case of success they will be redirected to account page. UserDetailsForm data is
 display a message to the user if an email address has been taken already.
 
 When user clicks on logout they are redirected to homepage.
-
-All the product images, prices and description was taken from [Forever 21](http://www.forever21.com/UK/) website. The
-rest of the images were found on Google.
 
 ### Products app
 
