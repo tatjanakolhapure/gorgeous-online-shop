@@ -321,10 +321,10 @@ JavaScript code was validated using JSLint, Esprima, JSHint online validators. J
 instead of == operator to check if the value is true and to use !== operator instead of != operator to check if the
 value is null. All issues were fixed.
 
-The website was tested on different screen sizes using Google Device Toolbar in Developer Tools as also using
-Mobile/RWD Tester extension in Google Chrome. The website was tested on Windows desktop computer and on Android phones
-Samsung Galaxy S7 and HTC Desire Eye. The website was also tested in Safari browser on iPad Pro 10.2 and on Mac using
-online service [Crossbrowser Testing](https://crossbrowsertesting.com/). 
+The website was tested on different screen sizes using Google Device Toolbar in Google Chrome Developer Tools as also
+using Mobile/RWD Tester extension in Google Chrome. The website was tested on Windows desktop computer and on Android
+phones Samsung Galaxy S7 and HTC Desire Eye. The website was also tested in Safari browser on iPad Pro 10.2 and on Mac
+using online service [Crossbrowser Testing](https://crossbrowsertesting.com/). 
 
 ## Deployment
 
