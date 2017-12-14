@@ -8,10 +8,6 @@ DATABASES = {
     'default': dj_database_url.config('CLEARDB_DATABASE_URL')
 }
 
-# Stripe environment variables
-STRIPE_PUBLISHABLE = config('STRIPE_PUBLISHABLE')
-STRIPE_SECRET = config('STRIPE_SECRET')
-
 ALLOWED_HOSTS.append('gorgeous-shop.herokuapp.com')
 
 # Log DEBUG information to the console

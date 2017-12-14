@@ -11,7 +11,3 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-# Stripe environment variables
-STRIPE_PUBLISHABLE = config('STRIPE_PUBLISHABLE')
-STRIPE_SECRET = config('STRIPE_SECRET')

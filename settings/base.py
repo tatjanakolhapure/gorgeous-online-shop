@@ -116,3 +116,7 @@ AUTH_USER_MODEL = 'accounts.User'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 CART_SESSION_ID = 'cart'
+
+# Stripe environment variables
+STRIPE_PUBLISHABLE = config('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = config('STRIPE_SECRET')
