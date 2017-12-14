@@ -95,11 +95,11 @@ effect. All website pages are kept as clean as possible using white space to avo
 [Slick.js slider](http://kenwheeler.github.io/slick/) is used to create all sliders on the website as it is easily
 customizable and works perfectly on all browsers.
 
-One page (Login/register page) is used as for both logging in and for registration. The page has two tabs. One tab with
-login form and one tab with registration form. So users can switch to the tab they need. loginRegisterTabs jQuery
+One page (Login/register page) is used for both logging in and for registration. The page has two tabs. One tab has
+login form and one tab has registration form. So users can switch to the tab they need. loginRegisterTabs jQuery
 function is used to show selected tab on page refresh.
 
-All accounts pages have the same layout with account navigation on the left which has two sections: My details and
+All account pages have the same layout with account navigation on the left which has two sections: My details and
 My orders. The page the customer is on is underlined (either My details or My orders link). 
 
 On the products page the navigation for filtering products is displayed on the left as usually on shopping websites.
@@ -173,6 +173,9 @@ case of success they will be redirected to account page. UserDetailsForm data is
 display a message to the user if an email address has been taken already.
 
 When user clicks on logout they are redirected to homepage.
+
+All the product images, prices and description was taken from [Forever 21](http://www.forever21.com/UK/) website. The
+rest of the images were found on Google.
 
 ### Products app
 
