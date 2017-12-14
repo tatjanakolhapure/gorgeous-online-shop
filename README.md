@@ -135,8 +135,7 @@ Django project has the following apps:
 - [cart](#cart-app)
 - [orders](#orders)
 
-In the templates folder there is a folder for each app templates. Each app has their own tests created using Django
-TestCase class. Some apps also have fixtures to store data for tests.
+In the templates folder there is a folder for each app templates.
 
 ### Gorgeous app
 The main app gorgeous has urls file where urls from all other apps are imported, as also admin.site, tinymce and
@@ -171,8 +170,8 @@ In order to check which form has been submitted (as they are on the same page) s
 
 Account page displays user details and their address. There is a link to edit user details, user password or to edit
 user address. When user clicks on any of the links they are redirected to another page for editing the necessary
-details. They can click cancel to return to account page and if the click save, form validation will take place. In
-case of success they will be redirected to account page. UserDetailsForm data is submitted using ajax in order to
+details. They can click cancel to return to the account page and if they click save, form validation will take place. In
+case of success they will be redirected to the account page. UserDetailsForm data is submitted using ajax in order to
 display a message to the user if an email address has been taken already.
 
 When user clicks on logout they are redirected to homepage.
@@ -200,17 +199,17 @@ category. It also changes the title of the page accordingly.
 Only products which are in stock are displayed on the page.
 
 Ajax is used to filter products by category, size, color and price as also to sort them by new in, low to high or high
-to low. Every time a user selects a filter checkbox, updates price range slider or uses sort menu ajax makes get
-request to the view with selected data and products are filtered or sorted in the view using the selected data. The view
-renders a separate html file with new products data and returns a response with products html to ajax. This html is then
-placed in a specific container on the page.
+to low. Every time a user selects a filter checkbox, updates teh price range slider or uses the sort menu ajax makes a
+get request to the view with selected data and products are filtered or sorted in the view using the selected data.
+The view renders a separate html file with new products data and returns a response with products html to ajax. This
+html is then placed in a specific container on the page.
 
 Django paginator is used to show products on different pages.
 
 Individual product page displays information about specific product. It shows product images on the left side and
 product description on the right side. The page displays all sizes in a select menu. If size is not in stock the option
-is greyed out and it says next to size name that it is out of stock. So users can only add items to bag which are in
-stock. 
+is disabled and it says next to the size name that it is out of stock. So users can only add items to the shopping bag
+which are in stock. 
 
 Product description is entered on admin site using tinymce text editor. And then it is displayed in the template using 
 autoescape tag to escape HTML. 
@@ -224,27 +223,27 @@ cart is initialized in the view the init function checks if the cart is already 
 creates an empty cart in the session.
 
 CartForm is used to add products to the cart or update them in the cart. It has a field quantity with select options
-from 1 to 10 and it has hidden field update. Its value is false by default but if form is used in the shopping cart to
+from 1 to 10 and it has a hidden field update. Its value is false by default but if form is used in the shopping bag to
 update items in the bag the update field value is changed to true in this case.
 
 The function add in the cart.py file is used for changing items in the cart. It has several conditions. If the cart is
 empty, the function adds new product to the cart. If the cart is not empty, the function checks if this product is
 already in the cart and which size is in the cart. And then the function either updates size or quantity accordingly.
-It also checks if the quantity requested is available in stock. When changes are made the function save is called to
+It also checks if the quantity requested is available in stock. If changes were made the function save is called to
 save the cart.
 
-CartForm is used on the product page to add product item to the shopping bag. The quantity field is hidden to add one
-item by default to the cart. When user clicks on "add to bag" button the post request is made to the cart app view 
-using ajax to add product item to the shopping bag. In case of success ajax shows the message that product was added to
-the bag mentioning product name and size. If product size is not available anymore (number of items for this size in
-shopping bag exceeds the amount in stock) ajax displays a message that this product in selected size is not available
-anymore.
+CartForm is used on the product page to add product item to the shopping bag. The quantity field is hidden so users can
+add only one item to the cart at a time. When user clicks on "add to bag" button a post request is made to the cart
+app view using ajax to add product item to the shopping bag. In case of success ajax shows the message that product was
+added to the bag mentioning product name and size. If product size is not available anymore (number of items for this
+size in shopping bag exceeds the amount in stock) ajax displays a message that this product in selected size is not
+available anymore.
 
 On shopping bag page the user can see items in the cart - product image, name, price, selected size and quantity. There
 are select menus for size and quantity so users can update values. If size is out of stock the option will be disabled
-so users won't be able to choose size which is not in stock. Ajax is used to update the shopping bag. When user selects
-a new size or new quantity, a button "update" and also link "cancel" appears. If user clicks on "cancel" the buttons
-will disappear and the size and quantity values will change to initial ones. If user clicks on "save" the buttons will
+so users won't be able to choose a size which is not in stock. Ajax is used to update the shopping bag. When user
+selects a new size or new quantity, the buttons "update" and "cancel" appear. If user clicks on "cancel" the buttons
+will disappear and the size and quantity values will change to initial ones. If user clicks on "update" the buttons will
 disappear, new values will be selected and prices will be updated in the cart.
 
 Class cart in cart.py has also functions to calculate subtotal, delivery and total price for the cart, as also to
@@ -253,14 +252,14 @@ adds additional information for each item in the cart which is used in the templ
 remove item from the cart and clear function to empty the cart.
 
 To remove the item from the cart, another url is used to call remove function. After the item is removed from the cart
-the page refreshes. If the cart is empty the shopping bag page displays a message informing that shopping bag is empty
-and a button "shop now".
+the page refreshes. If the cart is empty the shopping bag page displays a message informing that the shopping bag is
+empty and the button "shop now".
 
 Context processor is created for the cart so the total cart price would be available on each page. It is displayed in
-the header next to shopping bag icon.
+the header next to the shopping bag icon.
 
-And session is set to expire on closing browser in settings. So the user will be logged out and shopping bag empty after
-user closes their browser.
+And session is set to expire on closing the browser in settings. So the user will be logged out and the shopping bag
+will be empty after user closes their browser.
 
 ### Orders app
 
@@ -297,4 +296,5 @@ on the right.
 
 ## Validation and Testing
 
+Each app has their own tests created using Django TestCase class. Some apps also have fixtures to store data for tests.
 
