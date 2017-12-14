@@ -89,6 +89,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "9boz62xvrzcus6vx0i6o1xnfg1g5p6r9",
+    "fields": {
+        "session_data": "OTg0ZjcxY2JmZjI0MTIzNTI0NTIzNTIzMWUwYzcyYTE3ZTkxODY2OTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiYTdiNTFjZGU4MTdhZTE2YTRlOGM3N2VjMzI0MGFhZDA4ZjlkYWVhYiIsIl9hdXRoX3VzZXJfaWQiOiIxIiwiY2FydCI6W119",
+        "expire_date": "2017-12-24T22:20:26.607Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "aecb26je4nsi855301f60t2da0lv4h89",
     "fields": {
         "session_data": "NTg0YmRmOTI5NjhlZDNhYzBiZGFlYjkzMjNmZDhlMjg4MzQxY2Q4MDp7Il9hdXRoX3VzZXJfaGFzaCI6ImE3YjUxY2RlODE3YWUxNmE0ZThjNzdlYzMyNDBhYWQwOGY5ZGFlYWIiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=",
@@ -225,6 +233,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "in5wp54bv6i334jtt55jawylil7guepb",
+    "fields": {
+        "session_data": "YzAzNmU1NDE5ZjU5MmRkYTI1Mjc3MzNiYTE1NDMwZmYyNmIwNjlhMjp7ImNhcnQiOlt7InByaWNlIjoiNjUuMDAiLCJxdWFudGl0eSI6NCwicHJvZHVjdF9pZCI6IjI5Iiwic2l6ZSI6IlVLIDEwIn1dLCJfYXV0aF91c2VyX2hhc2giOiI2ZTA4ZTdiZThmZWJlMzlmMGFkNmE1Zjk3MmE5ZGZhNWFjMjhmZDkwIiwiX2F1dGhfdXNlcl9pZCI6IjE2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiYWNjb3VudHMuYmFja2VuZHMuRW1haWxBdXRoIn0=",
+        "expire_date": "2017-12-27T20:19:57.406Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "j03mu23ibdx7i4kr9b3tjpewekds07y0",
     "fields": {
         "session_data": "Mjc2NmUzMWY2YWQxOTkyOTNhMjJjMjcwMTc4MzMwNTQ0Y2UyMWYyMzp7fQ==",
@@ -265,6 +281,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "lecyrelw16sdxybhl85zv1lavhfh3j0u",
+    "fields": {
+        "session_data": "M2FkM2Y4ZWM3M2Y2NTgyNmQxOTJjOGRjMjJiZTdkZDA3NzBiODMwMzp7ImNhcnQiOltdfQ==",
+        "expire_date": "2017-12-27T14:31:16.469Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "m7jn8l4jdxauz7gfmukc91w764vbo6g6",
     "fields": {
         "session_data": "M2FkM2Y4ZWM3M2Y2NTgyNmQxOTJjOGRjMjJiZTdkZDA3NzBiODMwMzp7ImNhcnQiOltdfQ==",
@@ -289,6 +313,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "oz5ngmoa61blouozn9lbreffkt2atziv",
+    "fields": {
+        "session_data": "YmIzZWU3ZDEzMTljYzViMTFmMWRmYjIyYzE0ZGVkMThmN2IxNDM0MTp7ImNhcnQiOltdLCJfYXV0aF91c2VyX2hhc2giOiI2ZTA4ZTdiZThmZWJlMzlmMGFkNmE1Zjk3MmE5ZGZhNWFjMjhmZDkwIiwiX2F1dGhfdXNlcl9pZCI6IjE2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiYWNjb3VudHMuYmFja2VuZHMuRW1haWxBdXRoIn0=",
+        "expire_date": "2017-12-23T21:00:55.624Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "ozrj1zhiqnefa99t1yin8lec2fnzb6xp",
     "fields": {
         "session_data": "YmIzZWU3ZDEzMTljYzViMTFmMWRmYjIyYzE0ZGVkMThmN2IxNDM0MTp7ImNhcnQiOltdLCJfYXV0aF91c2VyX2hhc2giOiI2ZTA4ZTdiZThmZWJlMzlmMGFkNmE1Zjk3MmE5ZGZhNWFjMjhmZDkwIiwiX2F1dGhfdXNlcl9pZCI6IjE2IiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiYWNjb3VudHMuYmFja2VuZHMuRW1haWxBdXRoIn0=",
@@ -301,6 +333,22 @@
     "fields": {
         "session_data": "ODU2NDgxYzE4MDg4ODEwNTg2MmQxYTg1NzYzNjEzM2QyMGNlODc5YTp7ImNhcnQiOlt7InByaWNlIjoiNDQuMDAiLCJxdWFudGl0eSI6MiwicHJvZHVjdF9pZCI6IjYiLCJzaXplIjoiVUsgMTAifSx7InByaWNlIjoiNDQuMDAiLCJzaXplIjoiVUsgMTIiLCJwcm9kdWN0X2lkIjoiNiIsInF1YW50aXR5IjoyfSx7InByaWNlIjoiNDQuMDAiLCJxdWFudGl0eSI6MSwicHJvZHVjdF9pZCI6IjYiLCJzaXplIjoiVUsgNCJ9LHsicHJpY2UiOiI0NC4wMCIsInNpemUiOiJVSyA0IiwicHJvZHVjdF9pZCI6IjYiLCJxdWFudGl0eSI6MX0seyJwcmljZSI6IjQ0LjAwIiwicXVhbnRpdHkiOjEsInByb2R1Y3RfaWQiOiI2Iiwic2l6ZSI6IlVLIDQifSx7InByaWNlIjoiNDQuMDAiLCJzaXplIjoiVUsgNCIsInByb2R1Y3RfaWQiOiI2IiwicXVhbnRpdHkiOjF9XX0=",
         "expire_date": "2017-12-11T00:07:59.408Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "pulq23x635fuz56yb8ws6q5aqo918xf8",
+    "fields": {
+        "session_data": "MjA5MDgyMTk5N2E1ODU4YjlmZjIzYTM5N2U5N2E0OTdjNjEwOTA2MTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImFjY291bnRzLmJhY2tlbmRzLkVtYWlsQXV0aCIsIl9hdXRoX3VzZXJfaGFzaCI6IjZlMDhlN2JlOGZlYmUzOWYwYWQ2YTVmOTcyYTlkZmE1YWMyOGZkOTAiLCJfYXV0aF91c2VyX2lkIjoiMTYiLCJjYXJ0IjpbXX0=",
+        "expire_date": "2017-12-27T14:40:13.940Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "q2uh2djptvccjdbzsi0290mzn2at9wiz",
+    "fields": {
+        "session_data": "M2FkM2Y4ZWM3M2Y2NTgyNmQxOTJjOGRjMjJiZTdkZDA3NzBiODMwMzp7ImNhcnQiOltdfQ==",
+        "expire_date": "2017-12-28T19:57:17.028Z"
     }
 },
 {
@@ -353,6 +401,14 @@
 },
 {
     "model": "sessions.session",
+    "pk": "uo6afcqet1qfw0yibkc12q6hpn1qtlni",
+    "fields": {
+        "session_data": "ZDI0ZTkyYjU5NjcyNjlkNDk2OTIyNmJiYjg1NGMyYzA5YWE3YmMwYTp7ImNhcnQiOlt7InByaWNlIjoiMTguMDAiLCJzaXplIjoiVUsgMTIiLCJwcm9kdWN0X2lkIjoiMTYiLCJxdWFudGl0eSI6NH0seyJwcmljZSI6IjI1LjAwIiwicXVhbnRpdHkiOjEsInByb2R1Y3RfaWQiOiIyNyIsInNpemUiOiJVSyA0In1dLCJfYXV0aF91c2VyX2hhc2giOiJjMDE4OWE2OGZjNTJmZDYwYjAxNjEwYmYzNjU4Y2RiN2IwMzBmNDEwIiwiX2F1dGhfdXNlcl9pZCI6IjMxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiYWNjb3VudHMuYmFja2VuZHMuRW1haWxBdXRoIn0=",
+        "expire_date": "2017-12-25T22:27:01.362Z"
+    }
+},
+{
+    "model": "sessions.session",
     "pk": "v2td2zr752v8cz19mkn34akj5s0vo5zs",
     "fields": {
         "session_data": "Njk2MmI3ZTJjNWE0ZDU1MWVkMGFlMGJlZDlhNTk3OWM1ZTA2YWIxODp7Il9hdXRoX3VzZXJfaGFzaCI6ImMzNTEyNDVhNjNlNThjMjI0YjJmYzNjMWYxNzhjZmJlMTVmYTNiOTQiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJhY2NvdW50cy5iYWNrZW5kcy5FbWFpbEF1dGgiLCJfYXV0aF91c2VyX2lkIjoiMzEifQ==",
@@ -365,14 +421,6 @@
     "fields": {
         "session_data": "NTg0MjRmZmFiYzE0NDVkNDQ5OWMyMjlkMzg0NGUyNzZlYWVkZWQ2Njp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImFjY291bnRzLmJhY2tlbmRzLkVtYWlsQXV0aCIsIl9hdXRoX3VzZXJfaGFzaCI6ImE3YjUxY2RlODE3YWUxNmE0ZThjNzdlYzMyNDBhYWQwOGY5ZGFlYWIiLCJfYXV0aF91c2VyX2lkIjoiMSIsImNhcnQiOnsiMTAiOnsicHJpY2UiOiI1MC4wMCIsInF1YW50aXR5IjoyLCJzaXplIjoiVUsgMTQifSwiNSI6eyJwcmljZSI6IjQyLjAwIiwic2l6ZSI6IlVLIDE0IiwicXVhbnRpdHkiOjF9fX0=",
         "expire_date": "2017-12-10T21:52:56.347Z"
-    }
-},
-{
-    "model": "sessions.session",
-    "pk": "vf4bxn0j1nfvndqd3ejxdqxv6o9hn4ry",
-    "fields": {
-        "session_data": "MDVkNDVmZmM0MWQ4NDEyYzg3NGI0NTNhMWY1NjQyYmI3YWZhZjk3Zjp7ImNhcnQiOltdLCJfYXV0aF91c2VyX2hhc2giOiJhN2I1MWNkZTgxN2FlMTZhNGU4Yzc3ZWMzMjQwYWFkMDhmOWRhZWFiIiwiX2F1dGhfdXNlcl9pZCI6IjEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCJ9",
-        "expire_date": "2017-12-23T15:24:14.278Z"
     }
 },
 {
@@ -420,7 +468,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$36000$vEpLGc7WpOj3$oxA2Im+j98NNEphGzhwlR+OspCAn0nrZL3inBcnCbBA=",
-        "last_login": "2017-12-09T15:02:53.629Z",
+        "last_login": "2017-12-11T21:58:36.157Z",
         "is_superuser": true,
         "username": "tatjanagkolhapure@gmail.com",
         "email": "tatjanagkolhapure@gmail.com",
@@ -438,7 +486,7 @@
     "pk": 16,
     "fields": {
         "password": "pbkdf2_sha256$36000$LW3bBWUaNn7K$PrWzlenEbnt14pfhhck3Ygs9H5Kl2oyZVl6acQ8577o=",
-        "last_login": "2017-12-06T21:06:14.283Z",
+        "last_login": "2017-12-13T19:06:36.022Z",
         "is_superuser": false,
         "username": "karla.slinton@example.com",
         "email": "karla.slinton@example.com",
@@ -474,7 +522,7 @@
     "pk": 31,
     "fields": {
         "password": "pbkdf2_sha256$36000$iQo8MXhxQBin$n7D59Fgl71wDjKY3+mX62Qz6B66Gbks00MWX0Chh014=",
-        "last_login": "2017-12-04T20:24:45.453Z",
+        "last_login": "2017-12-11T22:22:11.406Z",
         "is_superuser": false,
         "username": "silvia.consila@example.com",
         "email": "silvia.consila@example.com",
@@ -483,6 +531,24 @@
         "date_joined": "2017-11-15T23:43:13.659Z",
         "first_name": "Silvia",
         "last_name": "Consila",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 37,
+    "fields": {
+        "password": "pbkdf2_sha256$36000$TTxm1mCqeaPl$1Lo1ueWrEcNtkVDsY+sp6NgdY4KnDOVfoqSyC57Slw0=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "test_admin@example.com",
+        "email": "test_admin@example.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2017-12-14T20:04:51.565Z",
+        "first_name": "Name",
+        "last_name": "Surname",
         "groups": [],
         "user_permissions": []
     }
