@@ -328,9 +328,8 @@ using online service [Crossbrowser Testing](https://crossbrowsertesting.com/).
 
 ## Deployment
 
-The repository for the project is available on GitHub.
-
-The project was deployed on Heroku using the guide provided by the course material. The following steps were taken:
+The repository for the project is available on GitHub. The project was deployed on Heroku using the guide provided by
+the course material. The following steps were taken:
 
 - Settings directory was created with different settings files (base settings, development settings and staging
 settings)
