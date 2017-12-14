@@ -28,6 +28,9 @@ and to promote the brand. The following requirements were set and met:
 shopping bag, buy products and view orders on their account, as also update their delivery address or other account
 details and get customer support contact information.
 
+The project was made from scratch following the guidance of the course material. Good help was also a book by Antonio
+Mele called Django By Example. In order to solve outstanding issues answers were found on Stack Overflow website.
+
 The project was made keeping in mind possible future functionality updates.
 
 ## Pages
@@ -288,3 +291,7 @@ There is also a view to display all orders on the customer's page. The table is 
 columns with order date, order number, items number, total price, order status, each row has button "view order" on the
 right. On mobile screen the table shows only two columns - order date and order status, each row with a button "view"
 on the right.
+
+## Validation and Testing
+
+
