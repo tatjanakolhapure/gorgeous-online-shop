@@ -356,4 +356,4 @@ those keys then were set on heroku as well in Config Variables
 - local database dumped in json file which was pushed to GitHub repository and heroku database tables populated with
 data from dumped json file
 
-The deployed website is available [here](https://gorgeous-shop.herokuapp.com/)
+The deployed website is available [here](https://gorgeous-shop.herokuapp.com/).
