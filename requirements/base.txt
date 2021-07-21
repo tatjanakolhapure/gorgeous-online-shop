@@ -19,5 +19,5 @@ s3transfer==0.1.12
 six==1.11.0
 stripe==1.75.1
 urllib3==1.22
-gunicorn==19.4
+gunicorn==19.5.0
 whitenoise==3.2
